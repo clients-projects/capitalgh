@@ -20,10 +20,10 @@ function Deposit(props) {
 
     const options = [
         {
-            label: '1 Package Month ($300 - $6,999)',
-            value: '1 Package Month',
+            label: '1 Month Package ($300 - $6,999)',
+            value: '1 Month Package',
             details: {
-                name: '1 Package Month',
+                name: '1 Month Package',
                 percent: 28,
                 duration: '1 Month',
                 minimum: 300,
@@ -31,10 +31,10 @@ function Deposit(props) {
             },
         },
         {
-            label: '3 Package Month ($7000 - $23,999',
-            value: '3 Package Month',
+            label: '3 Months Package ($7000 - $23,999',
+            value: '3 Months Package',
             details: {
-                name: '3 Package Month',
+                name: '3 Months Package',
                 percent: 36,
                 duration: '3 Months',
                 minimum: 7000,
@@ -42,10 +42,10 @@ function Deposit(props) {
             },
         },
         {
-            label: '6 Package Month ($24,000 - $39,999)',
-            value: '6 Package Month ',
+            label: '6 Months Package ($24,000 - $39,999)',
+            value: '6 Months Package ',
             details: {
-                name: '6 Package Month ',
+                name: '6 Months Package ',
                 percent: 48,
                 duration: '6 Months',
                 minimum: 24000,
@@ -54,72 +54,16 @@ function Deposit(props) {
         },
 
         {
-            label: '12 Package Month ($40,000 - Unlimited)',
-            value: '12 Package Month',
+            label: '12 Months Package ($40,000 - Unlimited)',
+            value: '12 Months Package',
             details: {
-                name: '12 Package Month',
-                percent: 10,
-                duration: '1 week',
-                minimum: 300,
-                maximum: 4999,
+                name: '12 Months Package',
+                percent: 72,
+                duration: '12 Months',
+                minimum: 40000,
+                maximum: 10000000000000,
             },
-        },
-        {
-            label: 'PREMIUM ($5000 - $9,999) - Weekly',
-            value: 'PREMIUM',
-            details: {
-                name: 'PREMIUM',
-                percent: 15,
-                duration: '1 week',
-                minimum: 5000,
-                maximum: 9999,
-            },
-        },
-        {
-            label: 'BUSINESS ($10,000 - $49,999) - Weekly',
-            value: 'BUSINESS',
-            details: {
-                name: 'BUSINESS',
-                percent: 20,
-                duration: '1 week',
-                minimum: 10000,
-                maximum: 49999,
-            },
-        },
-
-        {
-            label: 'SILVER ($300 - $4,999) - Monthly',
-            value: 'SILVER',
-            details: {
-                name: 'SILVER',
-                percent: 44,
-                duration: '1 month',
-                minimum: 300,
-                maximum: 4999,
-            },
-        },
-        {
-            label: 'GOLD ($5000 - $9,999) - Monthly',
-            value: 'GOLD',
-            details: {
-                name: 'GOLD',
-                percent: 52,
-                duration: '1 month',
-                minimum: 5000,
-                maximum: 9999,
-            },
-        },
-        {
-            label: 'DIAMOND ($10,000 - $49,999) - Monthly',
-            value: 'DIAMOND',
-            details: {
-                name: 'DIAMOND',
-                percent: 64,
-                duration: '1 month',
-                minimum: 10000,
-                maximum: 49999,
-            },
-        },
+        }
     ]
 
     const customStyles = {
