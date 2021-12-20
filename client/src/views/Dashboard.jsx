@@ -72,7 +72,7 @@ const Dashboard = (props) => {
                                 bigIcon={
                                     <i className='pe-7s-wallet text-success' />
                                 }
-                                statsText='Total Withdrawal'
+                                statsText='Active Deposit'
                                 statsValue={displayUserWithdrawals}
                                 statsIcon={<i className='fa fa-calendar-o' />}
                                 statsIconText='Updated now'
@@ -83,7 +83,7 @@ const Dashboard = (props) => {
                                 bigIcon={
                                     <i className='pe-7s-graph1 text-danger' />
                                 }
-                                statsText='Total Deposit'
+                                statsText='Total Profit'
                                 statsValue={displayUserDeposits}
                                 statsIcon={<i className='fa fa-clock-o' />}
                                 statsIconText='Updated now'
@@ -92,7 +92,7 @@ const Dashboard = (props) => {
                         <Col lg={3} sm={6}>
                             <StatsCard
                                 bigIcon={<i className='pe-7s-cash text-info' />}
-                                statsText='Pending Deposits'
+                                statsText='Referral Bonus'
                                 statsValue={pendingDepositsCount}
                                 statsIcon={<i className='fa fa-refresh' />}
                                 statsIconText='Updated now'
