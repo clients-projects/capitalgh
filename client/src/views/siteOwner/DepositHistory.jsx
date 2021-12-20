@@ -117,31 +117,57 @@ const AllUsersDepositHistory = (props) => {
     }
 
     return (
-        <div className=''>
-            <ToolkitProvider
-                bootstrap4
-                keyField='id'
-                data={products}
-                columns={columns}
-                search
-                exportCSV
-            >
-                {(props) => (
-                    <div>
-                        <h6>Input something at below input field:</h6>
-                        <SearchBar {...props.searchProps} />
-                        <ClearSearchButton {...props.searchProps} />
-                        <hr />
-                        <MyExportCSV {...props.csvProps} />
-                        <BootstrapTable
-                            defaultSorted={defaultSorted}
-                            classes='table-layout-auto'
-                            pagination={pagination}
-                            {...props.baseProps}
+        <div className='content'>
+            <Grid fluid>
+                <Row>
+                    <Col md={12}>
+                        <Card
+                            plain
+                            title='Users Deposits'
+                            category='Deposit History of all the users'
+                            ctTableFullWidth
+                            ctTableResponsive
+                            content={
+                                    <ToolkitProvider
+                                        bootstrap4
+                                        keyField='id'
+                                        data={products}
+                                        columns={columns}
+                                        search
+                                        exportCSV
+                                    >
+                                        {(props) => (
+                                            <div>
+                                                <h6>
+                                                    Input something at below
+                                                    input field:
+                                                </h6>
+                                                <SearchBar
+                                                    {...props.searchProps}
+                                                />
+                                                <ClearSearchButton
+                                                    {...props.searchProps}
+                                                />
+                                                <hr />
+                                                <MyExportCSV
+                                                    {...props.csvProps}
+                                                />
+                                                <BootstrapTable
+                                                    defaultSorted={
+                                                        defaultSorted
+                                                    }
+                                                    classes='table-layout-auto'
+                                                    pagination={pagination}
+                                                    {...props.baseProps}
+                                                />
+                                            </div>
+                                        )}
+                                    </ToolkitProvider>
+                            }
                         />
-                    </div>
-                )}
-            </ToolkitProvider>
+                    </Col>
+                </Row>
+            </Grid>
         </div>
     )
 }
