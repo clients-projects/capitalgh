@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import WhatsappLivechat from '../images/whatsapp.png'
 import * as actions from '../store/actions/burgerIndex'
 import Layout from './Layout'
 import AdminLayout from '../layouts/Admin'
