@@ -146,6 +146,22 @@ function App() {
     { dataField: 'animal', text: 'Animal', sort: true },
     { dataField: 'animal', text: 'Animal', sort: true },
     { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true },
+    { dataField: 'animal', text: 'Animal', sort: true }
   ];
 
   const defaultSorted = [{
@@ -186,7 +202,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="table-responsive">
       <h5>React Bootstrap Table Next with Sorting, Pagination and Search</h5>
 
       <ToolkitProvider
