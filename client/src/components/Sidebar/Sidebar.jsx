@@ -41,7 +41,7 @@ class Sidebar extends Component {
                     />
                 ) : null}
                 <div className='logo'>
-                    <img src={logo} alt='logo_image' className='logo-2' />
+                    {/* <img src={logo} alt='logo_image' className='logo-2' /> */}
 
                     {/* <a
                         href='/admin/dashboard'

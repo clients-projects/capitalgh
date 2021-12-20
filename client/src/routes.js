@@ -27,14 +27,14 @@ export const dashboardRoutes = [
 
     {
         path: '/user',
-        name: 'User Profile',
+        name: 'Account Profile',
         icon: 'pe-7s-user',
         component: UserProfile,
         layout: '/admin',
     },
     {
         path: '/plansDashboard',
-        name: 'Deposit',
+        name: 'Invest',
         icon: 'pe-7s-note2',
         component: Deposit,
         layout: '/admin',
