@@ -44,12 +44,14 @@ const Dashboard = (props) => {
 
         if(props.userDeposits){
             setActiveDeposit(props.userData.accountBalance)
+            setReferralBonus(props.totalReferralCommission)
         }
     }, [props])
 
     const displayUserFunds = `$${userAccountBalance}`
     const displayActiveDeposits = `$${activeDeposit}`
     const displayProfit = `$${profit}`
+    const displayReferralBonus = `$${referralBonus}`
 
         return (
             <div className='content'>
@@ -92,7 +94,7 @@ const Dashboard = (props) => {
                             <StatsCard
                                 bigIcon={<i className='pe-7s-cash text-info' />}
                                 statsText='Referral Bonus'
-                                //statsValue={}
+                                statsValue={displayReferralBonus}
                                 statsIcon={<i className='fa fa-refresh' />}
                                 statsIconText='Updated now'
                             />
