@@ -25,6 +25,7 @@ const Dashboard = (props) => {
     const [userAccountBalance, setUserAccountBalance] = useState(0)
     const [totalUserDeposits, setTotalUserDeposits] = useState(0)
     const [activeDeposit, setActiveDeposit] = useState(0)
+    const [profit, setProfit] = useState(0)
     
     useEffect(() => {
         if(props.userData.hasOwnProperty('username')){
@@ -38,6 +39,7 @@ const Dashboard = (props) => {
             const accountBalandProfits = props.userData.accountBalance + keepProfits
 
             setUserAccountBalance(accountBalandProfits)
+            setProfit(keepProfits)
         }
 
         if(props.totalUserDeposits){
@@ -49,6 +51,7 @@ const Dashboard = (props) => {
     const displayUserFunds = `$${userAccountBalance}`
     const displayUserDeposits = `$${totalUserDeposits}`
     const displayActiveDeposits = `$${activeDeposit}`
+    const displayProfit = `$${profit}`
 
         return (
             <div className='content'>
@@ -82,7 +85,7 @@ const Dashboard = (props) => {
                                     <i className='pe-7s-graph1 text-danger' />
                                 }
                                 statsText='Total Profit'
-                                statsValue={displayUserDeposits}
+                                statsValue={displayProfit}
                                 statsIcon={<i className='fa fa-clock-o' />}
                                 statsIconText='Updated now'
                             />
