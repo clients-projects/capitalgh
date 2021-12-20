@@ -93,6 +93,7 @@ const AllUsersDepositHistory = (props) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log({state})
     return {
         tokenId: state.auth.tokenId,
         userId: state.auth.userId,
