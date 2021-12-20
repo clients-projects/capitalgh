@@ -25,6 +25,7 @@ const Dashboard = (props) => {
     const [userAccountBalance, setUserAccountBalance] = useState(0)
     const [activeDeposit, setActiveDeposit] = useState(0)
     const [profit, setProfit] = useState(0)
+    const [referralBonus, setReferralBonus] = useState(0)
     
     useEffect(() => {
         if(props.userData.hasOwnProperty('username')){
@@ -41,7 +42,7 @@ const Dashboard = (props) => {
             setProfit(keepProfits)
         }
 
-        if(props.totalUserDeposits){
+        if(props.userDeposits){
             setActiveDeposit(props.userData.accountBalance)
         }
     }, [props])
@@ -139,12 +140,9 @@ const mapStateToProps = (state) => {
         loading: state.user.loading,
         tokenId: state.auth.tokenId,
         userData: state.auth.userData,
-        userFundAccount: state.auth.userFundAccount,
         userId: state.auth.userId,
-        totalUserDeposits: state.auth.totalUserDeposits,
         userDeposits: state.auth.userDeposits,
-        totalUserWithdrawals: state.auth.totalUserWithdrawals,
-        pendingDepositsCount: state.auth.pendingDepositsCount,
+        totalReferralCommission: state.auth.userData.totalReferralCommission
     }
 }
 
