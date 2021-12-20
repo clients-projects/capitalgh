@@ -4,7 +4,6 @@ import queryString from 'query-string'
 
 import * as orderAction from '../../store/actions/burgerIndex'
 import Input from '../../components/Input'
-import Button from '../Button'
 import { required, length, email } from '../../util/validators'
 import Auth from './Auth'
 import ReactParticles from '../../components/ReactParticles'
@@ -299,13 +298,13 @@ const Signup = (props) => {
                             type='checkbox'
                             control='checkbox'
                         />
-                        <Button
+                        <button
                             design='raised'
                             type='submit'
                             loading={props.loading}
                         >
                             {props.loading ? 'Loading...' : 'Signup'}
-                        </Button>
+                        </button>
                     </div>
                 </form>
             </Auth>

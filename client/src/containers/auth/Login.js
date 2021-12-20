@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import * as orderAction from '../../store/actions/burgerIndex'
-
-import Button from '../Button'
 import Input from '../Input'
 
 import { required, length, email } from '../../util/validators'
@@ -121,13 +119,13 @@ const Login = (props) => {
                         touched={state.loginForm['password'].touched}
                     />
                     <div className='form-btn'>
-                        <Button
+                        <button
                             design='raised'
                             type='submit'
                             loading={props.loading}
                         >
                             {props.loading ? 'Loading...' : 'Login'}
-                        </Button>
+                        </button>
                         <Link to='/forgot-password' className='form-btn__link'>
                             Forgot Password?
                         </Link>
