@@ -25,6 +25,7 @@ const Dashboard = (props) => {
     const [userAccountBalance, setUserAccountBalance] = useState(0)
     const [totalUserDeposits, setTotalUserDeposits] = useState(0)
     const [totalUserWithdrawals, setTotalUserWithdrawals] = useState(0)
+    const [activeDeposit, setActiveDeposit] = useState(0)
     
     useEffect(() => {
         if(props.userData.hasOwnProperty('username')){
@@ -43,6 +44,7 @@ const Dashboard = (props) => {
         if(props.totalUserDeposits){
             setTotalUserDeposits(props.totalUserDeposits)
             setTotalUserWithdrawals(props.totalUserWithdrawals)
+            setActiveDeposit(props.userData.accountBalance)
         }
     }, [props])
 
@@ -71,7 +73,7 @@ const Dashboard = (props) => {
                                     <i className='pe-7s-wallet text-success' />
                                 }
                                 statsText='Active Deposit'
-                                statsValue={displayUserWithdrawals}
+                                statsValue={activeDeposit}
                                 statsIcon={<i className='fa fa-calendar-o' />}
                                 statsIconText='Updated now'
                             />
