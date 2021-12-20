@@ -31,7 +31,7 @@ function Deposit(props) {
             },
         },
         {
-            label: '3 Months Package ($7000 - $23,999',
+            label: '3 Months Package ($7000 - $23,999)',
             value: '3 Months Package',
             details: {
                 name: '3 Months Package',
