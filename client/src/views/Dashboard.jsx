@@ -23,7 +23,6 @@ const Dashboard = (props) => {
 
     //Have to fetch the user account balance
     const [userAccountBalance, setUserAccountBalance] = useState(0)
-    const [totalUserDeposits, setTotalUserDeposits] = useState(0)
     const [activeDeposit, setActiveDeposit] = useState(0)
     const [profit, setProfit] = useState(0)
     
@@ -49,7 +48,6 @@ const Dashboard = (props) => {
     }, [props])
 
     const displayUserFunds = `$${userAccountBalance}`
-    const displayUserDeposits = `$${totalUserDeposits}`
     const displayActiveDeposits = `$${activeDeposit}`
     const displayProfit = `$${profit}`
 
