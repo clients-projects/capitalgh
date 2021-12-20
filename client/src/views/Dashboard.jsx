@@ -42,7 +42,6 @@ const Dashboard = (props) => {
         }
 
         if(props.totalUserDeposits){
-            setTotalUserDeposits(props.totalUserDeposits)
             setActiveDeposit(props.userData.accountBalance)
         }
     }, [props])
