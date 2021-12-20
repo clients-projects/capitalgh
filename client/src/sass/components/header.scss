@@ -1,0 +1,85 @@
+.main-header {
+    &__text {
+        font-size: clamp(0.8rem, 1.5rem, 2rem);
+        font-weight: 400;
+        font-family: $font-display;
+        color: #fff;
+        text-transform: uppercase;
+
+        @media only screen and (max-width: 37em) {
+            justify-self: center;
+        }
+    }
+
+    &__title {
+        justify-self: center;
+        font-size: clamp(1.3rem, 3vw, 5vw);
+
+        @media only screen and (max-width: 37em) {
+            justify-self: center;
+            text-align: center;
+        }
+    }
+
+    &__logo {
+        height: 7rem;
+        justify-self: center;
+    }
+
+    &__cta {
+        display: grid;
+        grid-template-columns: max-content max-content;
+        column-gap: 2rem;
+        justify-content: center;
+        padding: 1rem 4rem;
+    }
+
+    &__seen-on {
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        align-items: center;
+        column-gap: 0.5rem;
+
+        font-size: 2rem;
+        color: $color-grey-light-2;
+
+        &::before,
+        &::after {
+            content: '';
+            background-color: currentColor;
+            height: 2px;
+        }
+    }
+
+    &__logos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+        gap: 1rem;
+        justify-content: center;
+
+        @media only screen and (max-width: 28em) {
+            grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        }
+    }
+
+    &__item {
+        height: 5.5rem;
+        width: 100%;
+        object-fit: contain;
+        justify-self: center;
+
+        @media only screen and (max-width: 28em) {
+            height: 3rem;
+        }
+    }
+
+    &__button {
+        &:link,
+        &:visited {
+            align-self: start;
+            justify-self: start;
+            font-size: 1.4rem;
+            background: $color-primary;
+        }
+    }
+}
