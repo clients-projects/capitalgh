@@ -1,10 +1,9 @@
 import * as actions from './actionTypes'
 
-//const URL = 'http://localhost:3030/api/graphql'
+const URL = 'http://localhost:3030/api/graphql'
 
-const URL = 'https://fxcry.herokuapp.com/api/graphql'
+//const URL = 'https://fxcry.herokuapp.com/api/graphql'
 
-//const URL = 'http://robot44-env.eba-imcy7pye.us-east-1.elasticbeanstalk.com/api/graphql'
 
 export const authStart = () => {
     return {

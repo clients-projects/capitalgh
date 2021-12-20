@@ -1,10 +1,9 @@
 import * as actions from './actionTypes'
 
-//const URL = 'http://localhost:3030'
+const URL = 'http://localhost:3030'
 
-const URL = 'https://fxcry.herokuapp.com'
+//const URL = 'https://fxcry.herokuapp.com'
 
-//const URL =  'http://robot44-env.eba-imcy7pye.us-east-1.elasticbeanstalk.com/api/graphql'
 
 export const fundAccountStart = () => {
     return {

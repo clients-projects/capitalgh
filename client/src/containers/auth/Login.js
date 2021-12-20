@@ -126,8 +126,9 @@ const Login = (props) => {
                         >
                             {props.loading ? 'Loading...' : 'Login'}
                         </button>
-                        <Link to='/forgot-password' className='form-btn__link'>
-                            Forgot Password?
+                        <Link to='/Auth/signup' className='form-btn__link'>
+                            
+                            Don't have an account, register here?
                         </Link>
                     </div>
                 </form>
