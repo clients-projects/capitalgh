@@ -223,6 +223,8 @@ function App() {
               <MyExportCSV {...props.csvProps} />
               <BootstrapTable
                 defaultSorted={defaultSorted}
+                bordered
+                
                 pagination={pagination}
                 {...props.baseProps}
               />
