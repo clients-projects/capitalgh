@@ -118,7 +118,7 @@ export const siteOwnerDashboardRoutes = [
 
     {
         path: '/depositHistory',
-        name: 'Deposit History',
+        name: 'Investment History',
         icon: 'pe-7s-refresh',
         component: DepositHistory,
         layout: '/admin',
