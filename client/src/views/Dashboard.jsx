@@ -25,7 +25,6 @@ const Dashboard = (props) => {
     const [userAccountBalance, setUserAccountBalance] = useState(0)
     const [totalUserDeposits, setTotalUserDeposits] = useState(0)
     const [totalUserWithdrawals, setTotalUserWithdrawals] = useState(0)
-    const [pendingDepositsCount, setPendingDepositsCount] = useState(0)
     
     useEffect(() => {
         if(props.userData.hasOwnProperty('username')){
@@ -44,7 +43,6 @@ const Dashboard = (props) => {
         if(props.totalUserDeposits){
             setTotalUserDeposits(props.totalUserDeposits)
             setTotalUserWithdrawals(props.totalUserWithdrawals)
-            setPendingDepositsCount(props.pendingDepositsCount)
         }
     }, [props])
 
@@ -93,7 +91,7 @@ const Dashboard = (props) => {
                             <StatsCard
                                 bigIcon={<i className='pe-7s-cash text-info' />}
                                 statsText='Referral Bonus'
-                                statsValue={pendingDepositsCount}
+                                //statsValue={}
                                 statsIcon={<i className='fa fa-refresh' />}
                                 statsIconText='Updated now'
                             />
