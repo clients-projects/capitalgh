@@ -69,8 +69,8 @@ function Footer() {
 
             <div className='footer__copyright'>
                 <p className='footer__copy'>
-                    copyright &copy; {year} fxcryptotokeninvestment.com all
-                    rights reserved
+                    copyright &copy; {year} capitalgainhub.com all rights
+                    reserved
                 </p>
             </div>
         </>

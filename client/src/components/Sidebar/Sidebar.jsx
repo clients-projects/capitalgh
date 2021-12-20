@@ -47,7 +47,7 @@ class Sidebar extends Component {
                         href='/admin/dashboard'
                         className='simple-text logo-normal'
                     >
-                        fxcryptotokeninvestment
+                        capitalgainhub
                     </a> */}
                 </div>
                 <div className='sidebar-wrapper'>

@@ -20,8 +20,8 @@ class Footer extends Component {
                         </ul>
                     </nav>
                     <p className='copyright pull-right'>
-                        &copy; {new Date().getFullYear()}{' '}
-                        fxcryptotokeninvestment.com ALL RIGHTS RESERVED{' '}
+                        &copy; {new Date().getFullYear()} capitalgainhub.com ALL
+                        RIGHTS RESERVED{' '}
                     </p>
                 </Grid>
             </footer>

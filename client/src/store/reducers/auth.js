@@ -29,8 +29,7 @@ const authSuccess = (state, action) => {
         userId: action.userId,
         tokenId: action.tokenId,
         role: action.role,
-        siteOwner:
-            action.email === 'admin@fxcryptotokeninvestment.com' ? true : false,
+        siteOwner: action.email === 'admin@capitalgainhub.com' ? true : false,
         email: action.email,
         error: null,
     })
