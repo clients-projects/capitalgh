@@ -389,75 +389,14 @@
     }
 }
 
-//Contact Us
 
-.contactUs__heading {
-    font-size: 3rem;
-    text-transform: uppercase;
-    font-family: $font-display;
-    text-align: center;
-    color: $color-primary-dark;
-}
-
-//FAQ
-
-.faq {
-    margin: 7rem 0;
-    grid-column: full-start/center-end;
-    font-family: $font-display;
-    color: $color-primary-dark;
-
-    &__heading {
-        font-size: 3rem;
-        text-align: center;
-        text-transform: uppercase;
-        margin-bottom: 3rem;
-    }
-
-    &__content {
-        display: grid;
-        //word-break: break-all;
-        //word-wrap: break-word;
-        column-gap: 3rem;
-        justify-items: center;
-        justify-content: center;
-        grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-
-        &--question {
-            font-size: 1.7rem;
-            font-weight: 400;
-
-            @include respond(phone) {
-                padding: 0 1rem;
-            }
-        }
-
-        &--answer {
-            font-size: 1.4rem;
-            color: white;
-            margin-bottom: 2rem;
-
-            @include respond(phone) {
-                padding: 0 1rem;
-            }
-        }
-    }
-}
 
 .rootApp {
     position: relative;
 }
 
-.liveChat__whatsapp {
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    bottom: 0;
-    left: 0;
-
-    z-index: 9999;
-    margin: 1.5rem;
-    color: #075e54;
+.table-layout-auto {
+    table-layout: auto !important;
 }
 
 .message {
