@@ -10,11 +10,11 @@ import { connect } from 'react-redux'
 
 import * as actions from '../store/actions/burgerIndex'
 import Layout from './Layout'
-import AdminLayout from '../layouts/Admin'
-import SiteOwnerAdmin from '../layouts/siteOwnerAdmin'
+import AdminLayout from './Admin'
+import SiteOwnerAdmin from './siteOwnerAdmin'
 
-import LoginPage from '../main/auth/Login'
-import SignupPage from '../main/auth/Signup'
+import LoginPage from './auth/Login'
+import SignupPage from './auth/Signup'
 
 function App(props) {
     const location = useLocation()
