@@ -166,7 +166,7 @@ function Deposit(props) {
             setMessage('')
 
             if (!error) {
-                //  props.onInitInvestNow(formData, props.tokenId)
+                 props.onInitInvestNow(formData, props.tokenId)
 
                 props.history.push('/admin/plan-confirmation/:' + packageName, {
                     ...formData,
