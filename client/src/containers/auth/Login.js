@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import * as orderAction from '../../store/actions/burgerIndex'
-import Input from '../Input'
+import Input from '../../components/Input'
 
 import { required, length, email } from '../../util/validators'
 import Auth from './Auth'
