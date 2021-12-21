@@ -658,7 +658,7 @@ export const initSendEmail = (emailData, token) => {
                     }){
                         status
                     }
-                }
+                },
             `,
          }
 
