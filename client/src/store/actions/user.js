@@ -125,22 +125,20 @@ export const withdrawNowFailed = (err) => {
         err,
     }
 }
-export const sendEmailStart = (err) => {
+export const sendEmailStart = () => {
     return {
-        type: actions.SEND_EMAIL_START,
-        err,
+        type: actions.SEND_EMAIL_START
     }
 }
-export const sendEmailSuccess = (err) => {
+export const sendEmailSuccess = (status) => {
     return {
         type: actions.SEND_EMAIL_SUCCESS,
-        err,
+        status,
     }
 }
-export const sendEmailFailed = (err) => {
+export const sendEmailFailed = () => {
     return {
         type: actions.SEND_EMAIL_FAILED,
-        err,
     }
 }
 

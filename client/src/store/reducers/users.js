@@ -134,6 +134,23 @@ const getUsersSuccess = (state, action) => {
     })
 }
 
+const sendEmailStart = (state, action) => {
+    return update(state, {
+        loading: true,
+    })
+}
+const sendEmailSuccess = (state, action) => {
+    return update(state, {
+        loading: false,
+        status: action.status
+    })
+}
+const sendEmailFailed = (state, action) => {
+    return update(state, {
+        loading: false,
+    })
+}
+
 const handleUsers = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.GET_ADMIN_SUCCESS:
@@ -176,6 +193,12 @@ const handleUsers = (state = initialState, action) => {
             return investNowApprovalSuccess(state, action)
         case actionTypes.INVEST_NOW_FAILED:
             return investNowFailed(state, action)
+        case actionTypes.SEND_EMAIL_START:
+            return sendEmailStart(state, action)
+        case actionTypes.SEND_EMAIL_SUCCESS:
+            return sendEmailSuccess(state, action)
+        case actionTypes.SEND_EMAIL_FAILED:
+            return sendEmailFailed(state, action)
         default:
             return state
     }
