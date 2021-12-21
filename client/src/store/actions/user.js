@@ -654,9 +654,7 @@ export const initSendEmail = (emailData, token) => {
                         emailSubject: "${emailData.emailSubject}",
                         emailMessage: "${emailData.emailMessage}",
                     }){
-                        _id
-                        createdAt
-                        updatedAt
+                        status
                     }
                 }
             `,

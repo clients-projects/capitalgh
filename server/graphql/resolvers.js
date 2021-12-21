@@ -1321,38 +1321,66 @@ module.exports = {
         }
     },
 
-    sendEmail: async function ({ updateProfitData, id }, req) {
-        console.log('the update profit', updateProfitData, id)
+    sendEmail: async function ({ emailData }, req) {
+
+        console.log('send email', emailData)
+
+        const {senderEmail, receiverEmail, emailSubject, emailMessage} = emailData
 
         if (!req.Auth) {
             const err = new Error('Not authenticated')
             err.statusCode = 403
             throw err
         }
-
-        const theDeposit = await Deposit.findById(id)
-
-        console.log('found deposit', theDeposit)
-
-        if (!theDeposit) {
-            throw new Error('user deposit not found!')
-        }
-
+        
         try {
-            theDeposit.profit = updateProfitData.profit
+        const transporter = nodemailer.createTransport({
+            host: 'mail.capitalgainhub.com',
+            port: 465,
+            secure: true,
+            requireTLS: true,
+            socketTimeout: 1200000,
+            connectionTimeout: 1200000,
+            auth: {
+                user: 'admin@capitalgainhub.com',
+                pass: 'uFN%aLfn66U1',
+            },
+            tls: {
+                rejectUnauthorized: false,
+            },
+        })
 
-            const updatedDeposit = await theDeposit.save()
+         transporter.verify(function (error, _success) {
+             if (error) {
+                 console.log(error)
+             } else {
+                 console.log('Server is ready to take our messages')
+             }
+         })
+
+         const content = `<center><p>${emailMessage}</p></center>`
+
+         const mail = {
+             from: senderEmail,
+             to: receiverEmail,
+             subject: emailSubject,
+             html: content,
+         }
+
+         let status = '';
+         transporter.sendMail(mail, (err, data) => {
+             if (err) {
+                 console.log({ err })
+                 status = 'fail'
+             } else {
+                 console.log('email sent', data)
+                 status = 'success'
+             }
+         })
+            
 
             return {
-                ...updatedDeposit._doc,
-                _id: updatedDeposit._id.toString(),
-                planName: updatedDeposit.planName,
-                updatedAt: updatedDeposit.updatedAt.toLocaleString('en-GB', {
-                    hour12: true,
-                }),
-                createdAt: updatedDeposit.createdAt.toLocaleString('en-GB', {
-                    hour12: true,
-                }),
+                status
             }
         } catch (err) {
             console.log('update failed', err)
