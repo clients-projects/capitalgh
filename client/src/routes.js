@@ -97,7 +97,7 @@ export const siteOwnerDashboardRoutes = [
     {
         path: '/sendmail',
         name: 'SendMail',
-        icon: 'bx:bx-mail-send',
+        icon: 'bx bx-mail-send',
         component: SendMail,
         layout: '/admin',
     },
