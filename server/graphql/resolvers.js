@@ -1376,16 +1376,12 @@ module.exports = {
                     }
                 })
             }).then((res) => {
-                console.log({ res })
                 return {
                     status : 'success'
                 }
             })
         } catch (err) {
             console.log('update failed', err)
-            return {
-                status: 'failed'
-            }
         }
     },
 }
