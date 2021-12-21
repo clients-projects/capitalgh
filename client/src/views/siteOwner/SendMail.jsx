@@ -27,9 +27,7 @@ const SendMail = (props) => {
         const name = e.target.name
         const value = e.target.value
 
-        if (name === 'senderEmail') {
-            setSenderEmail(value)
-        }
+
         if (name === 'receiverEmail') {
             setReceiverEmail(value)
         }
@@ -46,8 +44,7 @@ const SendMail = (props) => {
         e.preventDefault()
 
         const formData = {
-            fullname,
-            username,
+            senderEmail, receiverEmail,  emailSubject, emailMessage
         }
 
         props.onInitUpdateMember(formData, props.tokenId)
@@ -79,9 +76,10 @@ const SendMail = (props) => {
                                                 Receiver Email
                                             </ControlLabel>
                                             <FormControl
-                                                type='number'
-                                                name='accountBalance'
+                                                type='text'
+                                                name='receiverEmail'
                                                 onChange={handleChange}
+                                                value={receiverEmail}
                                                 placeholder='Enter receiver mail'
                                             />
                                         </FormGroup>
@@ -91,9 +89,9 @@ const SendMail = (props) => {
                                             <ControlLabel>Subject</ControlLabel>
                                             <FormControl
                                                 type='text'
-                                                name='fullname'
+                                                name='emailSubject'
                                                 onChange={handleChange}
-                                                value={fullname}
+                                                value={emailSubject}
                                                 placeholder='email subject'
                                             />
                                         </FormGroup>
@@ -104,12 +102,27 @@ const SendMail = (props) => {
                                                 Sender Email
                                             </ControlLabel>
                                             <FormControl
-                                                name='username'
+                                            
+                                                name='senderEmail'
                                                 type='text'
-                                                value={username}
-                                                onChange={handleChange}
+                                                value={senderEmail}
                                                 placeholder='admin@capitalgainhub.com'
                                                 disabled
+                                            />
+                                        </FormGroup>
+                                    </Row>
+                                    <Row>
+                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
+                                            <ControlLabel>
+                                                Message
+                                            </ControlLabel>
+                                            <FormControl
+                                            
+                                                name='emailMessage'
+                                                type='text'
+                                                value={emailMessage}
+                                                placeholder='Type the message you want to send'
+                                                onChange={handleChange}
                                             />
                                         </FormGroup>
                                     </Row>
