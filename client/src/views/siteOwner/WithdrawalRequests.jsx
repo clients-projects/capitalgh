@@ -12,7 +12,6 @@ import * as actions from '../../store/actions/burgerIndex'
 
 import Card from '../../components/Card/Card'
 
-
 const PendingWithdrawals = (props) => {
     const [userPendingWithdrawal, setUserPendingWithdrawal] = useState([])
     const [loadedWithdrawals, setLoadedWithdrawals] = useState(false)
@@ -40,10 +39,10 @@ const PendingWithdrawals = (props) => {
     const handleApproval = (id) => {
         console.log(userPendingWithdrawal[id - 1].status)
         if (userPendingWithdrawal[id - 1].status !== 'Approved') {
+            console.log('status pending')
             for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
-                if (
-                    id === i
-                ) {
+                console.log(id)
+                if (id === i) {
                     console.log('send approval')
                     return props.onInitWithdrawNowApproval(
                         props.idsOfPendingWithdrawals[i]._id,
