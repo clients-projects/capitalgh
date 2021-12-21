@@ -70,6 +70,7 @@ const PendingWithdrawals = (props) => {
                  currency,
                  status,
                  date: updatedAt,
+                 action: `<button>Click me</button>`
              })
          })
      }
@@ -218,7 +219,6 @@ const PendingWithdrawals = (props) => {
                                                     pagination={pagination}
                                                     {...props.baseProps}
                                                 />
-                                                <button>Click me</button>
                                             </div>
                                         )}
                                     </ToolkitProvider>}
