@@ -33,6 +33,10 @@ const AllUsersDepositHistory = (props) => {
         }
     }, [props])
 
+    console.log({allUsersDeposit})
+    console.log(thDepositHistoryArray)
+    console.log(thWithdrawalArray)
+
     const products = [
         { id: 1, name: 'George', animal: 'Monkey' },
         { id: 2, name: 'Jeffrey', animal: 'Giraffe' },
