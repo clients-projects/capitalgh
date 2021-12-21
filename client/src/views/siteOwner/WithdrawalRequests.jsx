@@ -42,7 +42,6 @@ const PendingWithdrawals = (props) => {
         if (userPendingWithdrawal[decrementId].status !== 'Approved') {
             console.log('status pending')
             for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
-                console.log({ id }, 'is equal', { i })
                 if (decrementId === i) {
                     console.log('send approval')
                     return props.onInitWithdrawNowApproval(
@@ -63,7 +62,7 @@ const PendingWithdrawals = (props) => {
         userPendingWithdrawal.map((value) => {
             const { fundNO, creator, amount, currency, updatedAt, status } =
                 value
-            console.log(props.buttonId, fundNO)
+            console.log('the numbers to compare', props.buttonId, fundNO)
             withdrawalRequests.push({
                 id: fundNO,
                 username: creator,
