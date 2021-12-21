@@ -644,16 +644,17 @@ export const initWithdrawNowApproval = (id, token, buttonId) => {
 }
 export const initSendEmail = (emailData, token) => {
     console.log({emailData})
+    const {receiverEmail, senderEmail,emailSubject, emailMessage} = emailData
     return (dispatch) => {
         dispatch(sendEmailStart())
 
          let graphqlQuery = {
              query: `
                 mutation { sendEmail(emailData: {
-                        receiverEmail: "${emailData.receiverEmail}",
-                        senderEmail: "${emailData.senderEmail}",
-                        emailSubject: "${emailData.emailSubject}",
-                        emailMessage: "${emailData.emailMessage}",
+                        receiverEmail: "${receiverEmail}",
+                        senderEmail: "${senderEmail}",
+                        emailSubject: "${emailSubject}",
+                        emailMessage: "${emailMessage}",
                     }){
                         status
                     }
