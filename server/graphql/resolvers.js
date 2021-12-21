@@ -1368,20 +1368,23 @@ module.exports = {
          }
 
          let status = '';
-         transporter.sendMail(mail, (err, data) => {
+     transporter.sendMail(mail, (err, data) => {
              if (err) {
                  console.log({ err })
                  status = 'fail'
+                 return {
+                     status
+                 }
              } else {
                  console.log('email sent', data)
                  status = 'success'
+                 return {
+                     status
+                 }
              }
          })
             
 
-            return {
-                status
-            }
         } catch (err) {
             console.log('update failed', err)
         }
