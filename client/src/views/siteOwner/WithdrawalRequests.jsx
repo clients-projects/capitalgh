@@ -42,12 +42,13 @@ const PendingWithdrawals = (props) => {
         if (userPendingWithdrawal[decrementId].status !== 'Approved') {
             console.log('status pending')
             for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
-                console.log({id}, 'is equal', {i})
-                if ((decrementId) === i) {
+                console.log({ id }, 'is equal', { i })
+                if (decrementId === i) {
                     console.log('send approval')
                     return props.onInitWithdrawNowApproval(
                         props.idsOfPendingWithdrawals[i]._id,
-                        props.tokenId
+                        props.tokenId,
+                        id
                     )
                 }
             }
@@ -255,8 +256,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onInitGetFunds: (token) => dispatch(actions.initGetFunds(token)),
-        onInitWithdrawNowApproval: (id, token) =>
-            dispatch(actions.initWithdrawNowApproval(id, token)),
+        onInitWithdrawNowApproval: (id, token, buttonId) =>
+            dispatch(actions.initWithdrawNowApproval(id, token, buttonId)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PendingWithdrawals)
