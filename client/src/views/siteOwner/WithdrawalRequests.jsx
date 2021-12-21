@@ -24,7 +24,7 @@ const thWithdrawalArray = [
 
 const PendingWithdrawals = (props) => {
     const [userPendingWithdrawal, setUserPendingWithdrawal] = useState([])
-        const [loadedWithdrawals, setLoadedWithdrawals] = useState(false)
+    const [loadedWithdrawals, setLoadedWithdrawals] = useState(false)
 
     const gottenUserPendingWithdrawal = useRef()
     useEffect(() => {
@@ -40,116 +40,118 @@ const PendingWithdrawals = (props) => {
         }
     }, [props])
 
-      useEffect(() => {
-          if (userPendingWithdrawal.length > 0) {
-              setLoadedWithdrawals(true)
-          }
-      }, [userPendingWithdrawal])
+    useEffect(() => {
+        if (userPendingWithdrawal.length > 0) {
+            setLoadedWithdrawals(true)
+        }
+    }, [userPendingWithdrawal])
 
     const handleApproval = (id) => {
-        console.log({id})
+        console.log({ id })
         for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
-            console.log(userPendingWithdrawal[i - 1].status)
-            if (id === i && (userPendingWithdrawal[i - 1].status !== 'Approved')) {
-                console.log(props.idsOfPendingWithdrawals)
-                console.log({userPendingWithdrawal})
+            if (userPendingWithdrawal) {
+                console.log(userPendingWithdrawal[i - 1])
+                if (
+                    id === i &&
+                    userPendingWithdrawal[i - 1].status !== 'Approved'
+                ) {
+                    console.log(props.idsOfPendingWithdrawals)
+                    console.log({ userPendingWithdrawal })
 
-               return props.onInitWithdrawNowApproval(
-                    props.idsOfPendingWithdrawals[i]._id,
-                    props.tokenId
-                )
-            }
-
-            else{
-                console.log('Already approved')
+                    return props.onInitWithdrawNowApproval(
+                        props.idsOfPendingWithdrawals[i]._id,
+                        props.tokenId
+                    )
+                } else {
+                    console.log('Already approved')
+                }
             }
         }
     }
 
-     const withdrawalRequests = []
+    const withdrawalRequests = []
 
-     if (userPendingWithdrawal.length > 0) {
-         userPendingWithdrawal.map((value) => {
-             const { fundNO, creator, amount, currency, updatedAt, status } = value
-             withdrawalRequests.push({
-                 id: fundNO,
-                 username: creator,
-                 amount,
-                 currency,
-                 status,
-                 date: updatedAt,
-                 action: (
-                     <button
-                         className={
-                             loadedWithdrawals && status === 'Approved'
-                                 ? 'btn1 btn1__approved'
-                                 : 'btn1'
-                         }
-                         onClick={() => handleApproval(fundNO)}
-                     >
-                         {props.loading
-                             ? 'Loading...'
-                             : loadedWithdrawals && status === 'Approved'
-                             ? 'approved'
-                             : 'approve'}
-                     </button>
-                 ),
-             })
-         })
-     }
+    if (userPendingWithdrawal.length > 0) {
+        userPendingWithdrawal.map((value) => {
+            const { fundNO, creator, amount, currency, updatedAt, status } =
+                value
+            withdrawalRequests.push({
+                id: fundNO,
+                username: creator,
+                amount,
+                currency,
+                status,
+                date: updatedAt,
+                action: (
+                    <button
+                        className={
+                            loadedWithdrawals && status === 'Approved'
+                                ? 'btn1 btn1__approved'
+                                : 'btn1'
+                        }
+                        onClick={() => handleApproval(fundNO)}
+                    >
+                        {props.loading
+                            ? 'Loading...'
+                            : loadedWithdrawals && status === 'Approved'
+                            ? 'approved'
+                            : 'approve'}
+                    </button>
+                ),
+            })
+        })
+    }
 
-       
+    const columns = [
+        { dataField: 'id', text: 'Id', sort: true },
+        { dataField: 'username', text: 'Username', sort: true },
+        { dataField: 'amount', text: 'Amount Withdrawn', sort: true },
+        { dataField: 'currency', text: 'Currency', sort: true },
+        { dataField: 'status', text: 'Status', sort: true },
+        { dataField: 'date', text: 'Date', sort: true },
+        { dataField: 'action', text: 'Action', sort: true },
+    ]
 
-     const columns = [
-         { dataField: 'id', text: 'Id', sort: true },
-         { dataField: 'username', text: 'Username', sort: true },
-         { dataField: 'amount', text: 'Amount Withdrawn', sort: true },
-         { dataField: 'currency', text: 'Currency', sort: true },
-         { dataField: 'status', text: 'Status', sort: true },
-         { dataField: 'date', text: 'Date', sort: true },
-         { dataField: 'action', text: 'Action', sort: true },
-     ]
+    const defaultSorted = [
+        {
+            dataField: 'name',
+            order: 'desc',
+        },
+    ]
 
-     const defaultSorted = [
-         {
-             dataField: 'name',
-             order: 'desc',
-         },
-     ]
+    const pagination = paginationFactory({
+        page: 1,
+        sizePerPage: 5,
+        lastPageText: '>>',
+        firstPageText: '<<',
+        nextPageText: '>',
+        prePageText: '<',
+        showTotal: true,
+        alwaysShowAllBtns: true,
+        onPageChange: function (page, sizePerPage) {
+            console.log('page', page)
+            console.log('sizePerPage', sizePerPage)
+        },
+        onSizePerPageChange: function (page, sizePerPage) {
+            console.log('page', page)
+            console.log('sizePerPage', sizePerPage)
+        },
+    })
 
-     const pagination = paginationFactory({
-         page: 1,
-         sizePerPage: 5,
-         lastPageText: '>>',
-         firstPageText: '<<',
-         nextPageText: '>',
-         prePageText: '<',
-         showTotal: true,
-         alwaysShowAllBtns: true,
-         onPageChange: function (page, sizePerPage) {
-             console.log('page', page)
-             console.log('sizePerPage', sizePerPage)
-         },
-         onSizePerPageChange: function (page, sizePerPage) {
-             console.log('page', page)
-             console.log('sizePerPage', sizePerPage)
-         },
-     })
+    const { SearchBar, ClearSearchButton } = Search
 
-     const { SearchBar, ClearSearchButton } = Search
-
-     const MyExportCSV = (props) => {
-         const handleClick = () => {
-             props.onExport()
-         }
-         return (
-             <div>
-                 <button className='btn btn-success' onClick={handleClick}>
-                     Export to CSV
-                 </button>
-             </div>
-         )
-     }
+    const MyExportCSV = (props) => {
+        const handleClick = () => {
+            props.onExport()
+        }
+        return (
+            <div>
+                <button className='btn btn-success' onClick={handleClick}>
+                    Export to CSV
+                </button>
+            </div>
+        )
+    }
     return (
         <div className='content'>
             <Grid fluid>
@@ -214,39 +216,33 @@ const PendingWithdrawals = (props) => {
                                 //         })}
                                 //     </tbody>
                                 // </Table>
-                            
-                             <ToolkitProvider
-                                        bootstrap4
-                                        data={withdrawalRequests}
-                                        keyField='id'
-                                        columns={columns}
-                                        search
-                                        exportCSV
-                                    >
-                                        {(props) => (
-                                            <div>
-                                              
-                                                <SearchBar
-                                                    {...props.searchProps}
-                                                /> {' '}
-                                                <ClearSearchButton
-                                                    {...props.searchProps}
-                                                />
-                                                <hr />
-                                                <MyExportCSV
-                                                    {...props.csvProps}
-                                                />
-                                                <BootstrapTable
-                                                    defaultSorted={
-                                                        defaultSorted
-                                                    }
-                                                    classes='table-layout-auto'
-                                                    pagination={pagination}
-                                                    {...props.baseProps}
-                                                />
-                                            </div>
-                                        )}
-                                    </ToolkitProvider>}
+
+                                <ToolkitProvider
+                                    bootstrap4
+                                    data={withdrawalRequests}
+                                    keyField='id'
+                                    columns={columns}
+                                    search
+                                    exportCSV
+                                >
+                                    {(props) => (
+                                        <div>
+                                            <SearchBar {...props.searchProps} />{' '}
+                                            <ClearSearchButton
+                                                {...props.searchProps}
+                                            />
+                                            <hr />
+                                            <MyExportCSV {...props.csvProps} />
+                                            <BootstrapTable
+                                                defaultSorted={defaultSorted}
+                                                classes='table-layout-auto'
+                                                pagination={pagination}
+                                                {...props.baseProps}
+                                            />
+                                        </div>
+                                    )}
+                                </ToolkitProvider>
+                            }
                         />
                     </Col>
                 </Row>
@@ -262,7 +258,8 @@ const mapStateToProps = (state) => {
         err: state.auth.error,
         tokenId: state.auth.tokenId,
         userId: state.auth.userId,
-        withdrawNowApprovalSuccess: state.fundAccount.fundAccountApprovalSuccess,
+        withdrawNowApprovalSuccess:
+            state.fundAccount.fundAccountApprovalSuccess,
         idsOfPendingWithdrawals: state.fundAccount.idsOfPendingWithdrawals,
         pendingWithdrawal: state.fundAccount.pendingWithdrawal,
     }
