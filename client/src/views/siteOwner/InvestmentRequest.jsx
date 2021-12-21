@@ -112,6 +112,7 @@ const PendingDeposits = (props) => {
     ]
 
     const pagination = paginationFactory({
+
         page: 1,
         sizePerPage: 5,
         lastPageText: '>>',
