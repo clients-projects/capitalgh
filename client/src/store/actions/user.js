@@ -125,19 +125,19 @@ export const withdrawNowFailed = (err) => {
         err,
     }
 }
-export const sendEmilStart = (err) => {
+export const sendEmailStart = (err) => {
     return {
         type: actions.SEND_EMAIL_START,
         err,
     }
 }
-export const sendEmilSuccess = (err) => {
+export const sendEmailSuccess = (err) => {
     return {
         type: actions.SEND_EMAIL_SUCCESS,
         err,
     }
 }
-export const sendEmilFailed = (err) => {
+export const sendEmailFailed = (err) => {
     return {
         type: actions.SEND_EMAIL_FAILED,
         err,
@@ -644,7 +644,7 @@ export const initWithdrawNowApproval = (id, token, buttonId) => {
 }
 export const initSendEmail = (emailData, token) => {
     return (dispatch) => {
-        dispatch(sendEmilStart())
+        dispatch(sendEmailStart())
 
          let graphqlQuery = {
              query: `
@@ -674,18 +674,18 @@ export const initSendEmail = (emailData, token) => {
             .then((resData) => {
                 console.log({ resData })
                 if (resData.errors) {
-                    dispatch(sendEmilFailed(resData.errors[0].message))
+                    dispatch(sendEmailFailed(resData.errors[0].message))
                 }
 
                 dispatch(
-                    sendEmilSuccess(
+                    sendEmailSuccess(
                         resData.data.sendEmail
                     )
                 )
             })
             .catch((err) => {
                 console.log(err)
-                dispatch(sendEmilFailed(err))
+                dispatch(sendEmailFailed(err))
             })
     }
 }
