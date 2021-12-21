@@ -74,14 +74,14 @@ const PendingDeposits = (props) => {
     if (userPendingDeposit.length > 0) {
         userPendingDeposit.map((value) => {
             console.log({value})
-            const { fundNO, creator, amount, currency, updatedAt, status } =
+            const { fundNO, creator, amount, planName, updatedAt, status } =
                 value
             console.log('the numbers to compare', props.buttonId, fundNO)
             withdrawalRequests.push({
                 id: fundNO,
                 username: creator,
                 amount,
-                currency,
+                plan: planName,
                 status,
                 date: updatedAt,
                 action: (
@@ -107,8 +107,8 @@ const PendingDeposits = (props) => {
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
         { dataField: 'username', text: 'Username', sort: true },
-        { dataField: 'amount', text: 'Amount Withdrawn', sort: true },
-        { dataField: 'currency', text: 'Currency', sort: true },
+        { dataField: 'amount', text: 'Amount Invested', sort: true },
+        { dataField: 'plan', text: 'Plan', sort: true },
         { dataField: 'status', text: 'Status', sort: true },
         { dataField: 'date', text: 'Date', sort: true },
         { dataField: 'action', text: 'Action', sort: true },
