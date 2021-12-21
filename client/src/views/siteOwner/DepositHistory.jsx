@@ -33,9 +33,7 @@ const AllUsersDepositHistory = (props) => {
         }
     }, [props])
 
-    console.log({allUsersDeposit})
-    console.log(thDepositHistoryArray)
-    console.log(thWithdrawalArray)
+
 
     const allDeposits = []
 
@@ -52,45 +50,7 @@ const AllUsersDepositHistory = (props) => {
         })
     }
 
-    console.log({allDeposits})
-
-    const products = [
-        {
-            id: 1,
-            username: 'George',
-            amount: '1000',
-            plan: 'package 1',
-            date: '1/11/2021',
-        },
-        {
-            id: 2,
-            username: 'Jeffrey',
-            amount: '4844',
-            plan: 'package 1',
-            date: '1/11/2021',
-        },
-        {
-            id: 3,
-            username: 'Alice',
-            amount: '2093',
-            plan: 'package 1',
-            date: '1/11/2021',
-        },
-        {
-            id: 4,
-            username: 'Alice',
-            amount: '2093',
-            plan: 'package 1',
-            date: '1/11/2021',
-        },
-        {
-            id: 5,
-            username: 'Alice',
-            amount: '2093',
-            plan: 'package 1',
-            date: '1/11/2021',
-        }
-    ]
+   
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
         { dataField: 'username', text: 'Username', sort: true },
