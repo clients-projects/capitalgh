@@ -33,7 +33,6 @@ const AllUsersWithdrawalHistory = (props) => {
       const allWithdrawals = []
 
       if (allUsersWithdrawal.length > 0) {
-          console.log({allUsersWithdrawal})
           allUsersWithdrawal.map((value) => {
               const { fundNO, creator, amount, currency, updatedAt } = value
               allWithdrawals.push({

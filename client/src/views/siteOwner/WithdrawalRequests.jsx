@@ -57,13 +57,13 @@ const PendingWithdrawals = (props) => {
         }
     }
 
-     const allWithdrawals = []
+     const withdrawalRequests = []
 
      if (userPendingWithdrawal.length > 0) {
          console.log({ userPendingWithdrawal })
          userPendingWithdrawal.map((value) => {
              const { fundNO, creator, amount, currency, updatedAt } = value
-             allWithdrawals.push({
+             withdrawalRequests.push({
                  id: fundNO,
                  username: creator,
                  amount,
@@ -133,59 +133,91 @@ const PendingWithdrawals = (props) => {
                             ctTableFullWidth
                             ctTableResponsive
                             content={
-                                <Table>
-                                    <thead>
-                                        <tr>
-                                            {thWithdrawalArray.map(
-                                                (prop, key) => {
-                                                    return (
-                                                        <th key={key}>
-                                                            {prop}
-                                                        </th>
-                                                    )
-                                                }
-                                            )}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {userPendingWithdrawal.map((prop, key) => {
-                                            return (
-                                                <tr key={key}>
-                                                    {Object.values(prop).map(
-                                                        (prop) => {
-                                                            return (
-                                                                <td key={key}>
-                                                                    {prop}
-                                                                </td>
-                                                            )
-                                                        }
-                                                    )}
-                                                    <button
-                                                        className={
-                                                            loadedWithdrawals &&
-                                                            prop.status ===
-                                                                'Approved'
-                                                                ? 'btn1 btn1__approved'
-                                                                : 'btn1'
-                                                        }
-                                                        onClick={() =>
-                                                            handleApproval(key)
-                                                        }
-                                                    >
-                                                        {props.loading
-                                                            ? 'Loading...'
-                                                            : loadedWithdrawals &&
-                                                              prop.status ===
-                                                                  'Approved'
-                                                            ? 'approved'
-                                                            : 'approve'}
-                                                    </button>
-                                                </tr>
-                                            )
-                                        })}
-                                    </tbody>
-                                </Table>
-                            }
+                                // <Table>
+                                //     <thead>
+                                //         <tr>
+                                //             {thWithdrawalArray.map(
+                                //                 (prop, key) => {
+                                //                     return (
+                                //                         <th key={key}>
+                                //                             {prop}
+                                //                         </th>
+                                //                     )
+                                //                 }
+                                //             )}
+                                //         </tr>
+                                //     </thead>
+                                //     <tbody>
+                                //         {userPendingWithdrawal.map((prop, key) => {
+                                //             return (
+                                //                 <tr key={key}>
+                                //                     {Object.values(prop).map(
+                                //                         (prop) => {
+                                //                             return (
+                                //                                 <td key={key}>
+                                //                                     {prop}
+                                //                                 </td>
+                                //                             )
+                                //                         }
+                                //                     )}
+                                //                     <button
+                                //                         className={
+                                //                             loadedWithdrawals &&
+                                //                             prop.status ===
+                                //                                 'Approved'
+                                //                                 ? 'btn1 btn1__approved'
+                                //                                 : 'btn1'
+                                //                         }
+                                //                         onClick={() =>
+                                //                             handleApproval(key)
+                                //                         }
+                                //                     >
+                                //                         {props.loading
+                                //                             ? 'Loading...'
+                                //                             : loadedWithdrawals &&
+                                //                               prop.status ===
+                                //                                   'Approved'
+                                //                             ? 'approved'
+                                //                             : 'approve'}
+                                //                     </button>
+                                //                 </tr>
+                                //             )
+                                //         })}
+                                //     </tbody>
+                                // </Table>
+                            
+                             <ToolkitProvider
+                                        bootstrap4
+                                        data={withdrawalRequests}
+                                        keyField='id'
+                                        columns={columns}
+                                        search
+                                        exportCSV
+                                    >
+                                        {(props) => (
+                                            <div>
+                                              
+                                                <SearchBar
+                                                    {...props.searchProps}
+                                                /> {' '}
+                                                <ClearSearchButton
+                                                    {...props.searchProps}
+                                                />
+                                                <hr />
+                                                <MyExportCSV
+                                                    {...props.csvProps}
+                                                />
+                                                <BootstrapTable
+                                                    defaultSorted={
+                                                        defaultSorted
+                                                    }
+                                                    classes='table-layout-auto'
+                                                    pagination={pagination}
+                                                    {...props.baseProps}
+                                                />
+                                            </div>
+                                        )}
+                                    </ToolkitProvider>}
                         />
                     </Col>
                 </Row>
