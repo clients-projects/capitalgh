@@ -62,12 +62,13 @@ const PendingWithdrawals = (props) => {
      if (userPendingWithdrawal.length > 0) {
          console.log({ userPendingWithdrawal })
          userPendingWithdrawal.map((value) => {
-             const { fundNO, creator, amount, currency, updatedAt } = value
+             const { fundNO, creator, amount, currency, updatedAt, status } = value
              withdrawalRequests.push({
                  id: fundNO,
                  username: creator,
                  amount,
                  currency,
+                 status,
                  date: updatedAt,
              })
          })
@@ -79,6 +80,7 @@ const PendingWithdrawals = (props) => {
          { dataField: 'amount', text: 'Amount Withdrawn', sort: true },
          { dataField: 'currency', text: 'Currency', sort: true },
          { dataField: 'date', text: 'Date', sort: true },
+         { dataField: 'status', text: 'Status', sort: true },
      ]
 
      const defaultSorted = [
