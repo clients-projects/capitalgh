@@ -38,12 +38,41 @@ const AllUsersDepositHistory = (props) => {
     console.log(thWithdrawalArray)
 
     const products = [
-        { id: 1, username: 'George', amount: '1000' },
-        { id: 2, username: 'Jeffrey', amount: '4844' },
-        { id: 3, name: 'Alice', amount: '2093' },
-        { id: 4, name: 'Alice', amount: '2093' },
-        { id: 5, name: 'Alice', amount: '2093' },
-  
+        {
+            id: 1,
+            username: 'George',
+            amount: '1000',
+            plan: 'package 1',
+            date: '1/11/2021',
+        },
+        {
+            id: 2,
+            username: 'Jeffrey',
+            amount: '4844',
+            plan: 'package 1',
+            date: '1/11/2021',
+        },
+        {
+            id: 3,
+            name: 'Alice',
+            amount: '2093',
+            plan: 'package 1',
+            date: '1/11/2021',
+        },
+        {
+            id: 4,
+            name: 'Alice',
+            amount: '2093',
+            plan: 'package 1',
+            date: '1/11/2021',
+        },
+        {
+            id: 5,
+            name: 'Alice',
+            amount: '2093',
+            plan: 'package 1',
+            date: '1/11/2021',
+        },
     ]
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
