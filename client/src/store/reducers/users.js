@@ -68,6 +68,7 @@ const getUserHistoryFailed = (state, action) => {
 const investNowStart = (state, action) => {
     return update(state, {
         loading: true,
+        buttonId: action.buttonId
     })
 }
 const investNowSuccess = (state, action) => {

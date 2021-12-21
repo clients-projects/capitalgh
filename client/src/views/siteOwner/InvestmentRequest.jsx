@@ -11,17 +11,7 @@ import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import * as actions from '../../store/actions/burgerIndex'
 
 import Card from '../../components/Card/Card'
-//import { thWithdrawalArray, tdWithdrawalArray } from '../../variables/Variables'
 
-const thInvestmentRequestArray = [
-    'No',
-    'Username',
-    'Amount',
-    'Plan',
-    'Currency',
-    'Status',
-    'Date',
-]
 
 const PendingDeposits = (props) => {
     const [userPendingDeposit, setUserPendingDeposit] = useState([])
@@ -187,7 +177,6 @@ const PendingDeposits = (props) => {
                                             <BootstrapTable
                                                 defaultSorted={defaultSorted}
                                                 classes='table-layout-auto'
-                                                pagination={pagination}
                                                 {...props.baseProps}
                                             />
                                         </div>
@@ -206,6 +195,7 @@ const mapStateToProps = (state) => {
     return {
         loading: state.user.loading,
         fundLoading: state.fundAccount.loading,
+        buttonId: state.user.buttonId,
         err: state.auth.error,
         tokenId: state.auth.tokenId,
         userId: state.auth.userId,
@@ -218,8 +208,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onInitGetFunds: (token) => dispatch(actions.initGetFunds(token)),
-        onInitInvestNowApproval: (id, token) =>
-            dispatch(actions.initInvestNowApproval(id, token)),
+        onInitInvestNowApproval: (id, token, buttonId) =>
+            dispatch(actions.initInvestNowApproval(id, token, buttonId)),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PendingDeposits)

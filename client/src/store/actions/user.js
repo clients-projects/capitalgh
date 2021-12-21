@@ -75,9 +75,10 @@ export const getUserHistoryFailed = (err) => {
     }
 }
 
-export const investNowStart = () => {
+export const investNowStart = (buttonId) => {
     return {
         type: actions.INVEST_NOW_START,
+        buttonId
     }
 }
 export const investNowSuccess = (data) => {
@@ -525,9 +526,9 @@ export const initInvestNow = (investNowData, token) => {
     }
 }
 
-export const initInvestNowApproval = (id, token) => {
+export const initInvestNowApproval = (id, token,buttonId) => {
     return (dispatch) => {
-        dispatch(investNowStart())
+        dispatch(investNowStart(buttonId))
 
         let graphqlQuery = {
             query: `
