@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Grid, Row, Col, Table } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css'
@@ -79,7 +79,7 @@ const PendingWithdrawals = (props) => {
                         }
                         onClick={() => handleApproval(fundNO)}
                     >
-                        {props.loading
+                        {props.loading && props.buttonId === fundNO
                             ? 'Loading...'
                             : loadedWithdrawals && status === 'Approved'
                             ? 'approved'
