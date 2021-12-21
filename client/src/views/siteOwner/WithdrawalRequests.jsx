@@ -243,6 +243,7 @@ const mapStateToProps = (state) => {
     return {
         loading: state.user.loading,
         fundLoading: state.fundAccount.loading,
+        buttonId: state.user.buttonId,
         err: state.auth.error,
         tokenId: state.auth.tokenId,
         userId: state.auth.userId,

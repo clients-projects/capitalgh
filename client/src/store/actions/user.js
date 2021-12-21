@@ -99,9 +99,10 @@ export const investNowFailed = (err) => {
         err,
     }
 }
-export const withdrawNowStart = () => {
+export const withdrawNowStart = (buttonId) => {
     return {
         type: actions.WITHDRAW_NOW_START,
+        buttonId
     }
 }
 export const withdrawNowSuccess = (data) => {
@@ -573,9 +574,9 @@ export const initInvestNowApproval = (id, token) => {
             })
     }
 }
-export const initWithdrawNowApproval = (id, token) => {
+export const initWithdrawNowApproval = (id, token, buttonId) => {
     return (dispatch) => {
-        dispatch(withdrawNowStart())
+        dispatch(withdrawNowStart(buttonId))
 
         let graphqlQuery = {
             query: `

@@ -91,6 +91,7 @@ const investNowFailed = (state, action) => {
 const withdrawNowStart = (state, action) => {
     return update(state, {
         loading: true,
+        buttonId: action.buttonId
     })
 }
 const withdrawNowSuccess = (state, action) => {
