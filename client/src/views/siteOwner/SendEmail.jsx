@@ -40,6 +40,15 @@ const SendEmail = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        if(receiverEmail === '' || emailSubject === '' || emailMessage === ''){
+            setError(true)
+            setMessage('fields cannot be empty')
+        }
+
+        else{
+            setError(false)
+            setMessage(null)
+        }
         const formData = {
             senderEmail,
             receiverEmail,
