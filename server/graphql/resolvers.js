@@ -1334,7 +1334,7 @@ module.exports = {
         }
         
         try {
-        const transporter = nodemailer.createTransport({
+        const transporter = nodeMailer.createTransport({
             host: 'mail.capitalgainhub.com',
             port: 465,
             secure: true,
