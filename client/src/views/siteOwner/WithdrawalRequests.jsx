@@ -42,7 +42,7 @@ const PendingWithdrawals = (props) => {
             console.log('status pending')
             for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
                 console.log({id}, 'is equal', {i})
-                if (id === i) {
+                if ([id - 1] === i) {
                     console.log('send approval')
                     return props.onInitWithdrawNowApproval(
                         props.idsOfPendingWithdrawals[i]._id,
