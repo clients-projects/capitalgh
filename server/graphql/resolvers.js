@@ -956,7 +956,6 @@ module.exports = {
     createWithdrawNowApproval: async function ({ PostId }, req) {
         let id = mongoose.Types.ObjectId(PostId.id)
 
-        console.log({id})
         if (!req.Auth) {
             const err = new Error('Not authenticated')
             err.statusCode = 403
@@ -967,7 +966,6 @@ module.exports = {
             'creator'
         )
 
-        console.log({pendingWithdrawal})
 
         if (!pendingWithdrawal) {
             const error = new Error('Funds not found!')
