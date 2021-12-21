@@ -4,7 +4,6 @@ const URL = 'http://localhost:3030'
 
 //const URL = 'https://fxcry.herokuapp.com'
 
-
 export const updateProfileStart = () => {
     return {
         type: actions.UPDATE_PROFILE_START,
@@ -78,7 +77,7 @@ export const getUserHistoryFailed = (err) => {
 export const investNowStart = (buttonId) => {
     return {
         type: actions.INVEST_NOW_START,
-        buttonId
+        buttonId,
     }
 }
 export const investNowSuccess = (data) => {
@@ -103,7 +102,7 @@ export const investNowFailed = (err) => {
 export const withdrawNowStart = (buttonId) => {
     return {
         type: actions.WITHDRAW_NOW_START,
-        buttonId
+        buttonId,
     }
 }
 export const withdrawNowSuccess = (data) => {
@@ -123,6 +122,24 @@ export const withdrawNowApprovalSuccess = (data) => {
 export const withdrawNowFailed = (err) => {
     return {
         type: actions.WITHDRAW_NOW_FAILED,
+        err,
+    }
+}
+export const sendEmilStart = (err) => {
+    return {
+        type: actions.SEND_EMAIL_START,
+        err,
+    }
+}
+export const sendEmilSuccess = (err) => {
+    return {
+        type: actions.SEND_EMAIL_SUCCESS,
+        err,
+    }
+}
+export const sendEmilFailed = (err) => {
+    return {
+        type: actions.SEND_EMAIL_FAILED,
         err,
     }
 }
@@ -331,7 +348,7 @@ export const initGetUserHistory = (token) => {
                 return res.json()
             })
             .then((resData) => {
-                console.log({resData})
+                console.log({ resData })
                 if (resData.errors) {
                     dispatch(getUserHistoryFailed(resData.errors[0].message))
                 }
@@ -526,7 +543,7 @@ export const initInvestNow = (investNowData, token) => {
     }
 }
 
-export const initInvestNowApproval = (id, token,buttonId) => {
+export const initInvestNowApproval = (id, token, buttonId) => {
     return (dispatch) => {
         dispatch(investNowStart(buttonId))
 
@@ -608,7 +625,61 @@ export const initWithdrawNowApproval = (id, token, buttonId) => {
                 return res.json()
             })
             .then((resData) => {
-                console.log({resData})
+                console.log({ resData })
+                if (resData.errors) {
+                    dispatch(withdrawNowFailed(resData.errors[0].message))
+                }
+
+                dispatch(
+                    withdrawNowApprovalSuccess(
+                        resData.data.createwithdrawNowApproval
+                    )
+                )
+            })
+            .catch((err) => {
+                console.log(err)
+                dispatch(withdrawNowFailed(err))
+            })
+    }
+}
+export const initSendEmail = (emailData, tokenId) => {
+    return (dispatch) => {
+        dispatch(sendEmilStart())
+
+         let graphqlQuery = {
+             query: `
+                mutation { sendEmail(emailData: {
+                        receiverEmail: "${emailData.receiverEmail}",
+                        senderEmail: "${emailData.senderEmail}",
+                        emailSubject: "${emailData.emailSubject}",
+                        emailMessage: "${emailData.emailMessage}",
+                    }){
+                        _id
+                        amount
+                        planName
+                        creator {
+                            username
+                        }
+                        createdAt
+                        updatedAt
+                    }
+                }
+            `,
+         }
+
+        return fetch(URL + '/api/graphql', {
+            method: 'POST',
+            body: JSON.stringify(graphqlQuery),
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + token,
+            },
+        })
+            .then((res) => {
+                return res.json()
+            })
+            .then((resData) => {
+                console.log({ resData })
                 if (resData.errors) {
                     dispatch(withdrawNowFailed(resData.errors[0].message))
                 }
