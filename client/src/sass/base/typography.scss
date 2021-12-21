@@ -382,12 +382,3 @@
     background-color: #b32525;
 }
 
-
-.show {
-    display: grid !important;
-    justify-content: center;
-
-    &>* {
-        width: 1rem !important;
-    }
-}
