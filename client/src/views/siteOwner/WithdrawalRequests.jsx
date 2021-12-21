@@ -51,6 +51,7 @@ const PendingWithdrawals = (props) => {
         for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
             console.log({i})
             if (id === i) {
+                console.log('the same ids', i, id)
                 return props.onInitWithdrawNowApproval(
                     props.idsOfPendingWithdrawals[i]._id,
                     props.tokenId
