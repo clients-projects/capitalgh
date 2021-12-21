@@ -63,6 +63,7 @@ const PendingWithdrawals = (props) => {
         userPendingWithdrawal.map((value) => {
             const { fundNO, creator, amount, currency, updatedAt, status } =
                 value
+            console.log(props.buttonId, fundNO)
             withdrawalRequests.push({
                 id: fundNO,
                 username: creator,
