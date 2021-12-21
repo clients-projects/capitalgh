@@ -54,6 +54,7 @@ const PendingWithdrawals = (props) => {
                     id === i &&
                     userPendingWithdrawal[id - 1].status !== 'Approved'
                 ) {
+                    console.log('send approval')
                     return props.onInitWithdrawNowApproval(
                         props.idsOfPendingWithdrawals[i]._id,
                         props.tokenId
