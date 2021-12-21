@@ -47,27 +47,17 @@ const PendingDeposits = (props) => {
         }
     }, [userPendingDeposit])
 
-    const handleApproval = (id) => {
-        for (let i = 0; i < props.idsOfPendingDeposits.length; i++) {
-            if (id === i) {
-                return props.onInitInvestNowApproval(
-                    props.idsOfPendingDeposits[i]._id,
-                    props.tokenId
-                )
-            }
-        }
-    }
 
      const handleApproval = (id) => {
          const decrementId = id - 1
-         console.log(userPendingWithdrawal[decrementId].status)
-         if (userPendingWithdrawal[decrementId].status !== 'Approved') {
+         console.log(userPendingDeposit[decrementId].status)
+         if (userPendingDeposit[decrementId].status !== 'Approved') {
              console.log('status pending')
-             for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
+             for (let i = 0; i < props.idsOfPendingDeposits.length; i++) {
                  if (decrementId === i) {
                      console.log('send approval')
-                     return props.onInitWithdrawNowApproval(
-                         props.idsOfPendingWithdrawals[i]._id,
+                     return props.onInitInvestNowApproval(
+                         props.idsOfPendingDeposits[i]._id,
                          props.tokenId,
                          id
                      )
