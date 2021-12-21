@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import queryString from 'query-string'
 import {
@@ -8,54 +8,16 @@ import {
     ControlLabel,
     FormControl,
     FormGroup,
-    Table,
 } from 'react-bootstrap'
 
 import { Card } from '../../components/Card/Card'
 
 import * as orderAction from '../../store/actions/burgerIndex'
 
-const thDepositArray = ['No', 'Amount', 'Package', 'profit', 'Date']
 
 const SendMail = (props) => {
-    const [userDeposits, setUserDeposits] = useState([])
-    const [profit, setProfit] = useState({})
 
-    const gottenAllUser = useRef()
-
-    const parsed = queryString.parse(window.location.search)
-
-    useEffect(() => {
-        if (!gottenAllUser.current) {
-            if (props.tokenId) {
-                props.onInitGetMember(parsed.id, props.tokenId)
-            }
-            gottenAllUser.current = true
-        } else {
-            if (props.memberDeposits) {
-                setUserDeposits(props.memberDeposits)
-            }
-        }
-    }, [props, parsed.id])
-
-    const [accountBalance, setAccountBalance] = useState(0)
-    const [fullname, setFullname] = useState('')
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-    const [bitcoin, setBitcoin] = useState('')
-    const [ethereum, setEthereum] = useState('')
-    const [phone, setPhone] = useState('')
-    const [country, setCountry] = useState('')
-    const [city, setCity] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmNewPassword] = useState('')
-
-    const [oldEmail, setOldEmail] = useState('')
-    const [activeReferrals, setActiveReferrals] = useState(0)
-    const [totalReferrals, setTotalReferrals] = useState(0)
-    const [dailyEarning, setDailyEarning] = useState(0)
-    const [totalEarnings, setTotalEarnings] = useState(0)
-    const [totalReferralCommission, setTotalReferralCommission] = useState(0)
+    
 
     const [message, setMessage] = useState('')
     const [error, setError] = useState(false)
@@ -65,25 +27,18 @@ const SendMail = (props) => {
         const value = e.target.value
 
         if (name === 'fullname') {
-            setFullname(value)
         }
         if (name === 'dailyEarning') {
-            setDailyEarning(value)
-        }
+            //  setDailyEarning(value)
         }
     }
 
-
-
-   
     const handleSubmit = (e) => {
         e.preventDefault()
-      
+
         const formData = {
-            accountBalance: Number(accountBalance),
             fullname,
             username,
-           
         }
 
         props.onInitUpdateMember(formData, props.tokenId)
@@ -95,7 +50,7 @@ const SendMail = (props) => {
                 <Row style={{ display: 'grid' }}>
                     <Col md='8' style={{ justifySelf: 'center' }}>
                         <Card
-                            title='User Details'
+                            title='Send an Email'
                             content={
                                 <form onSubmit={handleSubmit}>
                                     {message && (
@@ -124,9 +79,7 @@ const SendMail = (props) => {
                                     </Row>
                                     <Row>
                                         <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Subject
-                                            </ControlLabel>
+                                            <ControlLabel>Subject</ControlLabel>
                                             <FormControl
                                                 type='text'
                                                 name='fullname'
@@ -150,9 +103,8 @@ const SendMail = (props) => {
                                                 disabled
                                             />
                                         </FormGroup>
-                                        
                                     </Row>
-                                  
+
                                     <button
                                         className='button btn__profile'
                                         type='submit'
@@ -167,82 +119,6 @@ const SendMail = (props) => {
                     </Col>
                 </Row>
             </Grid>
-
-            <Grid fluid>
-                <Row>
-                    <Col md={12}>
-                        <Card
-                            plain
-                            title={`${username} Investment`}
-                            category='History'
-                            ctTableFullWidth
-                            ctTableResponsive
-                            content={
-                                <Table>
-                                    <thead>
-                                        <tr>
-                                            {thDepositArray.map((prop, key) => {
-                                                return <th key={key}>{prop}</th>
-                                            })}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {userDeposits.map((Prop, Key) => {
-                                            return (
-                                                <tr key={Key}>
-                                                    {Object.values(Prop).map(
-                                                        (prop, key) => {
-                                                            return (
-                                                                <td key={key}>
-                                                                    {key ===
-                                                                    3 ? (
-                                                                        <input
-                                                                            type='number'
-                                                                            value={
-                                                                                profit.key
-                                                                            }
-                                                                            onChange={(
-                                                                                e
-                                                                            ) =>
-                                                                                handleMember(
-                                                                                    e,
-                                                                                    Prop
-                                                                                )
-                                                                            }
-                                                                            name={
-                                                                                key
-                                                                            }
-                                                                            className='member__profit'
-                                                                        />
-                                                                    ) : (
-                                                                        prop
-                                                                    )}
-                                                                </td>
-                                                            )
-                                                        }
-                                                    )}
-                                                    <button
-                                                        className='btn1'
-                                                        onClick={() =>
-                                                            updateMemberProfit(
-                                                                Key
-                                                            )
-                                                        }
-                                                    >
-                                                        {props.loading
-                                                            ? 'Loading...'
-                                                            : 'Update Profit'}
-                                                    </button>
-                                                </tr>
-                                            )
-                                        })}
-                                    </tbody>
-                                </Table>
-                            }
-                        />
-                    </Col>
-                </Row>
-            </Grid>
         </div>
     )
 }
@@ -252,19 +128,11 @@ const mapStateToProps = (state) => {
         loading: state.user.loading,
         tokenId: state.auth.tokenId,
         userId: state.auth.userId,
-        member: state.auth.member,
-        memberDeposits: state.auth.memberDeposits,
-        memberId: state.auth.memberId,
-        memberWithdrawals: state.auth.memberWithdrawals,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onInitGetMember: (token, id) =>
-            dispatch(orderAction.initGetMember(token, id)),
-        onInitUpdateMember: (updateMemberData, token) =>
-            dispatch(orderAction.initUpdateMember(updateMemberData, token)),
         onInitUpdateProfit: (updateProfitData, memberId, token) =>
             dispatch(
                 orderAction.initUpdateProfit(updateProfitData, memberId, token)
