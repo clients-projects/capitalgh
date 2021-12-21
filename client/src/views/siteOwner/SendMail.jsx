@@ -51,9 +51,9 @@ const SendMail = (props) => {
     }
 
     return (
-        <div className='center' style={{ margin: '2rem' }}>
+        <div className='center' style={{ margin: '2rem 0' }}>
             <Grid fluid>
-                <Row>
+                <Row style={{ display: 'grid' }}>
                     <Col md='8' style={{ justifySelf: 'center' }}>
                         <Card
                             title='Send an Email'
