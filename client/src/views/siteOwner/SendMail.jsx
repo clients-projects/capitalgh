@@ -117,9 +117,8 @@ const SendMail = (props) => {
                                                 Message
                                             </ControlLabel>
                                             <FormControl
-                                            
+                                                as='textarea'
                                                 name='emailMessage'
-                                                type='text'
                                                 rows={4}
                                                 value={emailMessage}
                                                 placeholder='Type the message you want to send'
