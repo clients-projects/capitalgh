@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose')
 
-//const nodeMailer = require('nodemailer')
+const nodeMailer = require('nodemailer')
 
 const User = require('../models/user')
 const Deposit = require('../models/deposit')
