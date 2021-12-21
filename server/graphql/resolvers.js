@@ -1366,20 +1366,20 @@ module.exports = {
             }
 
             return new Promise((resolve, reject) => {
-
                 let status
                 transporter.sendMail(mail, (err, data) => {
-                if (err) {
-                    console.log({ err })
-                    status = 'fail'
-                } else {
-                    console.log('email sent', data)
-                    status = 'success'
-                }
+                    if (err) {
+                        console.log({ err })
+                        reject(true)
+                    } else {
+                        console.log('email sent', data)
+                        status = 'success'
+                        resolve(false)
+                    }
+                })
+            }).then((res) => {
+                console.log({ res })
             })
-
-           
-        })
         } catch (err) {
             console.log('update failed', err)
         }
