@@ -54,29 +54,13 @@ const AllUsersDepositHistory = (props) => {
         { id: 14, name: 'Tamara', animal: 'Lion' },
         { id: 15, name: 'Zackery', animal: 'Bear' },
     ]
-
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
-        { dataField: 'name', text: 'Name', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
-        { dataField: 'animal', text: 'Animal', sort: true },
+        { dataField: 'username', text: 'Username', sort: true },
+        { dataField: 'amount', text: 'Invested Amount', sort: true },
+        { dataField: 'plan', text: 'Plan', sort: true },
+        { dataField: 'date', text: 'Date', sort: true },
+   
     ]
 
     const defaultSorted = [
