@@ -144,6 +144,8 @@ module.exports = buildSchema(`
     }
 
     type getFundsData {
+                _id: ID
+
         status: String
         amount: Int
         currency: String

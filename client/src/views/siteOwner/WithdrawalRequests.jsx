@@ -63,9 +63,10 @@ const PendingWithdrawals = (props) => {
      const withdrawalRequests = []
 
      if (userPendingWithdrawal.length > 0) {
-         console.log({ userPendingWithdrawal })
          userPendingWithdrawal.map((value) => {
-             const { fundNO, creator, amount, currency, updatedAt, status } = value
+             console.log({value})
+             const { fundNO, creator, amount, currency, updatedAt, status, _id } = value
+             console.log(props.idOfPendingWithdrawal, _id)
              withdrawalRequests.push({
                  id: fundNO,
                  username: creator,
@@ -251,8 +252,10 @@ const PendingWithdrawals = (props) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log({state})
     return {
         loading: state.user.loading,
+        idOfPendingWithdrawal: state.user.idOfPendingWithdrawal,
         fundLoading: state.fundAccount.loading,
         err: state.auth.error,
         tokenId: state.auth.tokenId,

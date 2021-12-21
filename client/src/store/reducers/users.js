@@ -89,8 +89,10 @@ const investNowFailed = (state, action) => {
     })
 }
 const withdrawNowStart = (state, action) => {
+    console.log('start withdraw approval', action)
     return update(state, {
         loading: true,
+        idOfPendingWithdrawal: action.id
     })
 }
 const withdrawNowSuccess = (state, action) => {

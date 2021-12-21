@@ -4,7 +4,6 @@ const URL = 'http://localhost:3030'
 
 //const URL = 'https://fxcry.herokuapp.com'
 
-
 export const fundAccountStart = () => {
     return {
         type: actions.FUND_ACCOUNT_START,
@@ -144,6 +143,7 @@ export const initGetFunds = (token) => {
                     }
 
                     thePendingWithdrawal {
+                                _id
                         fundNO
                         creator
                         amount
@@ -184,7 +184,7 @@ export const initGetFunds = (token) => {
                 return res.json()
             })
             .then((resData) => {
-                console.log({resData})
+                console.log({ resData })
                 if (resData.errors) {
                     dispatch(fundAccountFailed(resData.errors[0].message))
                 }
