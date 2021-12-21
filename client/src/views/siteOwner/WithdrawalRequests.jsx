@@ -152,58 +152,7 @@ const PendingWithdrawals = (props) => {
                             ctTableFullWidth
                             ctTableResponsive
                             content={
-                                // <Table>
-                                //     <thead>
-                                //         <tr>
-                                //             {thWithdrawalArray.map(
-                                //                 (prop, key) => {
-                                //                     return (
-                                //                         <th key={key}>
-                                //                             {prop}
-                                //                         </th>
-                                //                     )
-                                //                 }
-                                //             )}
-                                //         </tr>
-                                //     </thead>
-                                //     <tbody>
-                                //         {userPendingWithdrawal.map((prop, key) => {
-                                //             return (
-                                //                 <tr key={key}>
-                                //                     {Object.values(prop).map(
-                                //                         (prop) => {
-                                //                             return (
-                                //                                 <td key={key}>
-                                //                                     {prop}
-                                //                                 </td>
-                                //                             )
-                                //                         }
-                                //                     )}
-                                //                     <button
-                                //                         className={
-                                //                             loadedWithdrawals &&
-                                //                             prop.status ===
-                                //                                 'Approved'
-                                //                                 ? 'btn1 btn1__approved'
-                                //                                 : 'btn1'
-                                //                         }
-                                //                         onClick={() =>
-                                //                             handleApproval(key)
-                                //                         }
-                                //                     >
-                                //                         {props.loading
-                                //                             ? 'Loading...'
-                                //                             : loadedWithdrawals &&
-                                //                               prop.status ===
-                                //                                   'Approved'
-                                //                             ? 'approved'
-                                //                             : 'approve'}
-                                //                     </button>
-                                //                 </tr>
-                                //             )
-                                //         })}
-                                //     </tbody>
-                                // </Table>
+                              
 
                                 <ToolkitProvider
                                     bootstrap4

@@ -58,6 +58,27 @@ const PendingDeposits = (props) => {
         }
     }
 
+     const handleApproval = (id) => {
+         const decrementId = id - 1
+         console.log(userPendingWithdrawal[decrementId].status)
+         if (userPendingWithdrawal[decrementId].status !== 'Approved') {
+             console.log('status pending')
+             for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
+                 if (decrementId === i) {
+                     console.log('send approval')
+                     return props.onInitWithdrawNowApproval(
+                         props.idsOfPendingWithdrawals[i]._id,
+                         props.tokenId,
+                         id
+                     )
+                 }
+             }
+         } else {
+             console.log('Already approved')
+         }
+     }
+
+
     const withdrawalRequests = []
 
     if (userPendingDeposit.length > 0) {
