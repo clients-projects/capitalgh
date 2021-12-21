@@ -53,11 +53,10 @@ const PendingWithdrawals = (props) => {
                 console.log(props.idsOfPendingWithdrawals)
                 console.log({userPendingWithdrawal})
 
-               console.log(userPendingWithdrawal[i - 1])
-               // return props.onInitWithdrawNowApproval(
-                //     props.idsOfPendingWithdrawals[i]._id,
-                //     props.tokenId
-                // )
+               return props.onInitWithdrawNowApproval(
+                    props.idsOfPendingWithdrawals[i]._id,
+                    props.tokenId
+                )
             }
 
             else{
