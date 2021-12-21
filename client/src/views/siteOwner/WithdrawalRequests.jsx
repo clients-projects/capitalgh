@@ -49,6 +49,7 @@ const PendingWithdrawals = (props) => {
     const handleApproval = (id) => {
         console.log({id})
         for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
+            console.log({i})
             if (id === i) {
                 return props.onInitWithdrawNowApproval(
                     props.idsOfPendingWithdrawals[i]._id,
