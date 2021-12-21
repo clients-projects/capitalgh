@@ -80,7 +80,7 @@ const PendingWithdrawals = (props) => {
                         onClick={() => handleApproval(fundNO)}
                     >
                         {props.loading && props.buttonId === fundNO
-                            ? 'Loading...'
+                            ? 'Loading'
                             : loadedWithdrawals && status === 'Approved'
                             ? 'approved'
                             : 'approve'}
