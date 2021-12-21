@@ -13,7 +13,7 @@ import { Card } from '../../components/Card/Card'
 
 import * as orderAction from '../../store/actions/burgerIndex'
 
-const SendMail = (props) => {
+const SendEmail = (props) => {
     const [senderEmail, setSenderEmail] = useState('admin@capitalgainhub.com')
     const [receiverEmail, setReceiverEmail] = useState('')
     const [emailSubject, setEmailSubject] = useState('')
@@ -47,7 +47,7 @@ const SendMail = (props) => {
             emailMessage,
         }
 
-        props.onInitSendMail(formData, props.tokenId)
+        props.onInitSendEmail(formData, props.tokenId)
     }
 
     return (
@@ -152,10 +152,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onInitSendMail: (emailData, token) =>
+        onInitSendEmail: (emailData, token) =>
             dispatch(
-                orderAction.initSendMail(emailData, token)
+                orderAction.initSendEmail(emailData, token)
             ),
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SendMail)
+export default connect(mapStateToProps, mapDispatchToProps)(SendEmail)

@@ -13,7 +13,7 @@ import siteOwnerWithdrawalHistory from './views/siteOwner/WithdrawalHistory'
 import InvestmentRequest from './views/siteOwner/InvestmentRequest'
 import siteOwnerWithdrawalRequest from './views/siteOwner/WithdrawalRequests'
 import Members from './views/siteOwner/Members'
-import SendMail from './views/siteOwner/SendMail'
+import SendEmail from './views/siteOwner/SendEmail'
 import Deposit from './views/Deposit'
 import Referrals from './views/Referrals'
 
@@ -95,10 +95,10 @@ export const siteOwnerDashboardRoutes = [
         layout: '/admin',
     },
     {
-        path: '/sendmail',
-        name: 'SendMail',
+        path: '/sendEmail',
+        name: 'SendEmail',
         icon: 'bx bx-mail-send',
-        component: SendMail,
+        component: SendEmail,
         layout: '/admin',
     },
     {
