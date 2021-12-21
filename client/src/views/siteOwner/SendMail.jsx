@@ -47,7 +47,7 @@ const SendMail = (props) => {
             emailMessage,
         }
 
-        props.onInitUpdateMember(formData, props.tokenId)
+        props.onInitSendMail(formData, props.tokenId)
     }
 
     return (
@@ -152,9 +152,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onInitUpdateProfit: (updateProfitData, memberId, token) =>
+        onInitSendMail: (emailData, token) =>
             dispatch(
-                orderAction.initUpdateProfit(updateProfitData, memberId, token)
+                orderAction.initSendMail(emailData, token)
             ),
     }
 }
