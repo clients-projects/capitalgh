@@ -73,11 +73,7 @@ const SendMail = (props) => {
         }
     }
 
-    const handleMember = (e, p) => {
-        setProfit({
-            [p.fundNO]: e.target.value,
-        })
-    }
+   
 
     const updateMemberProfit = (id) => {
         for (let i = 0; i < props.memberId.length; i++) {
