@@ -145,7 +145,7 @@ module.exports = buildSchema(`
         createFundAccountApproval(PostId: PostId): FundAccount!
         createInvestNowApproval(PostId: PostId): FundAccount!
         createWithdrawNowApproval(PostId: PostId): FundAccount!
-        sendEmail(emailData: EmailData): FundAccount!
+        sendEmail(emailData: EmailData): FundAccount
         updatePost(id: ID!, postData: PostFundData): FundAccount!
         deletePost(id: ID!): Boolean
         updateStatus(status: String!): User!
