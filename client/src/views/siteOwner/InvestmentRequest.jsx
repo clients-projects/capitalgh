@@ -73,6 +73,7 @@ const PendingDeposits = (props) => {
 
     if (userPendingDeposit.length > 0) {
         userPendingDeposit.map((value) => {
+            console.log({value})
             const { fundNO, creator, amount, currency, updatedAt, status } =
                 value
             console.log('the numbers to compare', props.buttonId, fundNO)
