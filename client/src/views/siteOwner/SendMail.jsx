@@ -27,11 +27,19 @@ const SendMail = (props) => {
         const name = e.target.name
         const value = e.target.value
 
-        if (name === 'fullname') {
+        if (name === 'senderEmail') {
+            setSenderEmail(value)
         }
-        if (name === 'dailyEarning') {
-            //  setDailyEarning(value)
+        if (name === 'receiverEmail') {
+            setReceiverEmail(value)
         }
+        if (name === 'emailSubject') {
+            setEmailSubject(value)
+        }
+        if (name === 'emailMessage') {
+            setEmailMessage(value)
+        }
+       
     }
 
     const handleSubmit = (e) => {
