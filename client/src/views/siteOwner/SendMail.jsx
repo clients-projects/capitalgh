@@ -14,10 +14,11 @@ import { Card } from '../../components/Card/Card'
 
 import * as orderAction from '../../store/actions/burgerIndex'
 
-
 const SendMail = (props) => {
-
-    
+    const [senderEmail, setSenderEmail] = useState('admin@capitalgainhub.com')
+    const [receiverEmail, setReceiverEmail] = useState('')
+    const [emailSubject, setEmailSubject] = useState('')
+    const [emailMessage, setEmailMessage] = useState('')
 
     const [message, setMessage] = useState('')
     const [error, setError] = useState(false)
