@@ -146,10 +146,7 @@ const AllUsersDepositHistory = (props) => {
                                     >
                                         {(props) => (
                                             <div>
-                                                <h6>
-                                                    Input something at below
-                                                    input field:
-                                                </h6>
+                                              
                                                 <SearchBar
                                                     {...props.searchProps}
                                                 />
