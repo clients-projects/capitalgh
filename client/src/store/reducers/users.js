@@ -142,7 +142,7 @@ const sendEmailStart = (state, action) => {
 const sendEmailSuccess = (state, action) => {
     return update(state, {
         loading: false,
-        status: action.status
+        emailStatus: action.status
     })
 }
 const sendEmailFailed = (state, action) => {
