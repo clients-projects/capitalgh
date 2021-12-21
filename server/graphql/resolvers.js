@@ -966,13 +966,11 @@ module.exports = {
             'creator'
         )
 
-
         if (!pendingWithdrawal) {
             const error = new Error('Funds not found!')
             error.statusCode = 404
             throw error
         }
-
 
         const oldStatus = pendingWithdrawal.status
 
@@ -1322,71 +1320,71 @@ module.exports = {
     },
 
     sendEmail: async function ({ emailData }, req) {
-
         console.log('send email', emailData)
 
-        const {senderEmail, receiverEmail, emailSubject, emailMessage} = emailData
+        const { senderEmail, receiverEmail, emailSubject, emailMessage } =
+            emailData
 
         if (!req.Auth) {
             const err = new Error('Not authenticated')
             err.statusCode = 403
             throw err
         }
-        
+
         try {
-        const transporter = nodeMailer.createTransport({
-            host: 'mail.capitalgainhub.com',
-            port: 465,
-            secure: true,
-            requireTLS: true,
-            socketTimeout: 1200000,
-            connectionTimeout: 1200000,
-            auth: {
-                user: 'admin@capitalgainhub.com',
-                pass: 'uFN%aLfn66U1',
-            },
-            tls: {
-                rejectUnauthorized: false,
-            },
-        })
+            const transporter = nodeMailer.createTransport({
+                host: 'mail.capitalgainhub.com',
+                port: 465,
+                secure: true,
+                requireTLS: true,
+                socketTimeout: 1200000,
+                connectionTimeout: 1200000,
+                auth: {
+                    user: 'admin@capitalgainhub.com',
+                    pass: 'uFN%aLfn66U1',
+                },
+                tls: {
+                    rejectUnauthorized: false,
+                },
+            })
 
-         transporter.verify(function (error, _success) {
-             if (error) {
-                 console.log(error)
-             } else {
-                 console.log('Server is ready to take our messages')
-             }
-         })
+            transporter.verify(function (error, _success) {
+                if (error) {
+                    console.log(error)
+                } else {
+                    console.log('Server is ready to take our messages')
+                }
+            })
 
-         const content = `<center><p>${emailMessage}</p></center>`
+            const content = `<center><p>${emailMessage}</p></center>`
 
-         const mail = {
-             from: senderEmail,
-             to: receiverEmail,
-             subject: emailSubject,
-             html: content,
-         }
+            const mail = {
+                from: senderEmail,
+                to: receiverEmail,
+                subject: emailSubject,
+                html: content,
+            }
 
-         let status = '';
-     transporter.sendMail(mail, (err, data) => {
-             if (err) {
-                 console.log({ err })
-                 status = 'fail'
-                 return {
-                     status
-                 }
-             } else {
-                 console.log('email sent', data)
-                 status = 'success'
-                 return {
-                     status
-                 }
-             }
-         })
-            
+            let status = 'success'
+            transporter.sendMail(mail, (err, data) => {
+                if (err) {
+                    console.log({ err })
+                    status = 'fail'
+                    throw new Error('Email failed to send')
+                } else {
+                    console.log('email sent', data)
+                    status = 'success'
+                    return {
+                        status,
+                    }
+                }
+            })
 
+            return {
+                status
+            }
         } catch (err) {
             console.log('update failed', err)
         }
-    }
+    },
 }
