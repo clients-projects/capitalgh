@@ -49,15 +49,19 @@ const PendingWithdrawals = (props) => {
     const handleApproval = (id) => {
         console.log({id})
         for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
-            if (id === i) {
+            if (id === i && (userPendingWithdrawal[i - 1].status !== 'Approved')) {
                 console.log(props.idsOfPendingWithdrawals)
                 console.log({userPendingWithdrawal})
 
-               console.log(userPendingWithdrawal.fundNO)
+               console.log(userPendingWithdrawal[i - 1])
                // return props.onInitWithdrawNowApproval(
                 //     props.idsOfPendingWithdrawals[i]._id,
                 //     props.tokenId
                 // )
+            }
+
+            else{
+                console.log('Already approved')
             }
         }
     }
