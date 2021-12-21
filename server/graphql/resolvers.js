@@ -1365,8 +1365,10 @@ module.exports = {
                 html: content,
             }
 
-            let status
-            transporter.sendMail(mail, (err, data) => {
+            return new Promise((resolve, reject) => {
+
+                let status
+                transporter.sendMail(mail, (err, data) => {
                 if (err) {
                     console.log({ err })
                     status = 'fail'
@@ -1376,12 +1378,8 @@ module.exports = {
                 }
             })
 
-            if (status) {
-                console.log('status is true', status)
-                return {
-                    status,
-                }
-            }
+           
+        })
         } catch (err) {
             console.log('update failed', err)
         }
