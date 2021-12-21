@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import queryString from 'query-string'
 import {
     Grid,
     Row,
@@ -27,7 +26,6 @@ const SendMail = (props) => {
         const name = e.target.name
         const value = e.target.value
 
-
         if (name === 'receiverEmail') {
             setReceiverEmail(value)
         }
@@ -37,14 +35,16 @@ const SendMail = (props) => {
         if (name === 'emailMessage') {
             setEmailMessage(value)
         }
-       
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
         const formData = {
-            senderEmail, receiverEmail,  emailSubject, emailMessage
+            senderEmail,
+            receiverEmail,
+            emailSubject,
+            emailMessage,
         }
 
         props.onInitUpdateMember(formData, props.tokenId)
@@ -102,7 +102,6 @@ const SendMail = (props) => {
                                                 Sender Email
                                             </ControlLabel>
                                             <FormControl
-                                            
                                                 name='senderEmail'
                                                 type='text'
                                                 value={senderEmail}
@@ -113,11 +112,9 @@ const SendMail = (props) => {
                                     </Row>
                                     <Row>
                                         <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Message
-                                            </ControlLabel>
+                                            <ControlLabel>Message</ControlLabel>
                                             <FormControl
-                                                as='textarea'
+                                                componentClass='textarea'
                                                 name='emailMessage'
                                                 rows={4}
                                                 value={emailMessage}
