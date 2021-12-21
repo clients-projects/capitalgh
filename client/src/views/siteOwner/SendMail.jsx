@@ -120,6 +120,7 @@ const SendMail = (props) => {
                                             
                                                 name='emailMessage'
                                                 type='text'
+                                                rows={4}
                                                 value={emailMessage}
                                                 placeholder='Type the message you want to send'
                                                 onChange={handleChange}
