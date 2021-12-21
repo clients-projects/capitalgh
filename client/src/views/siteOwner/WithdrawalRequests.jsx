@@ -78,7 +78,7 @@ const PendingWithdrawals = (props) => {
                         }
                         onClick={() => handleApproval(fundNO)}
                     >
-                        {props.loading && fundNO
+                        {props.loading
                             ? 'Loading...'
                             : loadedWithdrawals && status === 'Approved'
                             ? 'approved'
