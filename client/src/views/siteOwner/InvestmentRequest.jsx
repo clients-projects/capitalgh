@@ -177,6 +177,7 @@ const PendingDeposits = (props) => {
                                             <BootstrapTable
                                                 defaultSorted={defaultSorted}
                                                 classes='table-layout-auto'
+                                                pagination={pagination}
                                                 {...props.baseProps}
                                             />
                                         </div>
