@@ -70,7 +70,7 @@ const PendingWithdrawals = (props) => {
                  currency,
                  status,
                  date: updatedAt,
-                 action: `<button>Click me</button>`
+                 action: <button>Click me</button>
              })
          })
      }
