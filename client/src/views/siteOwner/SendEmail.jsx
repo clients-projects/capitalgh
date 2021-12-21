@@ -26,8 +26,6 @@ const SendEmail = (props) => {
         const name = e.target.name
         const value = e.target.value
 
-        console.log({name})
-
         if (name === 'receiverEmail') {
             setReceiverEmail(value)
         }
@@ -78,7 +76,7 @@ const SendEmail = (props) => {
                                                 Receiver Email
                                             </ControlLabel>
                                             <FormControl
-                                                type='text'
+                                                type='email'
                                                 name='receiverEmail'
                                                 onChange={handleChange}
                                                 value={receiverEmail}
@@ -105,7 +103,7 @@ const SendEmail = (props) => {
                                             </ControlLabel>
                                             <FormControl
                                                 name='senderEmail'
-                                                type='text'
+                                                type='email'
                                                 value={senderEmail}
                                                 placeholder='admin@capitalgainhub.com'
                                                 disabled
