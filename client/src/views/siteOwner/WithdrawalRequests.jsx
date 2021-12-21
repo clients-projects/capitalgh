@@ -47,6 +47,7 @@ const PendingWithdrawals = (props) => {
       }, [userPendingWithdrawal])
 
     const handleApproval = (id) => {
+        console.log({id})
         for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
             if (id === i) {
                 return props.onInitWithdrawNowApproval(
@@ -70,10 +71,27 @@ const PendingWithdrawals = (props) => {
                  currency,
                  status,
                  date: updatedAt,
-                 action: <button>Click me</button>
+                 action: (
+                     <button
+                         className={
+                             loadedWithdrawals && status === 'Approved'
+                                 ? 'btn1 btn1__approved'
+                                 : 'btn1'
+                         }
+                         onClick={() => handleApproval(fundNO)}
+                     >
+                         {props.loading
+                             ? 'Loading...'
+                             : loadedWithdrawals && status === 'Approved'
+                             ? 'approved'
+                             : 'approve'}
+                     </button>
+                 ),
              })
          })
      }
+
+       
 
      const columns = [
          { dataField: 'id', text: 'Id', sort: true },
