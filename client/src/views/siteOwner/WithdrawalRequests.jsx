@@ -215,6 +215,7 @@ const PendingWithdrawals = (props) => {
                                                     pagination={pagination}
                                                     {...props.baseProps}
                                                 />
+                                                <button>Click me</button>
                                             </div>
                                         )}
                                     </ToolkitProvider>}
