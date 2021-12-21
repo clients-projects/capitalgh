@@ -12,9 +12,7 @@ import * as actions from '../../store/actions/burgerIndex'
 
 import Card from '../../components/Card/Card'
 
-import { thWithdrawalArray, tdWithdrawalArray } from '../../variables/Variables'
 
-const thDepositHistoryArray = ['No', 'Username', 'Amount', 'Plan', 'Date']
 
 const AllUsersDepositHistory = (props) => {
     const [allUsersDeposit, setAllUsersDeposit] = useState([])

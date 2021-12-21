@@ -5,15 +5,7 @@ import { connect } from 'react-redux'
 import * as actions from '../../store/actions/burgerIndex'
 
 import Card from '../../components/Card/Card'
-//import { thWithdrawalArray, tdWithdrawalArray } from '../../variables/Variables'
 
-const thWithdrawalHistoryArray = [
-    'No',
-    'Username',
-    'Amount',
-    'Currency',
-    'Date',
-]
 
 const AllUsersWithdrawalHistory = (props) => {
     const [allUsersWithdrawal, setAllUsersWithdrawal] = useState([])
@@ -31,6 +23,70 @@ const AllUsersWithdrawalHistory = (props) => {
             }
         }
     }, [props])
+
+      const allDeposits = []
+
+      if (allUsersWithdrawal.length > 0) {
+          allUsersWithdrawal.map((value) => {
+              const { fundNO, creator, amount, planName, updatedAt } = value
+              allDeposits.push({
+                  id: fundNO,
+                  username: creator,
+                  amount,
+                  plan: planName,
+                  date: updatedAt,
+              })
+          })
+      }
+
+      const columns = [
+          { dataField: 'id', text: 'Id', sort: true },
+          { dataField: 'username', text: 'Username', sort: true },
+          { dataField: 'amount', text: 'Invested Amount', sort: true },
+          { dataField: 'plan', text: 'Plan', sort: true },
+          { dataField: 'date', text: 'Date', sort: true },
+      ]
+
+       const defaultSorted = [
+           {
+               dataField: 'name',
+               order: 'desc',
+           },
+       ]
+
+       const pagination = paginationFactory({
+           page: 1,
+           sizePerPage: 5,
+           lastPageText: '>>',
+           firstPageText: '<<',
+           nextPageText: '>',
+           prePageText: '<',
+           showTotal: true,
+           alwaysShowAllBtns: true,
+           onPageChange: function (page, sizePerPage) {
+               console.log('page', page)
+               console.log('sizePerPage', sizePerPage)
+           },
+           onSizePerPageChange: function (page, sizePerPage) {
+               console.log('page', page)
+               console.log('sizePerPage', sizePerPage)
+           },
+       })
+
+       const { SearchBar, ClearSearchButton } = Search
+
+       const MyExportCSV = (props) => {
+           const handleClick = () => {
+               props.onExport()
+           }
+           return (
+               <div>
+                   <button className='btn btn-success' onClick={handleClick}>
+                       Export to CSV
+                   </button>
+               </div>
+           )
+       }
 
     return (
         <div className='content'>
