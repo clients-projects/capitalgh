@@ -642,7 +642,7 @@ export const initWithdrawNowApproval = (id, token, buttonId) => {
             })
     }
 }
-export const initSendEmail = (emailData, tokenId) => {
+export const initSendEmail = (emailData, token) => {
     return (dispatch) => {
         dispatch(sendEmilStart())
 
@@ -655,11 +655,6 @@ export const initSendEmail = (emailData, tokenId) => {
                         emailMessage: "${emailData.emailMessage}",
                     }){
                         _id
-                        amount
-                        planName
-                        creator {
-                            username
-                        }
                         createdAt
                         updatedAt
                     }
@@ -681,18 +676,18 @@ export const initSendEmail = (emailData, tokenId) => {
             .then((resData) => {
                 console.log({ resData })
                 if (resData.errors) {
-                    dispatch(withdrawNowFailed(resData.errors[0].message))
+                    dispatch(sendEmilFailed(resData.errors[0].message))
                 }
 
                 dispatch(
-                    withdrawNowApprovalSuccess(
-                        resData.data.createwithdrawNowApproval
+                    sendEmilSuccess(
+                        resData.data.sendEmail
                     )
                 )
             })
             .catch((err) => {
                 console.log(err)
-                dispatch(withdrawNowFailed(err))
+                dispatch(sendEmilFailed(err))
             })
     }
 }
