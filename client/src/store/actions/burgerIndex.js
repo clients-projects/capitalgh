@@ -14,7 +14,8 @@ export {
    initGetUserHistory,
    initGetAdmin,
    initUpdateMember,
-   initUpdateProfit
+   initUpdateProfit,
+   initSendEmail
 } from './user'
 
 export { initSignup, initLogin, logOut, clearError, authSuccess, initGetUser, initActivities, initGetMember } from './Auth'
