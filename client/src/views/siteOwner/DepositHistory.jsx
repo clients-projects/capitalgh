@@ -54,25 +54,25 @@ const AllUsersDepositHistory = (props) => {
         },
         {
             id: 3,
-            name: 'Alice',
+            username: 'Alice',
             amount: '2093',
             plan: 'package 1',
             date: '1/11/2021',
         },
         {
             id: 4,
-            name: 'Alice',
+            username: 'Alice',
             amount: '2093',
             plan: 'package 1',
             date: '1/11/2021',
         },
         {
             id: 5,
-            name: 'Alice',
+            username: 'Alice',
             amount: '2093',
             plan: 'package 1',
             date: '1/11/2021',
-        },
+        }
     ]
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
@@ -91,7 +91,7 @@ const AllUsersDepositHistory = (props) => {
     ]
 
     const pagination = paginationFactory({
-        page: 2,
+        page: 1,
         sizePerPage: 5,
         lastPageText: '>>',
         firstPageText: '<<',
@@ -138,8 +138,8 @@ const AllUsersDepositHistory = (props) => {
                             content={
                                     <ToolkitProvider
                                         bootstrap4
-                                        keyField='id'
                                         data={products}
+                                        keyField='id'
                                         columns={columns}
                                         search
                                         exportCSV
