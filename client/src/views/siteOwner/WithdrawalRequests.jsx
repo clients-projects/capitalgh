@@ -11,16 +11,7 @@ import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import * as actions from '../../store/actions/burgerIndex'
 
 import Card from '../../components/Card/Card'
-//import { thWithdrawalArray, tdWithdrawalArray } from '../../variables/Variables'
 
-const thWithdrawalArray = [
-    'No',
-    'Username',
-    'Amount',
-    'Currency',
-    'Status',
-    'Date',
-]
 
 const PendingWithdrawals = (props) => {
     const [userPendingWithdrawal, setUserPendingWithdrawal] = useState([])
@@ -51,7 +42,7 @@ const PendingWithdrawals = (props) => {
         if (userPendingWithdrawal[id - 1].status !== 'Approved') {
             for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
                 if (
-                    id === i &&
+                    id === i
                 ) {
                     console.log('send approval')
                     return props.onInitWithdrawNowApproval(
