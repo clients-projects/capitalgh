@@ -51,6 +51,7 @@ const PendingWithdrawals = (props) => {
         for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
             if (id === i) {
                 console.log(props.idsOfPendingWithdrawals)
+                console.log({userPendingWithdrawal})
                 return props.onInitWithdrawNowApproval(
                     props.idsOfPendingWithdrawals[i]._id,
                     props.tokenId
@@ -62,7 +63,6 @@ const PendingWithdrawals = (props) => {
      const withdrawalRequests = []
 
      if (userPendingWithdrawal.length > 0) {
-         console.log({ userPendingWithdrawal })
          userPendingWithdrawal.map((value) => {
              const { fundNO, creator, amount, currency, updatedAt, status } = value
              withdrawalRequests.push({
