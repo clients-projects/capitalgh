@@ -35,12 +35,12 @@ const AllUsersWithdrawalHistory = (props) => {
       if (allUsersWithdrawal.length > 0) {
           console.log({allUsersWithdrawal})
           allUsersWithdrawal.map((value) => {
-              const { fundNO, creator, amount, planName, updatedAt } = value
+              const { fundNO, creator, amount, currency, updatedAt } = value
               allWithdrawals.push({
                   id: fundNO,
                   username: creator,
                   amount,
-                  plan: planName,
+                   currency,
                   date: updatedAt,
               })
           })
@@ -49,8 +49,8 @@ const AllUsersWithdrawalHistory = (props) => {
       const columns = [
           { dataField: 'id', text: 'Id', sort: true },
           { dataField: 'username', text: 'Username', sort: true },
-          { dataField: 'amount', text: 'Invested Amount', sort: true },
-          { dataField: 'plan', text: 'Plan', sort: true },
+          { dataField: 'amount', text: 'Amount Withdrawn', sort: true },
+          { dataField: 'currency', text: 'Currency', sort: true },
           { dataField: 'date', text: 'Date', sort: true },
       ]
 
