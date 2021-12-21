@@ -387,7 +387,7 @@
     display: grid !important;
     justify-content: center;
 
-    a {
+    &>* {
         width: 1rem !important;
     }
 }
