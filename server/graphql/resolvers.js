@@ -1320,4 +1320,42 @@ module.exports = {
             console.log('update failed', err)
         }
     },
+
+    sendEmail: async function ({ updateProfitData, id }, req) {
+        console.log('the update profit', updateProfitData, id)
+
+        if (!req.Auth) {
+            const err = new Error('Not authenticated')
+            err.statusCode = 403
+            throw err
+        }
+
+        const theDeposit = await Deposit.findById(id)
+
+        console.log('found deposit', theDeposit)
+
+        if (!theDeposit) {
+            throw new Error('user deposit not found!')
+        }
+
+        try {
+            theDeposit.profit = updateProfitData.profit
+
+            const updatedDeposit = await theDeposit.save()
+
+            return {
+                ...updatedDeposit._doc,
+                _id: updatedDeposit._id.toString(),
+                planName: updatedDeposit.planName,
+                updatedAt: updatedDeposit.updatedAt.toLocaleString('en-GB', {
+                    hour12: true,
+                }),
+                createdAt: updatedDeposit.createdAt.toLocaleString('en-GB', {
+                    hour12: true,
+                }),
+            }
+        } catch (err) {
+            console.log('update failed', err)
+        }
+    }
 }

@@ -109,6 +109,13 @@ module.exports = buildSchema(`
         bitcoinAccount: String
     }
 
+    input EmailData {
+        receiverEmail: String
+        senderEmail: String
+        emailSubject: String
+        emailMessage: String
+    }
+
     input PostFundData {
         amount: String
         currency: String!
@@ -138,6 +145,7 @@ module.exports = buildSchema(`
         createFundAccountApproval(PostId: PostId): FundAccount!
         createInvestNowApproval(PostId: PostId): FundAccount!
         createWithdrawNowApproval(PostId: PostId): FundAccount!
+        sendEmail(emailData: EmailData): FundAccount!
         updatePost(id: ID!, postData: PostFundData): FundAccount!
         deletePost(id: ID!): Boolean
         updateStatus(status: String!): User!
