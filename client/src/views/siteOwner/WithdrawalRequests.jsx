@@ -54,7 +54,8 @@ const PendingWithdrawals = (props) => {
                 console.log('the same ids', i, id)
                 return props.onInitWithdrawNowApproval(
                     props.idsOfPendingWithdrawals[i]._id,
-                    props.tokenId
+                    props.tokenId,
+                    loadingId: id
                 )
             }
         }
@@ -83,7 +84,7 @@ const PendingWithdrawals = (props) => {
                          }
                          onClick={() => handleApproval(fundNO)}
                      >
-                         {props.loading
+                         {props.loading && props.idOfPendingWithdrawal === _id
                              ? 'Loading...'
                              : loadedWithdrawals && status === 'Approved'
                              ? 'approved'
