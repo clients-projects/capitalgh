@@ -79,8 +79,8 @@ const PendingWithdrawals = (props) => {
          { dataField: 'username', text: 'Username', sort: true },
          { dataField: 'amount', text: 'Amount Withdrawn', sort: true },
          { dataField: 'currency', text: 'Currency', sort: true },
-         { dataField: 'date', text: 'Date', sort: true },
          { dataField: 'status', text: 'Status', sort: true },
+         { dataField: 'date', text: 'Date', sort: true },
          { dataField: 'action', text: 'Action', sort: true },
      ]
 
