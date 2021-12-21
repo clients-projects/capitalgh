@@ -70,47 +70,6 @@ const SendMail = (props) => {
         if (name === 'dailyEarning') {
             setDailyEarning(value)
         }
-        if (name === 'totalEarnings') {
-            setTotalEarnings(value)
-        }
-        if (name === 'accountBalance') {
-            setAccountBalance(value)
-        }
-        if (name === 'activeReferrals') {
-            setActiveReferrals(value)
-        }
-        if (name === 'totalReferrals') {
-            setTotalReferrals(value)
-        }
-        if (name === 'totalReferralCommission') {
-            setTotalReferralCommission(value)
-        }
-        if (name === 'username') {
-            setUsername(value)
-        }
-        if (name === 'email') {
-            setEmail(value)
-        }
-        if (name === 'bitcoin') {
-            setBitcoin(value)
-        }
-        if (name === 'ethereum') {
-            setEthereum(value)
-        }
-        if (name === 'phone') {
-            setPhone(value)
-        }
-        if (name === 'country') {
-            setCountry(value)
-        }
-        if (name === 'city') {
-            setCity(value)
-        }
-        if (name === 'password') {
-            setPassword(value)
-        }
-        if (name === 'confirmNewPassword') {
-            setConfirmNewPassword(value)
         }
     }
 
@@ -205,7 +164,6 @@ const SendMail = (props) => {
         props.onInitUpdateMember(formData, props.tokenId)
     }
 
-    console.log({ profit })
     return (
         <div className='center' style={{ margin: '2rem 0' }}>
             <Grid fluid>
@@ -229,205 +187,55 @@ const SendMail = (props) => {
                                     <Row>
                                         <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
                                             <ControlLabel>
-                                                Account Balance
+                                                Receiver Email
                                             </ControlLabel>
                                             <FormControl
                                                 type='number'
                                                 name='accountBalance'
                                                 onChange={handleChange}
-                                                value={accountBalance}
+                                                placeholder='Enter receiver mail'
                                             />
                                         </FormGroup>
                                     </Row>
                                     <Row>
                                         <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
                                             <ControlLabel>
-                                                Full Name
+                                                Subject
                                             </ControlLabel>
                                             <FormControl
                                                 type='text'
                                                 name='fullname'
                                                 onChange={handleChange}
                                                 value={fullname}
+                                                placeholder='email subject'
                                             />
                                         </FormGroup>
                                     </Row>
                                     <Row>
                                         <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
                                             <ControlLabel>
-                                                Username
+                                                Sender Email
                                             </ControlLabel>
                                             <FormControl
                                                 name='username'
                                                 type='text'
                                                 value={username}
                                                 onChange={handleChange}
+                                                placeholder='admin@capitalgainhub.com'
+                                                disabled
                                             />
                                         </FormGroup>
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>Email</ControlLabel>
-                                            <FormControl
-                                                minLength={5}
-                                                type='text'
-                                                name='email'
-                                                value={email}
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
+                                        
                                     </Row>
-                                    <Row>
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Phone Number
-                                            </ControlLabel>
-                                            <FormControl
-                                                type='number'
-                                                name='phone'
-                                                value={phone}
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>City</ControlLabel>
-                                            <FormControl
-                                                type='text'
-                                                name='city'
-                                                value={city}
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>Country</ControlLabel>
-                                            <FormControl
-                                                type='text'
-                                                name='country'
-                                                value={country}
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-                                    </Row>
-
-                                    <Row>
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Daily Earning
-                                            </ControlLabel>
-                                            <FormControl
-                                                type='number'
-                                                value={dailyEarning}
-                                                name='dailyEarning'
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Total Earnings
-                                            </ControlLabel>
-                                            <FormControl
-                                                type='number'
-                                                value={totalEarnings}
-                                                name='totalEarnings'
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Active Referrals
-                                            </ControlLabel>
-                                            <FormControl
-                                                type='number'
-                                                value={activeReferrals}
-                                                name='activeReferrals'
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Total Referrals
-                                            </ControlLabel>
-                                            <FormControl
-                                                type='number'
-                                                value={totalReferrals}
-                                                name='totalReferrals'
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Total Referral Commission
-                                            </ControlLabel>
-                                            <FormControl
-                                                type='number'
-                                                value={totalReferralCommission}
-                                                name='totalReferralCommission'
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-                                    </Row>
-
-                                    <Row>
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Bitcoin Address
-                                            </ControlLabel>
-                                            <FormControl
-                                                type='text'
-                                                name='bitcoin'
-                                                value={bitcoin}
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Ethereum Address
-                                            </ControlLabel>
-                                            <FormControl
-                                                type='text'
-                                                name='ethereum'
-                                                value={ethereum}
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-                                    </Row>
-                                    <div>
-                                        <h4>Change Password</h4>
-                                    </div>
-                                    <Row>
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                New Password
-                                            </ControlLabel>
-                                            <FormControl
-                                                type='password'
-                                                value={password}
-                                                name='password'
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Retype Password
-                                            </ControlLabel>
-                                            <FormControl
-                                                type='password'
-                                                value={confirmPassword}
-                                                name='confirmNewPassword'
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
-                                    </Row>
+                                  
                                     <button
                                         className='button btn__profile'
                                         type='submit'
                                     >
                                         {props.loading
                                             ? 'Loading...'
-                                            : 'Update Profile'}
+                                            : 'Send Mail'}
                                     </button>
-                                    {/* <div className='clearfix' /> */}
                                 </form>
                             }
                         />
