@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Grid, Row, Col, Table } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css'
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css'
+import BootstrapTable from 'react-bootstrap-table-next'
+import paginationFactory from 'react-bootstrap-table2-paginator'
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 
 import * as actions from '../../store/actions/burgerIndex'
 
@@ -24,12 +30,13 @@ const AllUsersWithdrawalHistory = (props) => {
         }
     }, [props])
 
-      const allDeposits = []
+      const allWithdrawals = []
 
       if (allUsersWithdrawal.length > 0) {
+          console.log({allUsersWithdrawal})
           allUsersWithdrawal.map((value) => {
               const { fundNO, creator, amount, planName, updatedAt } = value
-              allDeposits.push({
+              allWithdrawals.push({
                   id: fundNO,
                   username: creator,
                   amount,
@@ -100,44 +107,31 @@ const AllUsersWithdrawalHistory = (props) => {
                             ctTableFullWidth
                             ctTableResponsive
                             content={
-                                <Table>
-                                    <thead>
-                                        <tr>
-                                            {thWithdrawalHistoryArray.map(
-                                                (prop, key) => {
-                                                    return (
-                                                        <th key={key}>
-                                                            {prop}
-                                                        </th>
-                                                    )
-                                                }
-                                            )}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {allUsersWithdrawal.map(
-                                            (prop, key) => {
-                                                return (
-                                                    <tr key={key}>
-                                                        {Object.values(
-                                                            prop
-                                                        ).map((prop) => {
-                                                            return (
-                                                                <td key={key}>
-                                                                    {prop}
-                                                                </td>
-                                                            )
-                                                        })}
-                                                       
-                                                        {/* <button className='btn1'>
-                                                        view
-                                                    </button> */}
-                                                    </tr>
-                                                )
-                                            }
-                                        )}
-                                    </tbody>
-                                </Table>
+                                <ToolkitProvider
+                                    bootstrap4
+                                    data={allWithdrawals}
+                                    keyField='id'
+                                    columns={columns}
+                                    search
+                                    exportCSV
+                                >
+                                    {(props) => (
+                                        <div>
+                                            <SearchBar {...props.searchProps} />{' '}
+                                            <ClearSearchButton
+                                                {...props.searchProps}
+                                            />
+                                            <hr />
+                                            <MyExportCSV {...props.csvProps} />
+                                            <BootstrapTable
+                                                defaultSorted={defaultSorted}
+                                                classes='table-layout-auto'
+                                                pagination={pagination}
+                                                {...props.baseProps}
+                                            />
+                                        </div>
+                                    )}
+                                </ToolkitProvider>
                             }
                         />
                     </Col>
