@@ -37,12 +37,13 @@ const PendingWithdrawals = (props) => {
     }, [userPendingWithdrawal])
 
     const handleApproval = (id) => {
-        console.log(userPendingWithdrawal[id - 1].status)
-        if (userPendingWithdrawal[id - 1].status !== 'Approved') {
+        const decrementId = id - 1
+        console.log(userPendingWithdrawal[decrementId].status)
+        if (userPendingWithdrawal[decrementId].status !== 'Approved') {
             console.log('status pending')
             for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
                 console.log({id}, 'is equal', {i})
-                if ([id - 1] === i) {
+                if ((decrementId) === i) {
                     console.log('send approval')
                     return props.onInitWithdrawNowApproval(
                         props.idsOfPendingWithdrawals[i]._id,
