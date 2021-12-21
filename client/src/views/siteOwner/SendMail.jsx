@@ -73,88 +73,17 @@ const SendMail = (props) => {
         }
     }
 
+
+
    
-
-    const updateMemberProfit = (id) => {
-        for (let i = 0; i < props.memberId.length; i++) {
-            if (id === i) {
-                props.onInitUpdateProfit(
-                    profit[i + 1],
-                    props.memberId[i]._id,
-                    props.tokenId
-                )
-            }
-        }
-    }
-
-    useEffect(() => {
-        if (props.member) {
-            const fetchedBitcoin = props.member.bitcoinAccount
-            const fetchedEmail = props.member.email
-            const fetchedEthereum = props.member.ethereumAccount
-            const fetchedFullname = props.member.fullname
-            const fetchedUsername = props.member.username
-            const fetchedCity = props.member.city
-            const fetchedCountry = props.member.country
-            const fetchedPhone = props.member.phone
-            const fetchedDailyEarning = props.member.dailyEarning
-            const fetchedTotalEarnings = props.member.totalEarnings
-            const fetchedAccountBalance = props.member.accountBalance
-            const fetchedActiveReferrals = props.member.activeReferrals
-            const fetchedTotalReferrals = props.member.totalReferrals
-            const fetchedTotalReferralCommission =
-                props.member.totalReferralCommission
-
-            setFullname(fetchedFullname)
-
-            setCity(fetchedCity)
-            setCountry(fetchedCountry)
-            setPhone(fetchedPhone)
-            setUsername(fetchedUsername)
-
-            setEmail(fetchedEmail)
-            setOldEmail(fetchedEmail)
-            setBitcoin(fetchedBitcoin)
-
-            setEthereum(fetchedEthereum)
-
-            setDailyEarning(fetchedDailyEarning)
-            setTotalEarnings(fetchedTotalEarnings)
-            setActiveReferrals(fetchedActiveReferrals)
-            setTotalReferrals(fetchedTotalReferrals)
-            setTotalReferralCommission(fetchedTotalReferralCommission)
-            setAccountBalance(fetchedAccountBalance)
-        }
-    }, [props])
-
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (password !== confirmPassword) {
-            setMessage('Passwords do not match')
-            setError(true)
-            return
-        } else {
-            setMessage('Updated successfully')
-            setError(false)
-        }
+      
         const formData = {
             accountBalance: Number(accountBalance),
             fullname,
             username,
-            password,
-            oldEmail,
-            email,
-            city,
-            dailyEarning: Number(dailyEarning),
-            totalEarnings: Number(totalEarnings),
-            activeReferrals: Number(activeReferrals),
-            totalReferrals: Number(totalReferrals),
-            totalReferralCommission: Number(totalReferralCommission),
-            country,
-            phone,
-            ethereum,
-            bitcoin,
-            confirmPassword,
+           
         }
 
         props.onInitUpdateMember(formData, props.tokenId)
