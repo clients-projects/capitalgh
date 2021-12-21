@@ -47,27 +47,22 @@ const PendingWithdrawals = (props) => {
     }, [userPendingWithdrawal])
 
     const handleApproval = (id) => {
-        console.log({ id })
-        if (userPendingWithdrawal[id - 1].status !== 'Approved'){
-            console.log(userPendingWithdrawal[id - 1].status)
+        console.log(userPendingWithdrawal[id - 1].status)
+        if (userPendingWithdrawal[id - 1].status !== 'Approved') {
             for (let i = 0; i < props.idsOfPendingWithdrawals.length; i++) {
-                console.log(userPendingWithdrawal[id - 1].status)
-
                 if (
                     id === i &&
                     userPendingWithdrawal[id - 1].status !== 'Approved'
                 ) {
-                    console.log(props.idsOfPendingWithdrawals)
-                    console.log({ userPendingWithdrawal })
-
                     return props.onInitWithdrawNowApproval(
                         props.idsOfPendingWithdrawals[i]._id,
                         props.tokenId
                     )
-                } else {
-                    console.log('Already approved')
                 }
-            }}
+            }
+        } else {
+            console.log('Already approved')
+        }
     }
 
     const withdrawalRequests = []
