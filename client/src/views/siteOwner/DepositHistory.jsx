@@ -52,6 +52,8 @@ const AllUsersDepositHistory = (props) => {
         })
     }
 
+    console.log({allDeposits})
+
     const products = [
         {
             id: 1,
@@ -153,7 +155,7 @@ const AllUsersDepositHistory = (props) => {
                             content={
                                     <ToolkitProvider
                                         bootstrap4
-                                        data={products}
+                                        data={allDeposits}
                                         keyField='id'
                                         columns={columns}
                                         search
