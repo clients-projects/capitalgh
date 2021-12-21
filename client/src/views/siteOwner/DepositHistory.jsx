@@ -37,6 +37,21 @@ const AllUsersDepositHistory = (props) => {
     console.log(thDepositHistoryArray)
     console.log(thWithdrawalArray)
 
+    const allDeposits = []
+
+    if(allUsersDeposit.length > 0){
+        allUsersDeposit.map((value) => {
+            const {fundNO, creator, amount, planName, updatedAt} = value
+            allDeposits.push({
+                id: fundNO,
+                username: creator,
+                amount, 
+                plan: planName,
+                date: updatedAt
+            })
+        })
+    }
+
     const products = [
         {
             id: 1,
@@ -149,7 +164,7 @@ const AllUsersDepositHistory = (props) => {
                                               
                                                 <SearchBar
                                                     {...props.searchProps}
-                                                />
+                                                /> {' '}
                                                 <ClearSearchButton
                                                     {...props.searchProps}
                                                 />
