@@ -643,6 +643,7 @@ export const initWithdrawNowApproval = (id, token, buttonId) => {
     }
 }
 export const initSendEmail = (emailData, token) => {
+    console.log({emailData})
     return (dispatch) => {
         dispatch(sendEmailStart())
 
