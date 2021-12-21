@@ -59,9 +59,9 @@ const PendingWithdrawals = (props) => {
 
      const allWithdrawals = []
 
-     if (allUsersWithdrawal.length > 0) {
-         console.log({ allUsersWithdrawal })
-         allUsersWithdrawal.map((value) => {
+     if (userPendingWithdrawal.length > 0) {
+         console.log({ userPendingWithdrawal })
+         userPendingWithdrawal.map((value) => {
              const { fundNO, creator, amount, currency, updatedAt } = value
              allWithdrawals.push({
                  id: fundNO,
