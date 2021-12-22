@@ -62,9 +62,14 @@ const SendEmail = (props) => {
 
     useEffect(() => {
         if(props.emailStatus){
-
+            sentSentEmailStatus(true)
+            setError(false)
         }
-    }, [props.emailStatus])
+
+        if(sentEmailStatus){
+            setMessage('Email sent')
+        }
+    }, [props.emailStatus, sentEmailStatus])
 
     return (
         <div className='center' style={{ margin: '2rem 0' }}>
