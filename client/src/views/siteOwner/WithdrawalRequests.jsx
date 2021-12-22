@@ -177,7 +177,6 @@ const PendingWithdrawals = (props) => {
                                     columns={columns}
                                     search
                                     exportCSV
-                                    columnToggle
                                 >
                                     {(props) => (
                                         <div>
@@ -189,7 +188,7 @@ const PendingWithdrawals = (props) => {
                                             <MyExportCSV {...props.csvProps} />
                                             <BootstrapTable
                                                 defaultSorted={defaultSorted}
-                                                classes='table-layout-auto'
+                                                classes='table-layout-auto customtable'
                                                 pagination={pagination}
                                                 {...props.baseProps}
                                             />
