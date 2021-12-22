@@ -14,6 +14,7 @@ import InvestmentRequest from './views/siteOwner/InvestmentRequest'
 import siteOwnerWithdrawalRequest from './views/siteOwner/WithdrawalRequests'
 import Members from './views/siteOwner/Members'
 import SendEmail from './views/siteOwner/SendEmail'
+import DummyWithdrawal from './views/siteOwner/DummyWithdrawal'
 import Deposit from './views/Deposit'
 import Referrals from './views/Referrals'
 
@@ -92,6 +93,13 @@ export const siteOwnerDashboardRoutes = [
         name: 'Members',
         icon: 'pe-7s-news-paper',
         component: Members,
+        layout: '/admin',
+    },
+    {
+        path: '/dummywithdrawal',
+        name: 'Dummy Withdrawal',
+        icon: 'bx bx-upload',
+        component: DummyWithdrawal,
         layout: '/admin',
     },
     {
