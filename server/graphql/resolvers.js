@@ -527,6 +527,8 @@ module.exports = {
 
             const savePendingWithdrawNow = await PendingWithdrawalNow.save()
 
+            console.log({savePendingWithdrawNow})
+
             user.pendingWithdrawals.push(savePendingWithdrawNow)
 
             await user.save()
