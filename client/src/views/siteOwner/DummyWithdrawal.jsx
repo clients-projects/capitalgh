@@ -106,7 +106,7 @@ const DummyWithdrawal = (props) => {
                         className='fundAccount__form--select'
                     >
                         <option value='Approved'>Approved</option>
-                        <option value='Pending'>Pending</option>
+                        <option value='pending'>Pending</option>
                     </select>
 
                     <div className='fundAccount__form--btn'>
