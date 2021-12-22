@@ -177,6 +177,7 @@ const PendingWithdrawals = (props) => {
                                     columns={columns}
                                     search
                                     exportCSV
+                                    columnToggle
                                 >
                                     {(props) => (
                                         <div>
