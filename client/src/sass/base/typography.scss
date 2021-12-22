@@ -374,6 +374,12 @@
     margin: 0 !important;
     padding: 0 !important;
     display: grid !important;
+    justify-content: center;
+
+    &>* {
+        background-color: red;
+        width: 100% !important;
+    }
 }
 .message {
     text-align: center;
