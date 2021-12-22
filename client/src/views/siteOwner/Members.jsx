@@ -11,9 +11,7 @@ import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import * as orderAction from '../../store/actions/burgerIndex'
 
 import Card from '../../components/Card/Card'
-//import { thWithdrawalArray, tdWithdrawalArray } from '../../variables/Variables'
 
-const thWithdrawalArray = ['No','Username', 'Email', 'Status', 'Date']
 
 const Members = (props) => {
     const [allUsers, setAllUsers] = useState([])
@@ -132,7 +130,7 @@ const Members = (props) => {
                             content={
                                 <ToolkitProvider
                                     bootstrap4
-                                    data={withdrawalRequests}
+                                    data={fetchedAllUsers}
                                     keyField='id'
                                     columns={columns}
                                     search
