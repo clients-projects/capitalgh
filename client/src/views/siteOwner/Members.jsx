@@ -12,7 +12,6 @@ import * as orderAction from '../../store/actions/burgerIndex'
 
 import Card from '../../components/Card/Card'
 
-
 const Members = (props) => {
     const [allUsers, setAllUsers] = useState([])
 
@@ -31,8 +30,9 @@ const Members = (props) => {
     }, [props])
 
     const handleApproval = (id) => {
-        console.log({id})
+        console.log({ id })
         for (let i = 0; i < props.getUsersId.length; i++) {
+            console.log({i})
             if (id === i) {
                 props.history.push(
                     '/admin/member?id=' + props.getUsersId[i]._id
@@ -41,81 +41,80 @@ const Members = (props) => {
         }
     }
 
-          const fetchedAllUsers = []
+    const fetchedAllUsers = []
 
+    if (allUsers.length > 0) {
+        allUsers.map((value) => {
+            const { userNO, username, status, email, updatedAt } = value
 
-      if (allUsers.length > 0) {
-          allUsers.map((value) => {
-              const { userNO, username, status, email, updatedAt } = value
-              
-              console.log({value})
-              fetchedAllUsers.push({
-                  id: userNO,
-                  username,
-                  status,
-                  email,
-                  date: updatedAt,
-                  action: (
-                      <button
-                          className='btn1'
-                          onClick={() => handleApproval(userNO)}
-                      >
-                          {props.loading ? 'Loading...' : 'View'}
-                      </button>
-                  ),
-              })
-          })
-      }
+            console.log({ value })
+            fetchedAllUsers.push({
+                id: userNO,
+                username,
+                status,
+                email,
+                date: updatedAt,
+                action: (
+                    <button
+                        className='btn1'
+                        onClick={() => handleApproval(userNO)}
+                    >
+                        {props.loading ? 'Loading...' : 'View'}
+                    </button>
+                ),
+            })
+        })
+    }
 
-      const columns = [
-          { dataField: 'id', text: 'Id', sort: true },
-          { dataField: 'username', text: 'Username', sort: true },
-          { dataField: 'email', text: 'email', sort: true },
-          { dataField: 'status', text: 'status', sort: true },
-          { dataField: 'date', text: 'Date', sort: true },
-          { dataField: 'action', text: 'Action', sort: true },
-      ]
+    const columns = [
+        { dataField: 'id', text: 'Id', sort: true },
+        { dataField: 'username', text: 'Username', sort: true },
+        { dataField: 'email', text: 'email', sort: true },
+        { dataField: 'status', text: 'status', sort: true },
+        { dataField: 'date', text: 'Date', sort: true },
+        { dataField: 'action', text: 'Action', sort: true },
+    ]
 
-      const defaultSorted = [
-          {
-              dataField: 'name',
-              order: 'desc',
-          },
-      ]
+    const defaultSorted = [
+        {
+            dataField: 'name',
+            order: 'desc',
+        },
+    ]
 
-      const pagination = paginationFactory({
-          page: 1,
-          sizePerPage: 5,
-          lastPageText: '>>',
-          firstPageText: '<<',
-          nextPageText: '>',
-          prePageText: '<',
-          showTotal: true,
-          alwaysShowAllBtns: true,
-          onPageChange: function (page, sizePerPage) {
-              console.log('page', page)
-              console.log('sizePerPage', sizePerPage)
-          },
-          onSizePerPageChange: function (page, sizePerPage) {
-              console.log('page', page)
-              console.log('sizePerPage', sizePerPage)
-          },
-      })
+    const pagination = paginationFactory({
+        page: 1,
+        sizePerPage: 5,
+        lastPageText: '>>',
+        firstPageText: '<<',
+        nextPageText: '>',
+        prePageText: '<',
+        showTotal: true,
+        alwaysShowAllBtns: true,
+        onPageChange: function (page, sizePerPage) {
+            console.log('page', page)
+            console.log('sizePerPage', sizePerPage)
+        },
+        onSizePerPageChange: function (page, sizePerPage) {
+            console.log('page', page)
+            console.log('sizePerPage', sizePerPage)
+        },
+    })
 
-      const { SearchBar, ClearSearchButton } = Search
+    const { SearchBar, ClearSearchButton } = Search
 
-      const MyExportCSV = (props) => {
-          const handleClick = () => {
-              props.onExport()
-          }
-          return (
-              <div>
-                  <button className='btn btn-success' onClick={handleClick}>
-                      Export to CSV
-                  </button>
-              </div>
-          )
-      }
+    const MyExportCSV = (props) => {
+        const handleClick = () => {
+            props.onExport()
+        }
+        return (
+            <div>
+                <button className='btn btn-success' onClick={handleClick}>
+                    Export to CSV
+                </button>
+            </div>
+        )
+    }
 
     return (
         <div className='content'>
