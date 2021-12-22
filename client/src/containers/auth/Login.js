@@ -90,7 +90,7 @@ const Login = (props) => {
     }
 
     return (
-        <>
+        <div className='loginWrapper'>
             <ReactParticles/>
                
             <Auth login message={message}>
@@ -133,7 +133,7 @@ const Login = (props) => {
                     </div>
                 </form>
             </Auth>
-        </>
+        </div>
     )
 }
 
