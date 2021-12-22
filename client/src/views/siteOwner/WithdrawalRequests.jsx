@@ -71,6 +71,7 @@ const PendingWithdrawals = (props) => {
                 status,
                 date: updatedAt,
                 action: (
+                    <>
                     <button
                         className={
                             loadedWithdrawals && status === 'Approved'
@@ -85,6 +86,21 @@ const PendingWithdrawals = (props) => {
                             ? 'approved'
                             : 'approve'}
                     </button>
+                    <button
+                        className={
+                            loadedWithdrawals && status === 'Approved'
+                                ? 'btn1 btn1__approved'
+                                : 'btn1'
+                        }
+                        onClick={() => handleApproval(fundNO)}
+                    >
+                        {props.loading && props.buttonId === fundNO
+                            ? 'Loading'
+                            : loadedWithdrawals && status === 'Approved'
+                            ? 'approved'
+                            : 'approve'}
+                    </button>
+                    </>
                 ),
             })
         })
