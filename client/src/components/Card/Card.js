@@ -11,8 +11,10 @@ export class Card extends Component {
                     className={
                         'header' + (this.props.hCenter ? ' text-center' : '')
                     }
+
+                    style={{textAlign: 'center'}}
                 >
-                    <h4 className='title' style={{ color: 'white', textAlign: 'center' }}>
+                    <h4 className='title' style={{ color: 'white' }}>
                         {this.props.title}
                     </h4>
                     <p className='category'>{this.props.category}</p>
