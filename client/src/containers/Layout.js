@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLastLocation } from 'react-router-last-location'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 // import SubHeader from '../main/layout/SubHeader'
 // import Footer from '../main/layout/Footer'
@@ -17,7 +17,6 @@ function Layout(props) {
     }
     const fromLocationSplit = fromlocationPath.split(' ')
 
-
     //Check how this can be added to redux and called from there
     let toRender
 
@@ -25,24 +24,20 @@ function Layout(props) {
     let isAdmin = adminPath.includes('/admin')
 
     if (isAdmin) {
-
-        if(adminPath === '/admin' || adminPath === '/admin/'){
+        if (adminPath === '/admin' || adminPath === '/admin/') {
             history.push('/admin/dashboard')
         }
 
         localStorage.setItem('cssLoaded', false)
-        import('bootstrap/dist/css/bootstrap.min.css').then((Baz) => {
-        })
-        import('../assets/css/animate.min.css').then((Baz) => {
-        })
+        import('bootstrap/dist/css/bootstrap.min.css').then((Baz) => {})
+        import('../assets/css/animate.min.css').then((Baz) => {})
         import(
             '../assets/sass/light-bootstrap-dashboard-react.scss?v=1.3.0'
-        ).then((Baz) => {
-        })
-        import('../assets/css/demo.css').then((Baz) => {
-        })
-        const all = import('../assets/css/pe-icon-7-stroke.css').then((Baz) => {
-        })
+        ).then((Baz) => {})
+        import('../assets/css/demo.css').then((Baz) => {})
+        const all = import('../assets/css/pe-icon-7-stroke.css').then(
+            (Baz) => {}
+        )
         all.finally((result) => {
             localStorage.setItem('cssLoaded', true)
         })
@@ -51,18 +46,8 @@ function Layout(props) {
     } else {
         if (fromLocationSplit[0].includes('admin')) {
             window.location.reload()
-        } 
-        toRender = (
-            <>
-                {/* <div className='section-subHeader'>
-                    <SubHeader />
-                </div> */}
-                <main>{props.children}</main>
-                {/* <div className='section-footer'>
-                    <Footer />
-                </div>{' '} */}
-            </>
-        )
+        }
+        toRender = props.children
     }
 
     return <>{toRender}</>
