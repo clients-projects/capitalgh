@@ -390,13 +390,12 @@
     .show {
         background-color: black !important;
         display: inline !important;
-        width: 1rem;
     }
 
     .dropdown-menu {
         display: grid !important;
         justify-content: center;
-        justify-self: center;
+        min-width: 1rem;
 
         & > * {
             margin-right: 0.2rem;
