@@ -393,12 +393,13 @@
     }
 
     .dropdown-menu {
-        display: grid !important;
+        display: flex !important;
         justify-content: center;
         min-width: 2rem;
+        padding: 1rem;
 
         & > * {
-            margin-right: 0.2rem;
+            margin-right: 0.5rem;
         }
     }
 }
