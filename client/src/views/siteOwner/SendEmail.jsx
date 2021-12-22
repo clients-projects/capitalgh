@@ -169,7 +169,7 @@ const SendEmail = (props) => {
 const mapStateToProps = (state) => {
     return {
         loading: state.user.loading,
-        emailStatus: state.user.emailStatus.status,
+        emailStatus: state.user.emailStatus,
         tokenId: state.auth.tokenId,
         userId: state.auth.userId,
     }
