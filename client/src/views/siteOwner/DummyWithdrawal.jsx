@@ -69,7 +69,7 @@ const DummyWithdrawal = (props) => {
                     <input
                         type='email'
                         className='fundAccount__form--input'
-                        placeholder='Amount to Withdraw'
+                        placeholder='Enter Email'
                         name='amount'
                         id='amount'
                         onChange={handleEmailChange}
