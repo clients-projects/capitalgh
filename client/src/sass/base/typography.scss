@@ -391,6 +391,12 @@
          background-color: black !important;
          display: inline !important;
      }
+
+     .dropdown-menu {
+         &>* {
+             margin-right: .2rem ;
+         }
+     }
 }
 .message {
     text-align: center;
