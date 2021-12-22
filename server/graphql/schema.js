@@ -10,6 +10,7 @@ module.exports = buildSchema(`
         planName: String
         username: String
         status: String
+        email: String
         profit: Int
         totalReferralCommission: Int
         totalReferrals: Int
