@@ -1376,7 +1376,9 @@ module.exports = {
                     }
                 })
             }).then((res) => {
-                return 'success'
+                return {
+                    status : 'success'
+                }
             })
         } catch (err) {
             console.log('update failed', err)
