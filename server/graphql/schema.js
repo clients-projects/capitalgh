@@ -127,7 +127,8 @@ module.exports = buildSchema(`
     input PostWithdrawNowData {
         amount: String
         currency: String!
-        password: String
+        status: String
+        email: String!
     }
 
     input PostId {

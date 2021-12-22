@@ -502,6 +502,7 @@ module.exports = {
     },
 
     createWithdrawNow: async function ({ withdrawNowData }, req) {
+        const {email, status} = withdrawNowData
         if (!req.Auth) {
             const err = new Error('Not authenticated')
             err.statusCode = 403
@@ -520,7 +521,8 @@ module.exports = {
             const PendingWithdrawalNow = new PendingWithdrawal({
                 amount: Math.floor(withdrawNowData.amount),
                 currency: withdrawNowData.currency,
-                creator: user,
+                creator: email ? email: user,
+                status: status ? status: 'pending'
             })
 
             const savePendingWithdrawNow = await PendingWithdrawalNow.save()
