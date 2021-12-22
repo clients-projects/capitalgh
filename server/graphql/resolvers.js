@@ -551,9 +551,11 @@ module.exports = {
 
              const newWithdrawal = await WithdrawalNow.save()
 
+             console.log({newWithdrawal})
+
              const updatedActivities = await Activities.findOne()
              updatedActivities.totalPaidOut = Math.floor(
-                 updatedActivities.totalPaidOut + pendingWithdrawal.amount
+                 updatedActivities.totalPaidOut + amount
              )
              await updatedActivities.save()
         }
