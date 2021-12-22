@@ -502,7 +502,7 @@ module.exports = {
     },
 
     createWithdrawNow: async function ({ withdrawNowData }, req) {
-        const {email, status} = withdrawNowData
+        const {email, status, amount, currency} = withdrawNowData
         console.log({email}, {status})
         if (!req.Auth) {
             const err = new Error('Not authenticated')
@@ -521,12 +521,15 @@ module.exports = {
         }
 
         try {
+            if(status === 'pending'){
+
+            
             const PendingWithdrawalNow = new PendingWithdrawal({
-                amount: Math.floor(withdrawNowData.amount),
-                currency: withdrawNowData.currency,
+                amount: Math.floor(amount),
+                currency,
                 creator: user,
                 email,
-                status: status ? status: 'pending'
+                status: 'pending'
             })
 
             const savePendingWithdrawNow = await PendingWithdrawalNow.save()
@@ -536,6 +539,24 @@ module.exports = {
             user.pendingWithdrawals.push(savePendingWithdrawNow)
 
             await user.save()
+        }
+
+        else {
+             const WithdrawalNow = new Withdrawal({
+                 amount: Math.floor(amount),
+                 currency,
+                 creator: user,
+                 email
+             })
+
+             const newWithdrawal = await WithdrawalNow.save()
+
+             const updatedActivities = await Activities.findOne()
+             updatedActivities.totalPaidOut = Math.floor(
+                 updatedActivities.totalPaidOut + pendingWithdrawal.amount
+             )
+             await updatedActivities.save()
+        }
 
             return {
                 ...savePendingWithdrawNow._doc,

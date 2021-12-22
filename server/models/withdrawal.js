@@ -16,6 +16,9 @@ const withdrawalSchema = new Schema(
             ref: 'users',
             required: true,
         },
+        email: {
+            type: String
+        }
     },
     { timestamps: true }
 )
