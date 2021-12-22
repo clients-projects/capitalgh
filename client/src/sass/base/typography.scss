@@ -383,9 +383,9 @@
         text-align: center;
     }
 
-    &:first-child{
-        background-color: blue !important;
-    }
+     .react-bootstrap-table-pagination-list {
+         margin-top: 1rem;
+     }
 }
 .message {
     text-align: center;
