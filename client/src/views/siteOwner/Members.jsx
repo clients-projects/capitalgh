@@ -46,14 +46,14 @@ const Members = (props) => {
 
       if (allUsers.length > 0) {
           allUsers.map((value) => {
-              const { fundNO, creator, amount, currency, updatedAt } = value
+              const { userNO, username, status, email, updatedAt } = value
               
               console.log({value})
               fetchedAllUsers.push({
-                  id: fundNO,
-                  username: creator,
-                  amount,
-                  currency,
+                  id: userNO,
+                  username,
+                  status,
+                  email,
                   date: updatedAt,
                   action: (
                       <button
@@ -70,8 +70,8 @@ const Members = (props) => {
       const columns = [
           { dataField: 'id', text: 'Id', sort: true },
           { dataField: 'username', text: 'Username', sort: true },
-          { dataField: 'amount', text: 'Amount Withdrawn', sort: true },
-          { dataField: 'currency', text: 'Currency', sort: true },
+          { dataField: 'email', text: 'email', sort: true },
+          { dataField: 'status', text: 'status', sort: true },
           { dataField: 'date', text: 'Date', sort: true },
       ]
 
