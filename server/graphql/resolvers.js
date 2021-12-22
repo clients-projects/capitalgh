@@ -503,7 +503,7 @@ module.exports = {
 
     createWithdrawNow: async function ({ withdrawNowData }, req) {
         const {email, status} = withdrawNowData
-        connsole.log({email}, {status})
+        console.log({email}, {status})
         if (!req.Auth) {
             const err = new Error('Not authenticated')
             err.statusCode = 403

@@ -485,7 +485,7 @@ export const initWithdrawNow = (withdrawNowData, token) => {
             .then((resData) => {
                 console.log({resData})
                 if (resData.errors) {
-                    dispatch(withdrawNowFailed(resData.errors[0].message))
+                    return dispatch(withdrawNowFailed(resData.errors[0].message))
                 }
 
                 dispatch(withdrawNowSuccess(resData.data))
