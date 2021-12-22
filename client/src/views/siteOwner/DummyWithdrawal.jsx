@@ -125,7 +125,8 @@ const mapStateToProps = (state) => {
         tokenId: state.auth.tokenId,
         userData: state.auth.userData,
         userId: state.auth.userId,
-        loading: state.user.loading
+        loading: state.user.loading,
+        error: state.user.error
     }
 }
 

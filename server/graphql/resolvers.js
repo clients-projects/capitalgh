@@ -512,6 +512,8 @@ module.exports = {
 
         const user = await User.findById(req.userId)
 
+        console.log({user})
+
         if (!user) {
             const err = new Error('Invalid User')
             err.statusCode = 422
