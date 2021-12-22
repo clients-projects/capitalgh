@@ -242,7 +242,7 @@
         background-color: darken($color-primary-dark, 30%);
     }
 
-    &__approved{
+    &__approved {
         background-color: #0d5c0d;
     }
 }
@@ -356,10 +356,6 @@
     height: 60vh;
 }
 
-
-
-
-
 .rootApp {
     position: relative;
 }
@@ -368,8 +364,10 @@
     table-layout: auto !important;
 }
 
-.custom-table{
-    background-color: #0d5c0d !important;
+.custom-table {
+    & > thead > tr > th {
+        text-align: center;
+    }
 }
 .message {
     text-align: center;
@@ -384,4 +382,3 @@
     display: block;
     background-color: #b32525;
 }
-
