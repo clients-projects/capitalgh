@@ -84,7 +84,7 @@ function App(props) {
     }
 
     return (
-       <div>
+       <div style={{height: '100%'}}>
             <Layout isAdmin={location} siteOwner={props.siteOwner}>
                 {AuthGuard}
             </Layout>
