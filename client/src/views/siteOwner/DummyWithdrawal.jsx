@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
-import { StatsCard } from '../components/StatsCard/StatsCard'
-import * as orderAction from '../store/actions/burgerIndex'
+
+import { StatsCard } from '../../components/StatsCard/StatsCard'
+import * as orderAction from '../../store/actions/burgerIndex'
 
 const DummyWithdrawal = (props) => {
     let [amount, setAmount] = useState('')
