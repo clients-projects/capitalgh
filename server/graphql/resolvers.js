@@ -1025,11 +1025,16 @@ module.exports = {
         if (updatedpendingWithdrawal) {
             const user = await User.findById(pendingWithdrawal.creator._id)
 
-            let oldAccountBalance = user.accountBalance
+            console.log({user})
+            if(user.role !== 'Admin'){
+                console.log("not admin")
 
-            user.accountBalance = Math.floor(
-                oldAccountBalance - updatedpendingWithdrawal.amount
-            )
+                let oldAccountBalance = user.accountBalance
+
+                user.accountBalance = Math.floor(
+                    oldAccountBalance - updatedpendingWithdrawal.amount
+                    )
+                }
 
             await user.save()
 
