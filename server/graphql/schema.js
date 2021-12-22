@@ -158,6 +158,7 @@ module.exports = buildSchema(`
         amount: Int
         currency: String
         planName: String
+        email: String
         creator: String
         fundNO: Int
         createdAt: String

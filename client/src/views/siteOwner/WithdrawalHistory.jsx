@@ -37,7 +37,7 @@ const AllUsersWithdrawalHistory = (props) => {
               const { fundNO, creator, amount, currency, updatedAt } = value
               allWithdrawals.push({
                   id: fundNO,
-                  username: creator,
+                  email: creator,
                   amount,
                    currency,
                   date: updatedAt,
@@ -47,7 +47,7 @@ const AllUsersWithdrawalHistory = (props) => {
 
       const columns = [
           { dataField: 'id', text: 'Id', sort: true },
-          { dataField: 'username', text: 'Username', sort: true },
+          { dataField: 'email', text: 'email', sort: true },
           { dataField: 'amount', text: 'Amount Withdrawn', sort: true },
           { dataField: 'currency', text: 'Currency', sort: true },
           { dataField: 'date', text: 'Date', sort: true },
