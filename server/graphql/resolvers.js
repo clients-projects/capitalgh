@@ -502,8 +502,8 @@ module.exports = {
     },
 
     createWithdrawNow: async function ({ withdrawNowData }, req) {
-        const {email, status, amount, currency} = withdrawNowData
-        console.log({email}, {status})
+        const { email, status, amount, currency } = withdrawNowData
+        console.log({ email }, { status })
         if (!req.Auth) {
             const err = new Error('Not authenticated')
             err.statusCode = 403
@@ -512,7 +512,7 @@ module.exports = {
 
         const user = await User.findById(req.userId)
 
-        console.log({user})
+        console.log({ user })
 
         if (!user) {
             const err = new Error('Invalid User')
@@ -521,61 +521,63 @@ module.exports = {
         }
 
         try {
-            if(status === 'pending'){
+            let withdrawOrDummyData
+            if (status === 'pending') {
+                const PendingWithdrawalNow = new PendingWithdrawal({
+                    amount: Math.floor(amount),
+                    currency,
+                    creator: user,
+                    email,
+                    status: 'pending',
+                })
 
-            
-            const PendingWithdrawalNow = new PendingWithdrawal({
-                amount: Math.floor(amount),
-                currency,
-                creator: user,
-                email,
-                status: 'pending'
-            })
+                const savePendingWithdrawNow = await PendingWithdrawalNow.save()
 
-            const savePendingWithdrawNow = await PendingWithdrawalNow.save()
+                console.log({ savePendingWithdrawNow })
 
-            console.log({savePendingWithdrawNow})
+                user.pendingWithdrawals.push(savePendingWithdrawNow)
 
-            user.pendingWithdrawals.push(savePendingWithdrawNow)
+                withdrawOrDummyData = savePendingWithdrawNow
 
-            await user.save()
-        }
+                await user.save()
+            } else {
+                const WithdrawalNow = new Withdrawal({
+                    amount: Math.floor(amount),
+                    currency,
+                    creator: user,
+                    email,
+                })
 
-        else {
-             const WithdrawalNow = new Withdrawal({
-                 amount: Math.floor(amount),
-                 currency,
-                 creator: user,
-                 email
-             })
+                const newWithdrawal = await WithdrawalNow.save()
 
-             const newWithdrawal = await WithdrawalNow.save()
+                console.log({ newWithdrawal })
+                withdrawOrDummyData = newWithdrawal
 
-             console.log({newWithdrawal})
+                const updatedActivities = await Activities.findOne()
+                updatedActivities.totalPaidOut = Math.floor(
+                    updatedActivities.totalPaidOut + amount
+                )
+                await updatedActivities.save()
+            }
 
-             const updatedActivities = await Activities.findOne()
-             updatedActivities.totalPaidOut = Math.floor(
-                 updatedActivities.totalPaidOut + amount
-             )
-             await updatedActivities.save()
-        }
-
-            return {
-                ...savePendingWithdrawNow._doc,
-                _id: savePendingWithdrawNow._id.toString(),
-                email: savePendingWithdrawNow.email,
-                createdAt: savePendingWithdrawNow.createdAt.toLocaleString(
-                    'en-GB',
-                    {
-                        hour12: true,
-                    }
-                ),
-                updatedAt: savePendingWithdrawNow.updatedAt.toLocaleString(
-                    'en-GB',
-                    {
-                        hour12: true,
-                    }
-                ),
+            if (withdrawOrDummyData) {
+                return {
+                    ...withdrawOrDummyData._doc,
+                    _id: withdrawOrDummyData._id.toString(),
+                    email: withdrawOrDummyData.email,
+                    createdAt: withdrawOrDummyData.createdAt.toLocaleString(
+                        'en-GB',
+                        {
+                            hour12: true,
+                        }
+                    ),
+                    updatedAt: withdrawOrDummyData.updatedAt.toLocaleString(
+                        'en-GB',
+                        {
+                            hour12: true,
+                        }
+                    ),
+                }
             }
         } catch (err) {
             console.log('err', err)
@@ -694,7 +696,7 @@ module.exports = {
                 'creator'
             )
 
-            console.log({allUsersWithdrawal})
+            console.log({ allUsersWithdrawal })
 
             if (!getFunds) {
                 const err = new Error('No Funds for Funding')
@@ -811,7 +813,7 @@ module.exports = {
                     }
                 }),
                 getAllUsersWithdrawal: allUsersWithdrawal.map((p, i) => {
-                   // console.log(p._doc)
+                    // console.log(p._doc)
                     theAllUsersWithdrawal.push({
                         _id: p._id.toString(),
                         creator: p.creator.email,
@@ -1413,7 +1415,7 @@ module.exports = {
                 })
             }).then((res) => {
                 return {
-                    status : 'success'
+                    status: 'success',
                 }
             })
         } catch (err) {
