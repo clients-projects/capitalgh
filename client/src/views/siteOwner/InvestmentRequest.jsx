@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Grid, Row, Col, Table } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css'
@@ -42,10 +42,8 @@ const PendingDeposits = (props) => {
          const decrementId = id - 1
          console.log(userPendingDeposit[decrementId].status)
          if (userPendingDeposit[decrementId].status !== 'Approved') {
-             console.log('status pending')
              for (let i = 0; i < props.idsOfPendingDeposits.length; i++) {
                  if (decrementId === i) {
-                     console.log('send approval')
                      return props.onInitInvestNowApproval(
                          props.idsOfPendingDeposits[i]._id,
                          props.tokenId,

@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Grid, Row, Col, Table } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css'
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css'
+import BootstrapTable from 'react-bootstrap-table-next'
+import paginationFactory from 'react-bootstrap-table2-paginator'
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 
 import * as orderAction from '../../store/actions/burgerIndex'
 
@@ -27,6 +33,7 @@ const Members = (props) => {
     }, [props])
 
     const handleApproval = (id) => {
+        console.log({id})
         for (let i = 0; i < props.getUsersId.length; i++) {
             if (id === i) {
                 props.history.push(
@@ -50,6 +57,14 @@ const Members = (props) => {
                   amount,
                   currency,
                   date: updatedAt,
+                  action: (
+                      <button
+                          className='btn1'
+                          onClick={() => handleApproval(fundNO)}
+                      >
+                          {props.loading ? 'Loading...' : 'View'}
+                      </button>
+                  ),
               })
           })
       }
@@ -115,54 +130,31 @@ const Members = (props) => {
                             ctTableFullWidth
                             ctTableResponsive
                             content={
-                                <Table>
-                                    <thead>
-                                        <tr>
-                                            {thWithdrawalArray.map(
-                                                (prop, key) => {
-                                                    return (
-                                                        <th key={key}>
-                                                            {prop}
-                                                        </th>
-                                                    )
-                                                }
-                                            )}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {allUsers.map((prop, key) => {
-                                            return (
-                                                <tr
-                                                    key={key}
-                                                    className='clientCard__tbody--tr'
-                                                >
-                                                    {Object.values(prop).map(
-                                                        (prop, key) => {
-                                                            return (
-                                                                <td
-                                                                    key={key}
-                                                                    align='center'
-                                                                >
-                                                                    {prop}
-                                                                </td>
-                                                            )
-                                                        }
-                                                    )}
-                                                    <button
-                                                        className='btn1'
-                                                        onClick={() =>
-                                                            handleApproval(key)
-                                                        }
-                                                    >
-                                                        {props.loading
-                                                            ? 'Loading...'
-                                                            : 'View'}
-                                                    </button>
-                                                </tr>
-                                            )
-                                        })}
-                                    </tbody>
-                                </Table>
+                                <ToolkitProvider
+                                    bootstrap4
+                                    data={withdrawalRequests}
+                                    keyField='id'
+                                    columns={columns}
+                                    search
+                                    exportCSV
+                                >
+                                    {(props) => (
+                                        <div>
+                                            <SearchBar {...props.searchProps} />{' '}
+                                            <ClearSearchButton
+                                                {...props.searchProps}
+                                            />
+                                            <hr />
+                                            <MyExportCSV {...props.csvProps} />
+                                            <BootstrapTable
+                                                defaultSorted={defaultSorted}
+                                                classes='table-layout-auto custom-table'
+                                                pagination={pagination}
+                                                {...props.baseProps}
+                                            />
+                                        </div>
+                                    )}
+                                </ToolkitProvider>
                             }
                         />
                     </Col>
