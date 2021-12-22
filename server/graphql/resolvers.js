@@ -768,8 +768,7 @@ module.exports = {
                 getAllUsersDeposit: allUsersDeposit.map((p, i) => {
                     theAllUsersDeposit.push({
                         _id: p._id.toString(),
-                        creator: p.creator.email,
-                        email: p._doc.email,
+                        creator: p.creator.username,
                         planName: p._doc.planName,
                         amount: Math.floor(p._doc.amount),
                         currency: p._doc.currency,
@@ -789,7 +788,8 @@ module.exports = {
                 getAllUsersWithdrawal: allUsersWithdrawal.map((p, i) => {
                     theAllUsersWithdrawal.push({
                         _id: p._id.toString(),
-                        creator: p.creator.username,
+                        creator: p.creator.email,
+                        email: p._doc.email,
                         amount: Math.floor(p._doc.amount),
                         currency: p._doc.currency,
                         fundNO: i + 1,
