@@ -1,27 +1,27 @@
-.main {
-    height: 100%;
-    display: grid;
-    background: $color-background;
-    position: relative;
-    grid-template-rows: min-content;
-    grid-template-columns:
-        [sidebar-start] 6rem [sidebar-end full-start] minmax(6rem, 1fr)
-        [center-start] repeat(
-            8,
-            [col-start] minmax(min-content, 14rem) [col-end]
-        )
-        [center-end] minmax(6rem, 1fr) [full-end];
+// .main {
+//     height: 100%;
+//     display: grid;
+//     background: $color-background;
+//     position: relative;
+//     grid-template-rows: min-content;
+//     grid-template-columns:
+//         [sidebar-start] 6rem [sidebar-end full-start] minmax(6rem, 1fr)
+//         [center-start] repeat(
+//             8,
+//             [col-start] minmax(min-content, 14rem) [col-end]
+//         )
+//         [center-end] minmax(6rem, 1fr) [full-end];
 
-    @media only screen and (max-width: 22em) {
-        grid-template-columns:
-            [sidebar-start] [sidebar-end full-start] minmax(1rem, 1fr)
-            [center-start] repeat(
-                8,
-                [col-start] minmax(min-content, 14rem) [col-end]
-            )
-            [center-end] minmax(1rem, 1fr) [full-end];
-    }
-}
+//     @media only screen and (max-width: 22em) {
+//         grid-template-columns:
+//             [sidebar-start] [sidebar-end full-start] minmax(1rem, 1fr)
+//             [center-start] repeat(
+//                 8,
+//                 [col-start] minmax(min-content, 14rem) [col-end]
+//             )
+//             [center-end] minmax(1rem, 1fr) [full-end];
+//     }
+// }
 
 .section-sidebar {
     background-color: $color-primary;
@@ -390,8 +390,4 @@
 .loginWrapper {
             grid-column: col-start 2 / col-end 6;
 
-}
-
-#root{
-    height: 100%;
 }
