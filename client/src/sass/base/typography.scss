@@ -393,6 +393,8 @@
      }
 
      .dropdown-menu {
+         display: grid !important;
+         justify-content: center;
          &>* {
              margin-right: .2rem ;
          }
