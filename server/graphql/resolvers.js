@@ -671,6 +671,8 @@ module.exports = {
                 'creator'
             )
 
+            console.log({allUsersWithdrawal})
+
             if (!getFunds) {
                 const err = new Error('No Funds for Funding')
                 err.statusCode = 422
@@ -786,6 +788,7 @@ module.exports = {
                     }
                 }),
                 getAllUsersWithdrawal: allUsersWithdrawal.map((p, i) => {
+                   // console.log(p._doc)
                     theAllUsersWithdrawal.push({
                         _id: p._id.toString(),
                         creator: p.creator.email,
