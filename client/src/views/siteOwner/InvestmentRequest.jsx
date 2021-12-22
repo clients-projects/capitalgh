@@ -177,7 +177,7 @@ const PendingDeposits = (props) => {
                                             <MyExportCSV {...props.csvProps} />
                                             <BootstrapTable
                                                 defaultSorted={defaultSorted}
-                                                classes='table-layout-auto'
+                                                classes='table-layout-auto custom-table'
                                                 pagination={pagination}
                                                 {...props.baseProps}
                                             />

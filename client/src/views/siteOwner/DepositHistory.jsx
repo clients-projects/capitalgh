@@ -111,38 +111,31 @@ const AllUsersDepositHistory = (props) => {
                             ctTableFullWidth
                             ctTableResponsive
                             content={
-                                    <ToolkitProvider
-                                        bootstrap4
-                                        data={allDeposits}
-                                        keyField='id'
-                                        columns={columns}
-                                        search
-                                        exportCSV
-                                    >
-                                        {(props) => (
-                                            <div>
-                                              
-                                                <SearchBar
-                                                    {...props.searchProps}
-                                                /> {' '}
-                                                <ClearSearchButton
-                                                    {...props.searchProps}
-                                                />
-                                                <hr />
-                                                <MyExportCSV
-                                                    {...props.csvProps}
-                                                />
-                                                <BootstrapTable
-                                                    defaultSorted={
-                                                        defaultSorted
-                                                    }
-                                                    classes='table-layout-auto'
-                                                    pagination={pagination}
-                                                    {...props.baseProps}
-                                                />
-                                            </div>
-                                        )}
-                                    </ToolkitProvider>
+                                <ToolkitProvider
+                                    bootstrap4
+                                    data={allDeposits}
+                                    keyField='id'
+                                    columns={columns}
+                                    search
+                                    exportCSV
+                                >
+                                    {(props) => (
+                                        <div>
+                                            <SearchBar {...props.searchProps} />{' '}
+                                            <ClearSearchButton
+                                                {...props.searchProps}
+                                            />
+                                            <hr />
+                                            <MyExportCSV {...props.csvProps} />
+                                            <BootstrapTable
+                                                defaultSorted={defaultSorted}
+                                                classes='table-layout-auto custom-table'
+                                                pagination={pagination}
+                                                {...props.baseProps}
+                                            />
+                                        </div>
+                                    )}
+                                </ToolkitProvider>
                             }
                         />
                     </Col>
