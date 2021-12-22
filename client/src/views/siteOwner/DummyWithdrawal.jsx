@@ -10,7 +10,6 @@ const DummyWithdrawal = (props) => {
     const [error, setError] = useState(false)
     const [status, setStatus] = useState('Approved')
     const [email, setEmail] = useState('')
- 
 
     const handleAmountChange = (e) => {
         setAmount(e.target.value)
@@ -19,11 +18,11 @@ const DummyWithdrawal = (props) => {
         setCurrency(e.target.value)
     }
 
-    const handleStatusChange = e => {
+    const handleStatusChange = (e) => {
         setStatus(e.target.value)
     }
 
-    const handleEmailChange = e => {
+    const handleEmailChange = (e) => {
         setEmail(e.target.value)
     }
 
@@ -36,26 +35,30 @@ const DummyWithdrawal = (props) => {
             setMessage('Fields cannot be empty')
             setError(true)
         } else {
-            setMessage(
-                'Dummy withdrawal sent'
-            )
+            setMessage('Dummy withdrawal sent')
             setError(false)
             const formData = {
                 amount,
                 currency,
                 email,
-                status
+                status,
             }
 
             props.onInitWithdrawNow(formData, props.tokenId)
         }
     }
 
+    useEffect(() => {
+        if (props.error) {
+            console.log(props.error)
+            setError(true)
+            setMessage('Email not delivered')
+        }
+    }, [props.error])
 
     return (
         <>
             <div className='fundAccount'>
-               
                 <form className='fundAccount__form' onSubmit={handleSubmit}>
                     {message && (
                         <p
@@ -108,10 +111,7 @@ const DummyWithdrawal = (props) => {
 
                     <div className='fundAccount__form--btn'>
                         <button className='button' type='submit'>
-                            {
-                                props.loading ? 'loading...' :
-                                'Confirm'
-                            }
+                            {props.loading ? 'loading...' : 'Confirm'}
                         </button>
                     </div>
                 </form>
@@ -126,7 +126,7 @@ const mapStateToProps = (state) => {
         userData: state.auth.userData,
         userId: state.auth.userId,
         loading: state.user.loading,
-        error: state.user.error
+        error: state.user.error,
     }
 }
 
