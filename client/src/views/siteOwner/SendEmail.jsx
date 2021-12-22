@@ -61,7 +61,10 @@ const SendEmail = (props) => {
     }
 
     useEffect(() => {
+        console.log('email status ===', props.emailStatus)
         if(props.emailStatus){
+                    console.log("email status true",props.emailStatus)
+
             sentSentEmailStatus(true)
             setError(false)
         }
