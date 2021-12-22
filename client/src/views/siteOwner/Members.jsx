@@ -57,7 +57,7 @@ const Members = (props) => {
                 action: (
                     <button
                         className='btn1'
-                        onClick={() => handleApproval(userNO)}
+                        onClick={() => handleApproval(userNO - 1)}
                     >
                         {props.loading ? 'Loading...' : 'View'}
                     </button>
