@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
-
-import { StatsCard } from '../../components/StatsCard/StatsCard'
 import * as orderAction from '../../store/actions/burgerIndex'
 
 const DummyWithdrawal = (props) => {
@@ -11,13 +8,9 @@ const DummyWithdrawal = (props) => {
     const [currency, setCurrency] = useState('Bitcoin')
     const [message, setMessage] = useState('')
     const [error, setError] = useState(false)
-    const [userAccountBalance, setUserAccountBalance] = useState(0)
-
-    useEffect(() => {
-        if (props.userData.hasOwnProperty('username')) {
-            setUserAccountBalance(props.userData.accountBalance)
-        }
-    }, [props])
+    const [status, setStatus] = useState('Approved')
+    const [email, setEmail] = useState('')
+ 
 
     const handleAmountChange = (e) => {
         setAmount(e.target.value)
@@ -26,46 +19,43 @@ const DummyWithdrawal = (props) => {
         setCurrency(e.target.value)
     }
 
+    const handleStatusChange = e => {
+        setStatus(e.target.value)
+    }
+
+    const handleEmailChange = e => {
+        setEmail(e.target.value)
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
         amount = Number(amount)
 
-        if (amount > userAccountBalance) {
-            setMessage('Insufficiant Balance')
+        if (amount === '' || email === '') {
+            setMessage('Fields cannot be empty')
             setError(true)
         } else {
             setMessage(
-                'Withdrawal sent, Your withdrawal will reflect in your account after we have confirmed it, thanks!! '
+                'Dummy withdrawal sent'
             )
             setError(false)
             const formData = {
                 amount,
                 currency,
+                email,
+                status
             }
 
             props.onInitWithdrawNow(formData, props.tokenId)
         }
     }
 
-    const displayAccountBalance = `$${userAccountBalance}`
 
     return (
         <>
             <div className='fundAccount'>
-                <Row className='fundAccount__balance'>
-                    <Col lg={12} sm={12}>
-                        <StatsCard
-                            bigIcon={
-                                <i className='pe-7s-server text-warning' />
-                            }
-                            statsText='Account Balance'
-                            statsValue={displayAccountBalance}
-                            statsIcon={<i className='fa fa-refresh' />}
-                            statsIconText='Updated now'
-                        />
-                    </Col>
-                </Row>
+               
                 <form className='fundAccount__form' onSubmit={handleSubmit}>
                     {message && (
                         <p
@@ -76,6 +66,15 @@ const DummyWithdrawal = (props) => {
                             {message}
                         </p>
                     )}
+                    <input
+                        type='email'
+                        className='fundAccount__form--input'
+                        placeholder='Amount to Withdraw'
+                        name='amount'
+                        id='amount'
+                        onChange={handleEmailChange}
+                        value={email}
+                    />
                     <input
                         type='number'
                         className='fundAccount__form--input'
@@ -95,6 +94,16 @@ const DummyWithdrawal = (props) => {
                     >
                         <option value='Bitcoin'>Bitcoin</option>
                         <option value='Ethereum'>Ethereum</option>
+                    </select>
+                    <select
+                        name='select'
+                        id='select'
+                        onChange={handleStatusChange}
+                        value={status}
+                        className='fundAccount__form--select'
+                    >
+                        <option value='Approved'>Approved</option>
+                        <option value='Pending'>Pending</option>
                     </select>
 
                     <div className='fundAccount__form--btn'>
