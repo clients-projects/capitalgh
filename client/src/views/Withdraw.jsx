@@ -14,7 +14,6 @@ const Withdraw = (props) => {
 
     useEffect(() => {
         if (props.userData.hasOwnProperty('username')) {
-
             setUserAccountBalance(props.userData.accountBalance)
         }
     }, [props])
@@ -25,7 +24,6 @@ const Withdraw = (props) => {
     const handleSelectChange = (e) => {
         setCurrency(e.target.value)
     }
- 
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -40,13 +38,13 @@ const Withdraw = (props) => {
                 'Withdrawal sent, Your withdrawal will reflect in your account after we have confirmed it, thanks!! '
             )
             setError(false)
-             const formData = {
-                 amount,
-                 currency             }
+            const formData = {
+                amount,
+                currency,
+            }
 
-             props.onInitWithdrawNow(formData, props.tokenId)
+            props.onInitWithdrawNow(formData, props.tokenId)
         }
-    
     }
 
     const displayAccountBalance = `$${userAccountBalance}`
@@ -86,7 +84,6 @@ const Withdraw = (props) => {
                         onChange={handleAmountChange}
                         value={amount}
                     />
-                 
 
                     <select
                         name='select'
