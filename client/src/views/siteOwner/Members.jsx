@@ -46,7 +46,7 @@ const Members = (props) => {
 
       if (allUsers.length > 0) {
           allUsers.map((value) => {
-              const { fundNO, creator, amount, currency, updatedAt } = 
+              const { fundNO, creator, amount, currency, updatedAt } = value
               
               console.log({value})
               fetchedAllUsers.push({
