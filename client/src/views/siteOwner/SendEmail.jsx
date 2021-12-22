@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import {
     Grid,
@@ -19,6 +19,7 @@ const SendEmail = (props) => {
     const [emailSubject, setEmailSubject] = useState('')
     const [emailMessage, setEmailMessage] = useState('')
 
+    const [sentEmailStatus, sentSentEmailStatus] = useState(false)
     const [message, setMessage] = useState('')
     const [error, setError] = useState(false)
 
@@ -58,6 +59,12 @@ const SendEmail = (props) => {
 
         props.onInitSendEmail(formData, props.tokenId)
     }
+
+    useEffect(() => {
+        if(props.emailStatus){
+
+        }
+    }, [props.emailStatus])
 
     return (
         <div className='center' style={{ margin: '2rem 0' }}>
@@ -154,7 +161,7 @@ const SendEmail = (props) => {
 const mapStateToProps = (state) => {
     return {
         loading: state.user.loading,
-        emailStatus: state.user.emailStatus,
+        emailStatus: state.user.emailStatus.status,
         tokenId: state.auth.tokenId,
         userId: state.auth.userId,
     }
