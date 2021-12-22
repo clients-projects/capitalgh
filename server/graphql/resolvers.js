@@ -697,7 +697,6 @@ module.exports = {
                 'creator'
             )
 
-            console.log({ allUsersWithdrawal })
 
             if (!getFunds) {
                 const err = new Error('No Funds for Funding')
