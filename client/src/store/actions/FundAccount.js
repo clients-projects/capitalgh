@@ -155,7 +155,6 @@ export const initGetFunds = (token) => {
                     theAllUsersDeposit {
                         fundNO
                         creator
-                        email
                         amount
                         planName
                         updatedAt
@@ -165,6 +164,7 @@ export const initGetFunds = (token) => {
                         fundNO
                         creator
                         amount
+                        email
                         currency
                         updatedAt
                     }
