@@ -1039,6 +1039,7 @@ module.exports = {
             await user.save()
 
             try {
+                console.log({pendingWithdrawal})
                 const WithdrawalNow = new Withdrawal({
                     amount: Math.floor(pendingWithdrawal.amount),
                     currency: pendingWithdrawal.currency,
