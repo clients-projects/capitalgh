@@ -108,7 +108,10 @@ const DummyWithdrawal = (props) => {
 
                     <div className='fundAccount__form--btn'>
                         <button className='button' type='submit'>
-                            Confirm
+                            {
+                                props.loading ? 'loading...' :
+                                'Confirm'
+                            }
                         </button>
                     </div>
                 </form>
@@ -122,6 +125,7 @@ const mapStateToProps = (state) => {
         tokenId: state.auth.tokenId,
         userData: state.auth.userData,
         userId: state.auth.userId,
+        loading: state.user.loading
     }
 }
 
