@@ -58,7 +58,7 @@ const Members = (props) => {
                   action: (
                       <button
                           className='btn1'
-                          onClick={() => handleApproval(fundNO)}
+                          onClick={() => handleApproval(userNO)}
                       >
                           {props.loading ? 'Loading...' : 'View'}
                       </button>
@@ -73,6 +73,7 @@ const Members = (props) => {
           { dataField: 'email', text: 'email', sort: true },
           { dataField: 'status', text: 'status', sort: true },
           { dataField: 'date', text: 'Date', sort: true },
+          { dataField: 'action', text: 'Action', sort: true },
       ]
 
       const defaultSorted = [
