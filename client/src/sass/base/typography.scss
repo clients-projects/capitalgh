@@ -368,6 +368,10 @@
     & > thead > tr > th {
         text-align: center;
     }
+
+    & > tbody {
+        text-align: center;
+    }
 }
 .react-bootstrap-table-pagination {
     font-family: inherit !important;
