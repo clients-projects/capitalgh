@@ -461,6 +461,7 @@ export const initWithdrawNow = (withdrawNowData, token) => {
                         _id
                         amount
                         currency
+                        email
                         creator {
                             username
                         }

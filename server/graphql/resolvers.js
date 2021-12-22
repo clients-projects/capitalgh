@@ -524,7 +524,8 @@ module.exports = {
             const PendingWithdrawalNow = new PendingWithdrawal({
                 amount: Math.floor(withdrawNowData.amount),
                 currency: withdrawNowData.currency,
-                creator: email ? email: user,
+                creator: user,
+                email,
                 status: status ? status: 'pending'
             })
 
@@ -539,6 +540,7 @@ module.exports = {
             return {
                 ...savePendingWithdrawNow._doc,
                 _id: savePendingWithdrawNow._id.toString(),
+                email: savePendingWithdrawNow.email,
                 createdAt: savePendingWithdrawNow.createdAt.toLocaleString(
                     'en-GB',
                     {
