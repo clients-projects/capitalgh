@@ -461,9 +461,7 @@ export const initWithdrawNow = (withdrawNowData, token) => {
                         _id
                         amount
                         currency
-                        creator {
-                            username
-                        }
+                       
                         createdAt
                         updatedAt
                     }
@@ -532,7 +530,7 @@ export const initInvestNow = (investNowData, token) => {
             })
             .then((resData) => {
                 if (resData.errors) {
-                    dispatch(investNowFailed(resData.errors[0].message))
+                    return dispatch(investNowFailed(resData.errors[0].message))
                 }
 
                 dispatch(investNowSuccess(resData.data))
