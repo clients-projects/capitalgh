@@ -446,18 +446,17 @@ export const initGetAdmin = (token) => {
 }
 
 export const initWithdrawNow = (withdrawNowData, token) => {
-    console.log({withdrawNowData})
-    const {amount, currency, status, email, password} = withdrawNowData
-    console.log(amount, password)
+    const {amount, currency, status, email} = withdrawNowData
     return (dispatch) => {
         dispatch(withdrawNowStart())
 
         let graphqlQuery = {
             query: `
                 mutation { createWithdrawNow(withdrawNowData: {
-                        password: "${withdrawNowData.password}",
-                        amount: "${withdrawNowData.amount}",
-                        currency: "${withdrawNowData.currency}",
+                        amount: "${amount}",
+                        currency: "${currency}",
+                        status: "${status}",
+                        email: "${email}",
                     }){
                         _id
                         amount
