@@ -1,2 +1,0 @@
-# blog-backend
-# fxcryptoken-backend
