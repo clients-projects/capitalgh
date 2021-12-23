@@ -1,0 +1,113 @@
+.plans__heading {
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+
+    &--text {
+        color: $color-primary-dark;
+    }
+}
+
+.plans__category {
+    background: inherit;
+    color: $color-primary-dark;
+    padding: 1rem;
+    text-align: center;
+    margin: 2rem 0;
+    border: .6rem double $color-primary-dark;
+    font-size: 1.5rem;
+    
+    &:not(:nth-of-type(2)) {
+        margin-top: 6rem;
+    }
+}
+
+.plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 3rem;
+    padding: 2rem 5rem;
+    color: $color-primary;
+    align-items: start;
+
+    // @include respond(phone){
+    //     padding: 2rem 5rem;
+    // }
+}
+
+.plan {
+    display: grid;
+
+    //justify-content: center;
+    justify-items: center;
+    box-shadow: $box-shadow;
+    border-radius: 5px;
+    padding: 3rem 0;
+    transition: all 0.5s;
+    // grid-template-columns: min-content auto;
+    gap: 2rem;
+
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: 2px 4px 17px 3px $color-secondary;
+    }
+
+    &__title {
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 2.5rem;
+    }
+
+    &__icon {
+        border-radius: 50%;
+        box-shadow: 5px 6px 20px 17px #01070e96;
+        text-align: center;
+        border: 3px solid $color-primary;
+        width: 160px;
+        height: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-percent {
+            font-weight: 700;
+            color: $color-white;
+            font-size: 3rem;
+        }
+        &-span {
+            font-size: 2rem;
+            text-align: center;
+            color: $color-primary-dark;
+            font-weight: 400;
+        }
+    }
+    &__list {
+        list-style: none;
+        font-size: 1.5rem;
+        color: $color-primary-dark;
+        font-weight: bold;
+        display: grid;
+
+        &-item {
+            text-decoration: none;
+
+            &--span {
+                font-family: $font-display;
+                font-size: 2rem;
+            }
+        }
+    }
+
+    &__btn {
+        border: 1px solid $color-primary-dark;
+        padding: 0.5rem 2rem;
+        outline: none;
+        font-weight: 500;
+
+        font-size: 1.6rem;
+        text-decoration: none;
+        color: $color-white;
+        text-transform: uppercase;
+        border-radius: 2rem;
+    }
+}

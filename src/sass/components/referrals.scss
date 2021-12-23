@@ -1,0 +1,75 @@
+
+
+.referrals{
+    justify-self: center;
+    color: white;
+    display: grid;
+    justify-items: center;
+    height: max-content;
+    margin-bottom: 4rem;
+
+    &__heading{
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+        font-weight: 700;
+
+    }
+    &__box{
+        justify-self: stretch;
+    }
+    &__primary{
+        
+        display: grid;
+        justify-items: center;
+        text-transform: uppercase;
+        
+        &--img{
+            border-radius: 50%;
+        }
+        
+        &--title{
+            color: $color-grey-light-2;
+            margin: 2rem 0;
+            padding-right: 2rem;
+        }
+        
+        &--subtitle{
+            color: white;
+            font-weight: 700;
+        }
+        
+    }
+    
+    &__secondary{
+        display: grid;
+        width: 100%;
+        justify-items: center;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 4rem;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+
+        &--item{
+            border: 1px solid white;
+            border-radius: 2rem;
+            font-size: clamp(1.6rem, 3vw, 1.8rem);
+            padding: 1rem 3rem;
+        }
+    }
+
+    &__link{
+        display: grid;
+        margin-top: 4rem;
+
+
+        &--title{
+            font-weight: 700;
+        }
+        &--box{
+            font-size: 1.8rem;
+        }
+        &--btn{
+            justify-self: center;
+        }
+    }
+}

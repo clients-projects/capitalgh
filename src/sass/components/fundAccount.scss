@@ -1,0 +1,135 @@
+.fundAccount__controlLabel {
+    color: $color-primary-dark;
+    font-weight: 400;
+    font-family: $font-display;
+}
+
+.adminNav__fundAccount {
+    &:link,
+    &:visited {
+        color: white !important;
+    }
+}
+
+.fundAccount {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 4rem;
+    row-gap: 4rem;
+
+    &__balance {
+        grid-column: 4 / 10;
+
+        @include respond(phone) {
+            grid-column: 1 / -1;
+        }
+    }
+
+    &__package {
+        display: flex;
+        justify-content: center;
+        grid-column: 1 / -1;
+
+        &--text {
+            background: $color-secondary;
+            color: white;
+            text-align: center;
+            padding: 2rem 4rem;
+            font-weight: 400;
+            border-radius: 1rem;
+            font-size: 2rem;
+            font-family: $font-display;
+
+            span {
+                margin-left: 1rem;
+                font-weight: bolder;
+            }
+        }
+    }
+
+    &__form {
+        grid-column: 4 / 10;
+        display: grid;
+        row-gap: 1rem;
+
+        .message {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.8rem;
+            background-color: #0d5c0d;
+            font-family: $font-display;
+            color: white;
+        }
+
+        .message__error {
+            display: block;
+            background-color: #b32525;
+        }
+        @include respond(phone) {
+            grid-column: 1 / -1;
+        }
+
+        &--contact {
+            margin: 3rem 0;
+            background: $color-primary;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-family: $font-display;
+            font-weight: 300;
+        }
+
+        &--instruction {
+            margin: 3rem 0;
+            background: $color-secondary;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-family: $font-display;
+            font-weight: 400;
+        }
+
+        &--input,
+        &--select {
+            padding: 1rem;
+            border-radius: 4rem;
+            font-size: 1.8rem;
+            font-family: $font-display;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        &--file {
+            font-family: $font-display;
+            color: $color-secondary-light;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        &--btn {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+
+            &-item {
+                background-color: $color-secondary;
+                color: white;
+                font-family: $font-display;
+                font-weight: 400;
+                text-transform: uppercase;
+                padding: 1rem 5rem;
+                outline: none;
+                border-radius: 1rem;
+                border: none;
+            }
+        }
+    }
+
+    &__upload {
+        grid-column: 1 / -1;
+    }
+}
