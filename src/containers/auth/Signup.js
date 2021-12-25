@@ -302,7 +302,7 @@ const Signup = (props) => {
                             design='raised'
                             type='submit'
                             loading={props.loading}
-                            className='btn'
+                            className='btn btn-auth'
                         >
                             {props.loading ? 'Loading...' : 'Signup'}
                         </button>
