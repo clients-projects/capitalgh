@@ -2,12 +2,10 @@
     &-form {
         z-index: 1000;
         display: grid;
-        justify-self: center;
-        //width: 100%;
+       // justify-self: center;
         font-size: 1.4rem;
-        grid-column: sidebar-start / center-end;
+        grid-column: center-start / center-end;
         align-content: center;
-        // margin: auto;
         margin: 10rem 5rem;
         padding: 2rem;
         border: 1px solid $color-secondary;
