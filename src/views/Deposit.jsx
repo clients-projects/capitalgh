@@ -95,8 +95,7 @@ function Deposit(props) {
             }
         })
 
-        console.log({ packageName })
-        console.log({ packageProfit })
+    
     }
 
     const onAmountChange = (e) => {
@@ -242,7 +241,7 @@ function Deposit(props) {
                                 Profit:{' '}
                                 {amountToDeposit ? (
                                     <strong>
-                                        ${Math.floor(packageProfit)} Weekly {amountToDeposit}
+                                        ${Math.floor(packageProfit)} Weekly for {planDetails.duration}
                                     </strong>
                                 ) : (
                                     ''
