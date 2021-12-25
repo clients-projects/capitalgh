@@ -22,7 +22,7 @@ class AdminNavbarLinks extends Component {
                             to='/admin/deposit'
                             className='adminNav__fundAccount'
                         >
-                            Deposit
+                            Invest
                         </Link>
                     </NavItem>
 

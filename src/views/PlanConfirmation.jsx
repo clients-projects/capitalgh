@@ -29,7 +29,7 @@ function PlanConfirmation(props) {
                     {name}
                 </p>
                 <p className='deposit__info--left'>Profit</p>
-                <p className='deposit__info--right'>{`${percent}% for ${duration}`}</p>
+                <p className='deposit__info--right'>{`${percent}% Weekly for ${duration}`}</p>
                 <p className='deposit__info--left'>Principal Return</p>
                 <p className='deposit__info--right'>Yes</p>
                 <p className='deposit__info--left'>Principal Withdraw</p>

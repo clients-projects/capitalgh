@@ -24,7 +24,7 @@ function Deposit(props) {
             value: '1 Month Package',
             details: {
                 name: '1 Month Package',
-                percent: 28,
+                percent: 7,
                 duration: '1 Month',
                 minimum: 300,
                 maximum: 6999,
@@ -35,7 +35,7 @@ function Deposit(props) {
             value: '3 Months Package',
             details: {
                 name: '3 Months Package',
-                percent: 36,
+                percent: 9,
                 duration: '3 Months',
                 minimum: 7000,
                 maximum: 23999,
@@ -46,7 +46,7 @@ function Deposit(props) {
             value: '6 Months Package ',
             details: {
                 name: '6 Months Package ',
-                percent: 48,
+                percent: 12,
                 duration: '6 Months',
                 minimum: 24000,
                 maximum: 39999,
@@ -58,7 +58,7 @@ function Deposit(props) {
             value: '12 Months Package',
             details: {
                 name: '12 Months Package',
-                percent: 72,
+                percent: 18,
                 duration: '12 Months',
                 minimum: 40000,
                 maximum: 10000000000000,
@@ -235,6 +235,14 @@ function Deposit(props) {
                             color: 'white',
                         }}
                     >
+                        Profit:{' '}
+                        {amountToDeposit ? (
+                            <strong>
+                                ${Math.floor( packageProfit)} {' '} Weekly
+                            </strong>
+                        ) : (
+                            ''
+                        )}
                         Total Profit:{' '}
                         {amountToDeposit ? (
                             <strong>
