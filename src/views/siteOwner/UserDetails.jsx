@@ -310,21 +310,11 @@ const UserDetails = (props) => {
                                     </Row>
 
                                     <Row>
-                                        <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
-                                            <ControlLabel>
-                                                Daily Earning
-                                            </ControlLabel>
-                                            <FormControl
-                                                type='number'
-                                                value={dailyEarning}
-                                                name='dailyEarning'
-                                                onChange={handleChange}
-                                            />
-                                        </FormGroup>
+                                      
 
                                         <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
                                             <ControlLabel>
-                                                Total Earnings
+                                                Total Profit
                                             </ControlLabel>
                                             <FormControl
                                                 type='number'

@@ -26,6 +26,7 @@ const Dashboard = (props) => {
     const [activeDeposit, setActiveDeposit] = useState(0)
     const [profit, setProfit] = useState(0)
     const [referralBonus, setReferralBonus] = useState(0)
+    const [totalEarnings, setTotalEarnings] = useState(0)
     
     useEffect(() => {
         if(props.userData.hasOwnProperty('username')){
@@ -40,6 +41,7 @@ const Dashboard = (props) => {
 
             setUserAccountBalance(accountBalandProfits)
             setProfit(keepProfits)
+            setTotalEarnings(props.totalEarnings)
         }
 
         if(props.userDeposits){
@@ -50,7 +52,7 @@ const Dashboard = (props) => {
 
     const displayUserFunds = `$${userAccountBalance}`
     const displayActiveDeposits = `$${activeDeposit}`
-    const displayProfit = `$${profit}`
+    const displayProfit = `$${totalEarnings > 1 ? totalEarnings : profit}`
     const displayReferralBonus = `$${referralBonus}`
 
         return (
@@ -144,7 +146,8 @@ const mapStateToProps = (state) => {
         userData: state.auth.userData,
         userId: state.auth.userId,
         userDeposits: state.auth.userDeposits,
-        totalReferralCommission: state.auth.userData.totalReferralCommission
+        totalReferralCommission: state.auth.userData.totalReferralCommission,
+        totalEarnings: state.auth.userData.totalEarnings
     }
 }
 
