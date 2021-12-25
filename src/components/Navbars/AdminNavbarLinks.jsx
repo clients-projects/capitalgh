@@ -10,7 +10,7 @@ class AdminNavbarLinks extends Component {
         
         const handleLogout = e => {
             console.log('logout', e)
-           return this.props.onLogOut
+           return this.props.onLogOut()
         }
 
         let siteOwnerAdminLinks = (
