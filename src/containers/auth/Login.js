@@ -41,6 +41,7 @@ const Login = (props) => {
                 success: 'Success',
             })
         }
+
     }, [props])
 
     const inputChangeHandler = (input, value) => {
@@ -89,6 +90,7 @@ const Login = (props) => {
         }
     }
 
+    console.log(props.loading)
     return (
         <>
             <ReactParticles/>
@@ -141,7 +143,6 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
     return {
         loading: state.auth.loading,
-        // loading:false,
         err: state.auth.error,
         tokenId: state.auth.tokenId,
         userId: state.auth.userId,
