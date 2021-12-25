@@ -231,13 +231,13 @@ function Deposit(props) {
                     <div
                         style={{
                             textAlign: 'center',
-                            margin: '1rem 2rem',
+                            margin: '.5rem 2rem',
                             color: 'white',
                             display: 'grid',
                         }}
                     >
                         <>
-                            <h2>
+                            <p>
                                 Profit:{' '}
                                 {amountToDeposit ? (
                                     <strong>
@@ -246,8 +246,8 @@ function Deposit(props) {
                                 ) : (
                                     ''
                                 )}
-                            </h2>
-                            <h2>
+                            </p>
+                            <p>
                                 Total Profit:{' '}
                                 {amountToDeposit ? (
                                     <strong>
@@ -259,7 +259,7 @@ function Deposit(props) {
                                 ) : (
                                     ''
                                 )}
-                            </h2>
+                            </p>
                         </>
                     </div>
 
