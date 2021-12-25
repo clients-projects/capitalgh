@@ -12,6 +12,10 @@
         border-radius: 5px;
         box-shadow: $box-shadow;
 
+        .btn-auth {
+            background-color: red;
+        }
+
         @include respond(tab-port) {
             grid-column: 1 / col-end 9;
         }
@@ -44,11 +48,9 @@
         &--error {
             background-color: $color-error;
         }
+        
     }
 
-    .btn-auth {
-        background-color: red;
-    }
 }
 
 .auth-form__login {
