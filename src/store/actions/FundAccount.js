@@ -1,8 +1,8 @@
 import * as actions from './actionTypes'
 
-//const URL = 'http://localhost:3030'
+const URL = 'http://localhost:3030'
 
-const URL = 'https://capitalgh-back.herokuapp.com'
+//const URL = 'https://capitalgh-back.herokuapp.com'
 
 
 export const fundAccountStart = () => {
