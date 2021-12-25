@@ -7,7 +7,11 @@ import * as orderAction from '../../store/actions/burgerIndex'
 
 class AdminNavbarLinks extends Component {
     render() {
-     
+        
+        const handleLogout = e => {
+            console.log('logout', e)
+          // return this.props.onLogOut
+        }
 
         let siteOwnerAdminLinks = (
             <>
@@ -35,7 +39,7 @@ class AdminNavbarLinks extends Component {
                     <Nav>
                       
 
-                        <NavItem eventKey={7} onClick={this.props.onLogOut}>
+                        <NavItem eventKey={7} onClick={handleLogout}>
                             Log out
                         </NavItem>
                     </Nav>
