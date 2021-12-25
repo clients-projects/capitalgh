@@ -228,7 +228,7 @@ function Deposit(props) {
                         max={planDetails.maximum}
                     />
 
-                    <h2
+                    <div
                         style={{
                             textAlign: 'center',
                             margin: '20px',
@@ -236,6 +236,8 @@ function Deposit(props) {
                             display: 'grid'
                         }}
                     >
+                        <>
+                        <h2>
                         Profit:{' '}
                         {amountToDeposit ? (
                             <strong>
@@ -243,7 +245,9 @@ function Deposit(props) {
                             </strong>
                         ) : (
                             ''
-                        )}
+                            )}
+                            </h2>
+                            <h2>
                         Total Profit:{' '}
                         {amountToDeposit ? (
                             <strong>
@@ -251,8 +255,10 @@ function Deposit(props) {
                             </strong>
                         ) : (
                             ''
-                        )}
-                    </h2>
+                            )}
+                            </h2>
+                            </>
+                    </div>
 
                     <FormGroup className='fundAccount__form--instruction'>
                         <FormControl.Static>
