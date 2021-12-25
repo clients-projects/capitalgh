@@ -284,6 +284,7 @@ export const initGetMember = (id, token) => {
 }
 
 export const initLogin = (email, password) => {
+    console.log(email, password)
     return (dispatch) => {
         dispatch(authStart())
 
