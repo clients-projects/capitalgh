@@ -63,7 +63,7 @@ function Deposit(props) {
                 minimum: 40000,
                 maximum: 10000000000000,
             },
-        }
+        },
     ]
 
     const customStyles = {
@@ -166,7 +166,7 @@ function Deposit(props) {
             setMessage('')
 
             if (!error) {
-                 props.onInitInvestNow(formData, props.tokenId)
+                props.onInitInvestNow(formData, props.tokenId)
 
                 props.history.push('/admin/plan-confirmation/:' + packageName, {
                     ...formData,
@@ -231,33 +231,36 @@ function Deposit(props) {
                     <div
                         style={{
                             textAlign: 'center',
-                            margin: '20px',
+                            margin: '1rem 2rem',
                             color: 'white',
-                            display: 'grid'
+                            display: 'grid',
                         }}
                     >
                         <>
-                        <h2>
-                        Profit:{' '}
-                        {amountToDeposit ? (
-                            <strong>
-                                ${Math.floor( packageProfit)} {' '} Weekly
-                            </strong>
-                        ) : (
-                            ''
-                            )}
+                            <h2>
+                                Profit:{' '}
+                                {amountToDeposit ? (
+                                    <strong>
+                                        ${Math.floor(packageProfit)} Weekly
+                                    </strong>
+                                ) : (
+                                    ''
+                                )}
                             </h2>
                             <h2>
-                        Total Profit:{' '}
-                        {amountToDeposit ? (
-                            <strong>
-                                ${Math.floor(amountToDeposit + packageProfit)}
-                            </strong>
-                        ) : (
-                            ''
-                            )}
+                                Total Profit:{' '}
+                                {amountToDeposit ? (
+                                    <strong>
+                                        $
+                                        {Math.floor(
+                                            amountToDeposit + packageProfit
+                                        )}
+                                    </strong>
+                                ) : (
+                                    ''
+                                )}
                             </h2>
-                            </>
+                        </>
                     </div>
 
                     <FormGroup className='fundAccount__form--instruction'>
