@@ -237,29 +237,18 @@ function Deposit(props) {
                         }}
                     >
                         <>
+                        
                             <p>
                                 Profit:{' '}
                                 {amountToDeposit ? (
                                     <strong>
-                                        ${Math.floor(packageProfit)} Weekly
+                                        ${Math.floor(packageProfit)} Weekly {amountToDeposit}
                                     </strong>
                                 ) : (
                                     ''
                                 )}
                             </p>
-                            <p>
-                                Total Profit:{' '}
-                                {amountToDeposit ? (
-                                    <strong>
-                                        $
-                                        {Math.floor(
-                                            amountToDeposit + packageProfit
-                                        )}
-                                    </strong>
-                                ) : (
-                                    ''
-                                )}
-                            </p>
+                           
                         </>
                     </div>
 
