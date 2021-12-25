@@ -39,17 +39,14 @@ const Dashboard = (props) => {
             setPendingWithdrawalsCount(props.pendingWithdrawalsCount)
         }
 
-        console.log('received amount', props.totalReceivedAmount)
     }, [props])
 
-    console.log({totalReceivedAmount})
 
     const displayDisbursed =  `$${totalDisbursedAmount}`
     const displayReceived = `$${totalReceivedAmount}`
     const displayWithdrawalsCount = pendingWithdrawalsCount
     const displayDepositsCount = pendingDepositsCount
 
-    console.log({displayReceived})
 
     return (
         <div className='content'>
@@ -130,7 +127,6 @@ const Dashboard = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log({state})
     return {
         err: state.auth.error,
         loading: state.user.loading,
