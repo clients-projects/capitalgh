@@ -233,6 +233,7 @@ function Deposit(props) {
                             textAlign: 'center',
                             margin: '20px',
                             color: 'white',
+                            display: 'grid'
                         }}
                     >
                         Profit:{' '}
