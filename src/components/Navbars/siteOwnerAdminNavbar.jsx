@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Navbar } from 'react-bootstrap'
 
+import AdminNavbarLinks from './siteOwnerAdminNavbarLinks'
 
 class Header extends Component {
     constructor(props) {
@@ -36,6 +37,7 @@ class Header extends Component {
                     <Navbar.Toggle onClick={this.mobileSidebarToggle} />
                 </Navbar.Header>
                 <Navbar.Collapse>
+                    <AdminNavbarLinks />
                 </Navbar.Collapse>
             </Navbar>
         )
