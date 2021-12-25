@@ -90,7 +90,6 @@ const Login = (props) => {
         }
     }
 
-    console.log(props.loading)
     return (
         <>
             <ReactParticles/>
@@ -125,7 +124,6 @@ const Login = (props) => {
                             design='raised'
                             type='submit'
                             className='btn btn-auth'
-                            loading={props.loading}
                         >
                             {props.loading ? 'Loading...' : 'Login'}
                         </button>
