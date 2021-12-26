@@ -60,32 +60,36 @@ const PendingWithdrawals = (props) => {
 
     if (userPendingWithdrawal.length > 0) {
         userPendingWithdrawal.map((value) => {
-            const { fundNO, creator, amount, currency, updatedAt, status } =
+            const { fundNO, creator, amount, currency, updatedAt, status, email } =
                 value
-            console.log({value})
+            
+                const creatorEmail = creator.email
+                const creatorBitcoinAccount = creator.bitcoinAccount
+                const creatorEthereumAccount = creator.ethereumAccount
+
             withdrawalRequests.push({
                 id: fundNO,
-                username: creator,
+                email: email !== 'undefined' ? email : creatorEmail,
                 amount,
                 currency,
                 status,
                 date: updatedAt,
                 action: (
                     <>
-                    <button
-                        className={
-                            loadedWithdrawals && status === 'Approved'
-                                ? 'btn1 btn1__approved'
-                                : 'btn1'
-                        }
-                        onClick={() => handleApproval(fundNO)}
-                    >
-                        {props.loading && props.buttonId === fundNO
-                            ? 'Loading'
-                            : loadedWithdrawals && status === 'Approved'
-                            ? 'approved'
-                            : 'approve'}
-                    </button>
+                        <button
+                            className={
+                                loadedWithdrawals && status === 'Approved'
+                                    ? 'btn1 btn1__approved'
+                                    : 'btn1'
+                            }
+                            onClick={() => handleApproval(fundNO)}
+                        >
+                            {props.loading && props.buttonId === fundNO
+                                ? 'Loading'
+                                : loadedWithdrawals && status === 'Approved'
+                                ? 'approved'
+                                : 'approve'}
+                        </button>
                     </>
                 ),
             })

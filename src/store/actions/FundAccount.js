@@ -143,6 +143,7 @@ export const initGetFunds = (token) => {
                         }
                         amount
                         currency
+                        email
                         status
                         updatedAt
                     }
