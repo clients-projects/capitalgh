@@ -21,7 +21,6 @@ import { Card } from '../../components/Card/Card'
 
 import * as orderAction from '../../store/actions/burgerIndex'
 
-const thDepositArray = ['No', 'Amount', 'Package', 'profit', 'Date']
 
 const UserDetails = (props) => {
     const [userDeposits, setUserDeposits] = useState([])
@@ -129,9 +128,8 @@ const UserDetails = (props) => {
     const updateMemberProfit = (id) => {
         for (let i = 0; i < props.memberId.length; i++) {
             if (id === i) {
-          
                 props.onInitUpdateProfit(
-                    profit[i+1],
+                    profit[i + 1],
                     props.memberId[i]._id,
                     props.tokenId
                 )
@@ -155,7 +153,7 @@ const UserDetails = (props) => {
             const fetchedActiveReferrals = props.member.activeReferrals
             const fetchedTotalReferrals = props.member.totalReferrals
             const fetchedTotalReferralCommission =
-                props.member.totalReferralCommission
+            props.member.totalReferralCommission
 
             setFullname(fetchedFullname)
 
@@ -208,11 +206,137 @@ const UserDetails = (props) => {
             bitcoin,
             confirmPassword,
         }
-
+        
         props.onInitUpdateMember(formData, props.tokenId)
     }
+    
+    const thDepositArray = ['No', 'Amount', 'Package', 'profit', 'Date']
+    const usersDepositData = []
 
-    console.log({profit})
+    if (userDeposits.length > 0) {
+        userDeposits.map((value) => {
+            const {
+                fundNO,
+                creator,
+                amount,
+                currency,
+                updatedAt,
+                status,
+                email,
+            } = value
+
+            const creatorEmail = creator.email
+            const creatorBitcoinAccount = creator.bitcoinAccount
+            const creatorEthereumAccount = creator.ethereumAccount
+
+            console.log({ creatorBitcoinAccount })
+
+            let cryptoAddressToDisplay =
+                creatorBitcoinAccount || creatorEthereumAccount
+
+            if (!cryptoAddressToDisplay) {
+                cryptoAddressToDisplay = 'No address'
+            }
+
+            usersDepositData.push({
+                id: fundNO,
+                email: email !== 'undefined' ? email : creatorEmail,
+                amount,
+                currency,
+                cryptoAddress: cryptoAddressToDisplay,
+                profit: (
+                    <>
+                     <input
+                                                                            type='number'
+                                                                            value={
+                                                                                profit.key
+                                                                            }
+                                                                            onChange={(
+                                                                        e
+                                                                    ) =>
+                                                                        handleMember(
+                                                                            e,
+                                                                            Prop
+                                                                        )
+                                                                    }
+                                                                    name={
+                                                                        key
+                                                                    }
+                                                                    className='member__profit'
+                                                                />
+                    </>
+                ),
+                date: updatedAt,
+                action: (
+                    <>
+                        <button
+                            className='btn1'
+                            onClick={() => handleApproval(fundNO)}
+                        >
+                            {props.loading && props.buttonId === fundNO
+                                ? 'Loading'
+                                : loadedWithdrawals && status === 'Approved'
+                                ? 'approved'
+                                : 'approve'}
+                        </button>
+                    </>
+                ),
+            })
+        })
+    }
+
+    const columns = [
+        { dataField: 'id', text: 'Id', sort: true },
+        { dataField: 'email', text: 'email', sort: true },
+        { dataField: 'amount', text: 'Amount Withdrawn', sort: true },
+        { dataField: 'currency', text: 'Currency', sort: true },
+        { dataField: 'status', text: 'Status', sort: true },
+        { dataField: 'cryptoAddress', text: 'crypto Address', sort: true },
+        { dataField: 'date', text: 'Date', sort: true },
+        { dataField: 'action', text: 'Action', sort: true },
+    ]
+
+    const defaultSorted = [
+        {
+            dataField: 'name',
+            order: 'desc',
+        },
+    ]
+
+    const pagination = paginationFactory({
+        page: 1,
+        sizePerPage: 5,
+        lastPageText: '>>',
+        firstPageText: '<<',
+        nextPageText: '>',
+        prePageText: '<',
+        showTotal: true,
+        alwaysShowAllBtns: true,
+        onPageChange: function (page, sizePerPage) {
+            console.log('page', page)
+            console.log('sizePerPage', sizePerPage)
+        },
+        onSizePerPageChange: function (page, sizePerPage) {
+            console.log('page', page)
+            console.log('sizePerPage', sizePerPage)
+        },
+    })
+
+    const { SearchBar, ClearSearchButton } = Search
+
+    const MyExportCSV = (props) => {
+        const handleClick = () => {
+            props.onExport()
+        }
+        return (
+            <div>
+                <button className='btn btn-success' onClick={handleClick}>
+                    Export to CSV
+                </button>
+            </div>
+        )
+    }
+
     return (
         <div className='center' style={{ margin: '2rem 0' }}>
             <Grid fluid>
@@ -316,8 +440,6 @@ const UserDetails = (props) => {
                                     </Row>
 
                                     <Row>
-                                      
-
                                         <FormGroup className='col-md-12 col-sm-12 col-xs-12'>
                                             <ControlLabel>
                                                 Total Profit
@@ -437,71 +559,96 @@ const UserDetails = (props) => {
                     <Col md={12}>
                         <Card
                             plain
-                            title={`${username} Investment` }
+                            title={`${username} Investment`}
                             category='History'
                             ctTableFullWidth
                             ctTableResponsive
                             content={
-                                <Table>
-                                    <thead>
-                                        <tr>
-                                            {thDepositArray.map((prop, key) => {
-                                                return <th key={key}>{prop}</th>
-                                            })}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {userDeposits.map((Prop, Key) => {
-                                            return (
-                                                <tr key={Key}>
-                                                    {Object.values(Prop).map(
-                                                        (prop, key) => {
-                                                            return (
-                                                                <td key={key}>
-                                                                    {key ===
-                                                                    3 ? (
-                                                                        <input
-                                                                            type='number'
-                                                                            value={
-                                                                                profit.key
-                                                                            }
-                                                                            onChange={(
-                                                                        e
-                                                                    ) =>
-                                                                        handleMember(
-                                                                            e,
-                                                                            Prop
-                                                                        )
-                                                                    }
-                                                                    name={
-                                                                        key
-                                                                    }
-                                                                    className='member__profit'
-                                                                />
-                                                                    ) : (
-                                                                        prop
-                                                                    )}
-                                                                </td>
-                                                            )
-                                                        }
-                                                    )}
-                                                    <button
-                                                        className='btn1'
-                                                        onClick={() =>
-                                                            updateMemberProfit(
-                                                                Key
-                                                            )
-                                                        }
-                                                    >
-                                                        {props.loading
-                                                            ? 'Loading...'
-                                                            : 'Update Profit'}
-                                                    </button>
-                                                </tr>
-                                            )
-                                        })}
-                                    </tbody>
-                                </Table>
+                                <ToolkitProvider
+                                    bootstrap4
+                                    data={usersDepositData}
+                                    keyField='id'
+                                    columns={columns}
+                                    search
+                                    exportCSV
+                                >
+                                    {(props) => (
+                                        <div>
+                                            <SearchBar {...props.searchProps} />{' '}
+                                            <ClearSearchButton
+                                                {...props.searchProps}
+                                            />
+                                            <hr />
+                                            <MyExportCSV {...props.csvProps} />
+                                            <BootstrapTable
+                                                defaultSorted={defaultSorted}
+                                                classes='table-layout-auto custom-table'
+                                                pagination={pagination}
+                                                {...props.baseProps}
+                                            />
+                                        </div>
+                                    )}
+                                </ToolkitProvider>
+                                // <Table>
+                                //     <thead>
+                                //         <tr>
+                                //             {thDepositArray.map((prop, key) => {
+                                //                 return <th key={key}>{prop}</th>
+                                //             })}
+                                //         </tr>
+                                //     </thead>
+                                //     <tbody>
+                                //         {userDeposits.map((Prop, Key) => {
+                                //             return (
+                                //                 <tr key={Key}>
+                                //                     {Object.values(Prop).map(
+                                //                         (prop, key) => {
+                                //                             return (
+                                //                                 <td key={key}>
+                                //                                     {key ===
+                                //                                     3 ? (
+                                //                                         <input
+                                //                                             type='number'
+                                //                                             value={
+                                //                                                 profit.key
+                                //                                             }
+                                //                                             onChange={(
+                                //                                         e
+                                //                                     ) =>
+                                //                                         handleMember(
+                                //                                             e,
+                                //                                             Prop
+                                //                                         )
+                                //                                     }
+                                //                                     name={
+                                //                                         key
+                                //                                     }
+                                //                                     className='member__profit'
+                                //                                 />
+                                //                                     ) : (
+                                //                                         prop
+                                //                                     )}
+                                //                                 </td>
+                                //                             )
+                                //                         }
+                                //                     )}
+                                //                     <button
+                                //                         className='btn1'
+                                //                         onClick={() =>
+                                //                             updateMemberProfit(
+                                //                                 Key
+                                //                             )
+                                //                         }
+                                //                     >
+                                //                         {props.loading
+                                //                             ? 'Loading...'
+                                //                             : 'Update Profit'}
+                                //                     </button>
+                                //                 </tr>
+                                //             )
+                                //         })}
+                                //     </tbody>
+                                // </Table>
                             }
                         />
                     </Col>
