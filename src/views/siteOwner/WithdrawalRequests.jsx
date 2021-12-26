@@ -60,33 +60,36 @@ const PendingWithdrawals = (props) => {
 
     if (userPendingWithdrawal.length > 0) {
         userPendingWithdrawal.map((value) => {
-            const { fundNO, creator, amount, currency, updatedAt, status, email } =
-                value
-            
-                const creatorEmail = creator.email
-                const creatorBitcoinAccount = creator.bitcoinAccount
-                const creatorEthereumAccount = creator.ethereumAccount
+            const {
+                fundNO,
+                creator,
+                amount,
+                currency,
+                updatedAt,
+                status,
+                email,
+            } = value
 
-                console.log({creatorBitcoinAccount})
+            const creatorEmail = creator.email
+            const creatorBitcoinAccount = creator.bitcoinAccount
+            const creatorEthereumAccount = creator.ethereumAccount
 
-                
-                let cryptoAddressToDisplay = creatorBitcoinAccount || creatorEthereumAccount
+            console.log({ creatorBitcoinAccount })
 
-                if(!cryptoAddressToDisplay){
-                    console.log('empty string', cryptoAddressToDisplay)
-                    cryptoAddressToDisplay = 'No address Provided'
-                }else {
-                    console.log('not empty', cryptoAddressToDisplay)
-                }
+            let cryptoAddressToDisplay =
+                creatorBitcoinAccount || creatorEthereumAccount
 
-                console.log("address final", creatorEmail, cryptoAddressToDisplay)
+            if (!cryptoAddressToDisplay) {
+                cryptoAddressToDisplay = 'No address'
+            }
+
 
             withdrawalRequests.push({
                 id: fundNO,
                 email: email !== 'undefined' ? email : creatorEmail,
                 amount,
                 currency,
-                cryptoAddress : cryptoAddressToDisplay ,
+                cryptoAddress: cryptoAddressToDisplay,
                 status,
                 date: updatedAt,
                 action: (
@@ -174,8 +177,6 @@ const PendingWithdrawals = (props) => {
                             ctTableFullWidth
                             ctTableResponsive
                             content={
-                              
-
                                 <ToolkitProvider
                                     bootstrap4
                                     data={withdrawalRequests}
