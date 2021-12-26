@@ -22,7 +22,7 @@ import * as orderAction from '../../store/actions/burgerIndex'
 
 const UserDetails = (props) => {
     const [userDeposits, setUserDeposits] = useState([])
-    const [profit, setProfit] = useState({})
+    const [profitData, setProfitData] = useState({})
 
     const gottenAllUser = useRef()
 
@@ -119,7 +119,7 @@ const UserDetails = (props) => {
 
     const handleMember = (e, fundNO) => {
         console.log(e, fundNO, 'clicked')
-        setProfit(e.target.value)
+        setProfitData(e.target.value)
     }
 
     const updateMemberProfit = (id) => {
@@ -129,7 +129,7 @@ const UserDetails = (props) => {
             if (id === i) {
                 console.log('id is equal', id, i)
                 props.onInitUpdateProfit(
-                    profit[i + 1],
+                    profitData[i + 1],
                     props.memberId[i]._id,
                     props.tokenId
                 )
@@ -226,7 +226,7 @@ const UserDetails = (props) => {
                     <>
                         <input
                             type='number'
-                            value={profit}
+                            value={profitData}
                             onChange={(e) => handleMember(e, fundNO)}
                             name={fundNO}
                             className='member__profit'
@@ -298,7 +298,6 @@ const UserDetails = (props) => {
         )
     }
 
-    console.log({ profit })
 
     return (
         <div className='center' style={{ margin: '2rem 0' }}>
