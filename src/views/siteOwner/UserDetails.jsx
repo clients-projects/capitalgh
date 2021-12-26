@@ -255,6 +255,8 @@ const UserDetails = (props) => {
         }
     }, [profitData.fundNO, props.loading, updateMemberProfit, userDeposits])
 
+    console.log({userDepositsData})
+
 
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
