@@ -67,7 +67,12 @@ const PendingWithdrawals = (props) => {
                 const creatorBitcoinAccount = creator.bitcoinAccount
                 const creatorEthereumAccount = creator.ethereumAccount
 
+                console.log({creatorBitcoinAccount})
+
                 let cryptoAddressToDisplay = creatorBitcoinAccount
+
+
+                console.log({cryptoAddressToDisplay})
 
                 if(!cryptoAddressToDisplay){
                     cryptoAddressToDisplay = creatorEthereumAccount
