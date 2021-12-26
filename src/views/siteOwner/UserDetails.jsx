@@ -216,27 +216,17 @@ const UserDetails = (props) => {
     if (userDeposits.length > 0) {
         userDeposits.map((value) => {
             const {
-                fundNO,
-                creator,
+                No,
                 amount,
-                currency,
+                Package,
                 updatedAt,
-                status,
+                profit,
                 email,
             } = value
 
-            const creatorEmail = creator.email
-            const creatorBitcoinAccount = creator.bitcoinAccount
-            const creatorEthereumAccount = creator.ethereumAccount
+            console.log({value})
 
-            console.log({ creatorBitcoinAccount })
 
-            let cryptoAddressToDisplay =
-                creatorBitcoinAccount || creatorEthereumAccount
-
-            if (!cryptoAddressToDisplay) {
-                cryptoAddressToDisplay = 'No address'
-            }
 
             usersDepositData.push({
                 id: fundNO,
