@@ -7,7 +7,7 @@ import {
     Col,
     ControlLabel,
     FormControl,
-    FormGroup
+    FormGroup,
 } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css'
@@ -19,7 +19,6 @@ import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import { Card } from '../../components/Card/Card'
 
 import * as orderAction from '../../store/actions/burgerIndex'
-
 
 const UserDetails = (props) => {
     const [userDeposits, setUserDeposits] = useState([])
@@ -126,10 +125,11 @@ const UserDetails = (props) => {
     }
 
     const updateMemberProfit = (id) => {
-        console.log({id})
+        console.log({ id })
 
         for (let i = 0; i < props.memberId.length; i++) {
             if (id === i) {
+                console.log('id is equal', id, i)
                 props.onInitUpdateProfit(
                     profit[i + 1],
                     props.memberId[i]._id,
@@ -155,7 +155,7 @@ const UserDetails = (props) => {
             const fetchedActiveReferrals = props.member.activeReferrals
             const fetchedTotalReferrals = props.member.totalReferrals
             const fetchedTotalReferralCommission =
-            props.member.totalReferralCommission
+                props.member.totalReferralCommission
 
             setFullname(fetchedFullname)
 
@@ -208,25 +208,17 @@ const UserDetails = (props) => {
             bitcoin,
             confirmPassword,
         }
-        
+
         props.onInitUpdateMember(formData, props.tokenId)
     }
-    
+
     const usersDepositData = []
 
     if (userDeposits.length > 0) {
         userDeposits.map((value) => {
-            const {
-                fundNO,
-                amount,
-                planName,
-                updatedAt,
-                profit
-            } = value
+            const { fundNO, amount, planName, updatedAt, profit } = value
 
-            console.log({value})
-
-
+            console.log({ value })
 
             usersDepositData.push({
                 id: fundNO,
@@ -234,41 +226,24 @@ const UserDetails = (props) => {
                 plan: planName,
                 profit: (
                     <>
-                     <input
-                                                                            type='number'
-                                                                            value={
-                                                                                profit
-                                                                            }
-                                                                            onChange={(
-                                                                        e
-                                                                    ) =>
-                                                                        handleMember(
-                                                                            e,
-                                                                            fundNO
-                                                                        )
-                                                                    }
-                                                                    name={
-                                                                        fundNO
-                                                                    }
-                                                                    className='member__profit'
-                                                                />
+                        <input
+                            type='number'
+                            value={profit.fundNO}
+                            onChange={(e) => handleMember(e, fundNO)}
+                            name={fundNO}
+                            className='member__profit'
+                        />
                     </>
                 ),
                 date: updatedAt,
                 action: (
                     <>
-                         <button
-                                                         className='btn1'
-                                                         onClick={() =>
-                                                             updateMemberProfit(
-                                                                1-fundNO
-                                                             )
-                                                         }
-                                                     >
-                                                         {props.loading
-                                                             ? 'Loading...'
-                                                             : 'Update Profit'}
-                                                     </button>
+                        <button
+                            className='btn1'
+                            onClick={() => updateMemberProfit( fundNO - 1)}
+                        >
+                            {props.loading ? 'Loading...' : 'Update Profit'}
+                        </button>
                     </>
                 ),
             })
@@ -325,11 +300,13 @@ const UserDetails = (props) => {
         )
     }
 
+    console.log({profit})
+
     return (
         <div className='center' style={{ margin: '2rem 0' }}>
             <Grid fluid>
                 <Row style={{ display: 'grid' }}>
-                    <Col md='8' style={{ justifySelf: 'center' }}>
+                    <Col md={8} style={{ justifySelf: 'center' }}>
                         <Card
                             title='User Details'
                             content={
