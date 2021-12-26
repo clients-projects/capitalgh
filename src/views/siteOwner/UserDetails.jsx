@@ -7,8 +7,7 @@ import {
     Col,
     ControlLabel,
     FormControl,
-    FormGroup,
-    Table,
+    FormGroup
 } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css'
@@ -119,13 +118,15 @@ const UserDetails = (props) => {
         }
     }
 
-    const handleMember = (e, p) => {
+    const handleMember = (e, fundNO) => {
         setProfit({
-            [p.fundNO]: e.target.value,
+            [fundNO]: e.target.value,
         })
     }
 
     const updateMemberProfit = (id) => {
+        console.log({id})
+
         for (let i = 0; i < props.memberId.length; i++) {
             if (id === i) {
                 props.onInitUpdateProfit(
@@ -210,7 +211,6 @@ const UserDetails = (props) => {
         props.onInitUpdateMember(formData, props.tokenId)
     }
     
-    const thDepositArray = ['No', 'Amount', 'Package', 'profit', 'Date']
     const usersDepositData = []
 
     if (userDeposits.length > 0) {
@@ -218,10 +218,9 @@ const UserDetails = (props) => {
             const {
                 fundNO,
                 amount,
-                Package,
+                planName,
                 updatedAt,
-                profit,
-                email,
+                profit
             } = value
 
             console.log({value})
@@ -231,23 +230,24 @@ const UserDetails = (props) => {
             usersDepositData.push({
                 id: fundNO,
                 amount,
+                plan: planName,
                 profit: (
                     <>
                      <input
                                                                             type='number'
                                                                             value={
-                                                                                profit.key
+                                                                                profit
                                                                             }
                                                                             onChange={(
                                                                         e
                                                                     ) =>
                                                                         handleMember(
                                                                             e,
-                                                                            Prop
+                                                                            fundNO
                                                                         )
                                                                     }
                                                                     name={
-                                                                        key
+                                                                        fundNO
                                                                     }
                                                                     className='member__profit'
                                                                 />
@@ -256,16 +256,18 @@ const UserDetails = (props) => {
                 date: updatedAt,
                 action: (
                     <>
-                        <button
-                            className='btn1'
-                            onClick={() => handleApproval(fundNO)}
-                        >
-                            {props.loading && props.buttonId === fundNO
-                                ? 'Loading'
-                                : loadedWithdrawals && status === 'Approved'
-                                ? 'approved'
-                                : 'approve'}
-                        </button>
+                         <button
+                                                         className='btn1'
+                                                         onClick={() =>
+                                                             updateMemberProfit(
+                                                                1-fundNO
+                                                             )
+                                                         }
+                                                     >
+                                                         {props.loading
+                                                             ? 'Loading...'
+                                                             : 'Update Profit'}
+                                                     </button>
                     </>
                 ),
             })
@@ -274,11 +276,9 @@ const UserDetails = (props) => {
 
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
-        { dataField: 'email', text: 'email', sort: true },
-        { dataField: 'amount', text: 'Amount Withdrawn', sort: true },
-        { dataField: 'currency', text: 'Currency', sort: true },
-        { dataField: 'status', text: 'Status', sort: true },
-        { dataField: 'cryptoAddress', text: 'crypto Address', sort: true },
+        { dataField: 'amount', text: 'Amount Invested', sort: true },
+        { dataField: 'plan', text: 'plan', sort: true },
+        { dataField: 'profit', text: 'profit', sort: true },
         { dataField: 'date', text: 'Date', sort: true },
         { dataField: 'action', text: 'Action', sort: true },
     ]
