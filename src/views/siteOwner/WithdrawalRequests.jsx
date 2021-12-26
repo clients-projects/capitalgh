@@ -72,6 +72,7 @@ const PendingWithdrawals = (props) => {
                 email: email !== 'undefined' ? email : creatorEmail,
                 amount,
                 currency,
+                cryptoAddress : creatorBitcoinAccount,
                 status,
                 date: updatedAt,
                 action: (
@@ -98,10 +99,11 @@ const PendingWithdrawals = (props) => {
 
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
-        { dataField: 'username', text: 'Username', sort: true },
+        { dataField: 'email', text: 'email', sort: true },
         { dataField: 'amount', text: 'Amount Withdrawn', sort: true },
         { dataField: 'currency', text: 'Currency', sort: true },
         { dataField: 'status', text: 'Status', sort: true },
+        { dataField: 'cryptoAddress', text: 'crypto Address', sort: true },
         { dataField: 'date', text: 'Date', sort: true },
         { dataField: 'action', text: 'Action', sort: true },
     ]
