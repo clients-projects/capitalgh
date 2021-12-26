@@ -69,13 +69,12 @@ const PendingWithdrawals = (props) => {
 
                 console.log({creatorBitcoinAccount})
 
-                 let cryptoAddressToDisplay;
                 
-                cryptoAddressToDisplay = creatorBitcoinAccount || creatorEthereumAccount
-                console.log("final address", typeof cryptoAddressToDisplay)
+                let cryptoAddressToDisplay = creatorBitcoinAccount || creatorEthereumAccount
 
                 if(!cryptoAddressToDisplay){
                     console.log('empty string', cryptoAddressToDisplay)
+                    cryptoAddressToDisplay = 'No address Provided'
                 }else {
                     console.log('not empty', cryptoAddressToDisplay)
                 }
