@@ -119,9 +119,7 @@ const UserDetails = (props) => {
 
     const handleMember = (e, fundNO) => {
         console.log(e, fundNO, 'clicked')
-        setProfit({
-            [fundNO]: e.target.value,
-        })
+        setProfit(e.target.value)
     }
 
     const updateMemberProfit = (id) => {
@@ -228,7 +226,7 @@ const UserDetails = (props) => {
                     <>
                         <input
                             type='number'
-                            value={profit.fundNO}
+                            value={profit}
                             onChange={(e) => handleMember(e, fundNO)}
                             name={fundNO}
                             className='member__profit'
@@ -240,7 +238,7 @@ const UserDetails = (props) => {
                     <>
                         <button
                             className='btn1'
-                            onClick={() => updateMemberProfit( fundNO - 1)}
+                            onClick={() => updateMemberProfit(fundNO - 1)}
                         >
                             {props.loading ? 'Loading...' : 'Update Profit'}
                         </button>
@@ -300,7 +298,7 @@ const UserDetails = (props) => {
         )
     }
 
-    console.log({profit})
+    console.log({ profit })
 
     return (
         <div className='center' style={{ margin: '2rem 0' }}>
@@ -511,7 +509,6 @@ const UserDetails = (props) => {
                                             ? 'Loading...'
                                             : 'Update Profile'}
                                     </button>
-                                    {/* <div className='clearfix' /> */}
                                 </form>
                             }
                         />
@@ -554,66 +551,6 @@ const UserDetails = (props) => {
                                         </div>
                                     )}
                                 </ToolkitProvider>
-                                // <Table>
-                                //     <thead>
-                                //         <tr>
-                                //             {thDepositArray.map((prop, key) => {
-                                //                 return <th key={key}>{prop}</th>
-                                //             })}
-                                //         </tr>
-                                //     </thead>
-                                //     <tbody>
-                                //         {userDeposits.map((Prop, Key) => {
-                                //             return (
-                                //                 <tr key={Key}>
-                                //                     {Object.values(Prop).map(
-                                //                         (prop, key) => {
-                                //                             return (
-                                //                                 <td key={key}>
-                                //                                     {key ===
-                                //                                     3 ? (
-                                //                                         <input
-                                //                                             type='number'
-                                //                                             value={
-                                //                                                 profit.key
-                                //                                             }
-                                //                                             onChange={(
-                                //                                         e
-                                //                                     ) =>
-                                //                                         handleMember(
-                                //                                             e,
-                                //                                             Prop
-                                //                                         )
-                                //                                     }
-                                //                                     name={
-                                //                                         key
-                                //                                     }
-                                //                                     className='member__profit'
-                                //                                 />
-                                //                                     ) : (
-                                //                                         prop
-                                //                                     )}
-                                //                                 </td>
-                                //                             )
-                                //                         }
-                                //                     )}
-                                //                     <button
-                                //                         className='btn1'
-                                //                         onClick={() =>
-                                //                             updateMemberProfit(
-                                //                                 Key
-                                //                             )
-                                //                         }
-                                //                     >
-                                //                         {props.loading
-                                //                             ? 'Loading...'
-                                //                             : 'Update Profit'}
-                                //                     </button>
-                                //                 </tr>
-                                //             )
-                                //         })}
-                                //     </tbody>
-                                // </Table>
                             }
                         />
                     </Col>
