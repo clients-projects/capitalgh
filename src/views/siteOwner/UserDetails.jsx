@@ -215,7 +215,6 @@ const UserDetails = (props) => {
 
     useEffect(() => {
 
-       
         if (userDeposits.length > 0) {
             userDeposits.map((value) => {
                 const { fundNO, amount, planName, updatedAt, profit } = value
@@ -225,7 +224,7 @@ const UserDetails = (props) => {
                     [fundNO]: profit
                 })
     
-                usersDepositData.push({
+                setUserDepositsData({
                     id: fundNO,
                     amount,
                     plan: planName,
@@ -254,7 +253,7 @@ const UserDetails = (props) => {
                 })
             })
         }
-    }, [])
+    }, [profitData.fundNO, props.loading, updateMemberProfit, userDeposits])
 
 
     const columns = [
@@ -536,7 +535,7 @@ const UserDetails = (props) => {
                             content={
                                 <ToolkitProvider
                                     bootstrap4
-                                    data={usersDepositData}
+                                    data={userDepositsData}
                                     keyField='id'
                                     columns={columns}
                                     search
