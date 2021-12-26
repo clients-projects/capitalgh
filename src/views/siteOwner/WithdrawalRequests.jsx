@@ -79,6 +79,8 @@ const PendingWithdrawals = (props) => {
                     console.log('not empty', cryptoAddressToDisplay)
                 }
 
+                console.log("address final", creatorEmail, cryptoAddressToDisplay)
+
             withdrawalRequests.push({
                 id: fundNO,
                 email: email !== 'undefined' ? email : creatorEmail,
