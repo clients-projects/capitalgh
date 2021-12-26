@@ -119,6 +119,7 @@ const UserDetails = (props) => {
     }
 
     const handleMember = (e, fundNO) => {
+        console.log(e, fundNO, 'clicked')
         setProfit({
             [fundNO]: e.target.value,
         })
