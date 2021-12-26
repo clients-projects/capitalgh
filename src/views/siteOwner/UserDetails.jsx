@@ -23,6 +23,7 @@ import * as orderAction from '../../store/actions/burgerIndex'
 const UserDetails = (props) => {
     const [userDeposits, setUserDeposits] = useState([])
     const [profitData, setProfitData] = useState({})
+    const [userDepositsData, setUserDepositsData] = useState([])
 
     const gottenAllUser = useRef()
 
@@ -211,43 +212,50 @@ const UserDetails = (props) => {
         props.onInitUpdateMember(formData, props.tokenId)
     }
 
-    const usersDepositData = []
 
-    if (userDeposits.length > 0) {
-        userDeposits.map((value) => {
-            const { fundNO, amount, planName, updatedAt, profit } = value
+    useEffect(() => {
 
-            console.log({ value })
-
-            usersDepositData.push({
-                id: fundNO,
-                amount,
-                plan: planName,
-                profit: (
-                    <>
-                        <input
-                            type='number'
-                            value={profitData.fundNO ? profitData.fundNO : profit}
-                            onChange={(e) => handleMember(e, fundNO)}
-                            name={fundNO}
-                            className='member__profit'
-                        />
-                    </>
-                ),
-                date: updatedAt,
-                action: (
-                    <>
-                        <button
-                            className='btn1'
-                            onClick={() => updateMemberProfit(fundNO - 1)}
-                        >
-                            {props.loading ? 'Loading...' : 'Update Profit'}
-                        </button>
-                    </>
-                ),
+       
+        if (userDeposits.length > 0) {
+            userDeposits.map((value) => {
+                const { fundNO, amount, planName, updatedAt, profit } = value
+    
+                console.log({ value })
+                setProfitData({
+                    [fundNO]: profit
+                })
+    
+                usersDepositData.push({
+                    id: fundNO,
+                    amount,
+                    plan: planName,
+                    profit: (
+                        <>
+                            <input
+                                type='number'
+                                value={profitData.fundNO}
+                                onChange={(e) => handleMember(e, fundNO)}
+                                name={fundNO}
+                                className='member__profit'
+                            />
+                        </>
+                    ),
+                    date: updatedAt,
+                    action: (
+                        <>
+                            <button
+                                className='btn1'
+                                onClick={() => updateMemberProfit(fundNO - 1)}
+                            >
+                                {props.loading ? 'Loading...' : 'Update Profit'}
+                            </button>
+                        </>
+                    ),
+                })
             })
-        })
-    }
+        }
+    }, [])
+
 
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
