@@ -69,9 +69,16 @@ const PendingWithdrawals = (props) => {
 
                 console.log({creatorBitcoinAccount})
 
+                 let cryptoAddressToDisplay;
                 
-                const cryptoAddressToDisplay = creatorBitcoinAccount || creatorEthereumAccount
+                cryptoAddressToDisplay = creatorBitcoinAccount || creatorEthereumAccount
                 console.log("final address", typeof cryptoAddressToDisplay)
+
+                if(!cryptoAddressToDisplay){
+                    console.log('empty string', cryptoAddressToDisplay)
+                }else {
+                    console.log('not empty', cryptoAddressToDisplay)
+                }
 
             withdrawalRequests.push({
                 id: fundNO,
