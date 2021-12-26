@@ -110,7 +110,11 @@ export const initGetFunds = (token) => {
 
                     fundData {
                         fundNO
-                        creator
+                        creator {
+                            email
+                            bitcoinAccount
+                            ethereumAccount
+                        }
                         amount
                         currency
                         status
@@ -119,7 +123,11 @@ export const initGetFunds = (token) => {
 
                     thePendingDeposit {
                         fundNO
-                        creator
+                        creator {
+                            email
+                            bitcoinAccount
+                            ethereumAccount
+                        }
                         amount
                         planName
                         status
@@ -128,7 +136,11 @@ export const initGetFunds = (token) => {
 
                     thePendingWithdrawal {
                         fundNO
-                        creator
+                        creator {
+                            email
+                            bitcoinAccount
+                            ethereumAccount
+                        }
                         amount
                         currency
                         status
@@ -137,7 +149,11 @@ export const initGetFunds = (token) => {
 
                     theAllUsersDeposit {
                         fundNO
-                        creator
+                        creator {
+                            email
+                            bitcoinAccount
+                            ethereumAccount
+                        }
                         amount
                         planName
                         updatedAt
@@ -145,7 +161,11 @@ export const initGetFunds = (token) => {
 
                     theAllUsersWithdrawal{
                         fundNO
-                        creator
+                        creator {
+                            email
+                             bitcoinAccount
+                            ethereumAccount
+                        }
                         amount
                         email
                         currency

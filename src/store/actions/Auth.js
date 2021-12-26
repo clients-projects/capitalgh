@@ -400,13 +400,19 @@ export const initActivities = (token) => {
                     }
                
                     theAllUsersDeposit {
-                        creator
+                        creator {
+                            email
+                           
+                        }
                         amount
                         currency
                         updatedAt
                     }
                     theAllUsersWithdrawal {
-                        creator
+                        creator {
+                            email
+                           
+                        }
                         amount
                         currency
                         updatedAt
