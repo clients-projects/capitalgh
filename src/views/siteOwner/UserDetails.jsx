@@ -119,7 +119,8 @@ const UserDetails = (props) => {
 
     const handleMember = (e, fundNO) => {
         console.log(e, fundNO, 'clicked')
-        setProfitData(e.target.value)
+        setProfitData({
+           [fundNO]: e.target.value})
     }
 
     const updateMemberProfit = (id) => {
