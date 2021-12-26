@@ -216,7 +216,7 @@ const UserDetails = (props) => {
     if (userDeposits.length > 0) {
         userDeposits.map((value) => {
             const {
-                No,
+                fundNO,
                 amount,
                 Package,
                 updatedAt,
@@ -230,10 +230,7 @@ const UserDetails = (props) => {
 
             usersDepositData.push({
                 id: fundNO,
-                email: email !== 'undefined' ? email : creatorEmail,
                 amount,
-                currency,
-                cryptoAddress: cryptoAddressToDisplay,
                 profit: (
                     <>
                      <input
