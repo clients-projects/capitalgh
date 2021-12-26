@@ -447,6 +447,8 @@ export const initGetAdmin = (token) => {
 
 export const initWithdrawNow = (withdrawNowData, token) => {
     const {amount, currency, status, email} = withdrawNowData
+
+    
     return (dispatch) => {
         dispatch(withdrawNowStart())
 
