@@ -38,9 +38,12 @@ const AllUsersDepositHistory = (props) => {
     if(allUsersDeposit.length > 0){
         allUsersDeposit.map((value) => {
             const {fundNO, creator, amount, planName, updatedAt} = value
+
+            const creatorEmail = creator.email
+
             allDeposits.push({
                 id: fundNO,
-                username: creator,
+                email: creatorEmail,
                 amount, 
                 plan: planName,
                 date: updatedAt
@@ -51,7 +54,7 @@ const AllUsersDepositHistory = (props) => {
    
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
-        { dataField: 'username', text: 'Username', sort: true },
+        { dataField: 'email', text: 'email', sort: true },
         { dataField: 'amount', text: 'Invested Amount', sort: true },
         { dataField: 'plan', text: 'Plan', sort: true },
         { dataField: 'date', text: 'Date', sort: true },

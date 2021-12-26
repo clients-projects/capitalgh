@@ -63,9 +63,12 @@ const PendingDeposits = (props) => {
         userPendingDeposit.map((value) => {
             const { fundNO, creator, amount, planName, updatedAt, status } =
                 value
+
+                            const creatorEmail = creator.email
+
             withdrawalRequests.push({
                 id: fundNO,
-                username: creator,
+                email: creatorEmail,
                 amount,
                 plan: planName,
                 status,
@@ -92,7 +95,7 @@ const PendingDeposits = (props) => {
 
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
-        { dataField: 'username', text: 'Username', sort: true },
+        { dataField: 'email', text: 'email', sort: true },
         { dataField: 'amount', text: 'Amount Invested', sort: true },
         { dataField: 'plan', text: 'Plan', sort: true },
         { dataField: 'status', text: 'Status', sort: true },
