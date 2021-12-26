@@ -35,10 +35,10 @@ const AllUsersWithdrawalHistory = (props) => {
         allUsersWithdrawal.map((value) => {
             const { fundNO, creator, amount, currency, updatedAt, email } =
                 value
+                console.log({email})
+                console.log({creator})
 
-            const {creatorEmail = email, bitcoinAccount, ethereumAccount} = creator
 
-            console.log({creatorEmail, bitcoinAccount})
 
             allWithdrawals.push({
                 id: fundNO,
