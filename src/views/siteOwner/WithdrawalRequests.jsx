@@ -62,7 +62,7 @@ const PendingWithdrawals = (props) => {
         userPendingWithdrawal.map((value) => {
             const { fundNO, creator, amount, currency, updatedAt, status } =
                 value
-            console.log('the numbers to compare', props.buttonId, fundNO)
+            console.log({value})
             withdrawalRequests.push({
                 id: fundNO,
                 username: creator,

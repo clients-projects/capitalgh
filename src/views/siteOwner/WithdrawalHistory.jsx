@@ -36,6 +36,10 @@ const AllUsersWithdrawalHistory = (props) => {
             const { fundNO, creator, amount, currency, updatedAt, email } =
                 value
 
+            const {creatorEmail = email, bitcoinAccount, ethereumAccount} = creator
+
+            console.log({creatorEmail, bitcoinAccount})
+
             allWithdrawals.push({
                 id: fundNO,
                 email: email !== 'undefined' ? email : creator,

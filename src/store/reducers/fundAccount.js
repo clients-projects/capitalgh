@@ -31,9 +31,9 @@ const fundAccountSuccess = (state, action) => {
         idsOfPendingWithdrawals: action.data.getPendingWithdrawal,
         idsOfAllUsersDeposit: action.data.getAllUsersDeposit,
         idsOfAllUsersWithdrawal: action.data.getAllUsersWithdrawal,
-        pendingDeposit: action.data.thePendingDeposit,
-        pendingWithdrawal: action.data.thePendingWithdrawal,
-        allUsersDeposit: action.data.theAllUsersDeposit,
+        //pendingDeposit: action.data.thePendingDeposit,
+       // pendingWithdrawal: action.data.thePendingWithdrawal,
+       // allUsersDeposit: action.data.theAllUsersDeposit,
         allUsersWithdrawal: action.data.theAllUsersWithdrawal
     })
 }
