@@ -10,6 +10,7 @@ import ReactParticles from '../../components/ReactParticles'
 
 const Signup = (props) => {
     const parsed = queryString.parse(window.location.search)
+    console.log({parsed})
 
     const [state, setState] = useState({
         signupForm: {
@@ -291,8 +292,8 @@ const Signup = (props) => {
 
                     <div className='form-btn'>
                         <Input
-                            required='true'
-                            value=''
+                            required={true}
+                            value={''}
                             id='signupCheckbox'
                             label='checkbox'
                             type='checkbox'
