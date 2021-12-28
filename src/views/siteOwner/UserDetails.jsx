@@ -187,9 +187,9 @@ const UserDetails = (props) => {
 
                 console.log({ value })
 
-                setProfitData({
+                setProfitData([{
                     [fundNO]: profit,
-                })
+                }])
             })
         }
     }, [userDeposits])
