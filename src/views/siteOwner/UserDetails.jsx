@@ -187,9 +187,11 @@ const UserDetails = (props) => {
 
                 console.log({ value })
 
-                setProfitData([{
-                    [fundNO]: profit,
-                }])
+                setProfitData(
+                    [].push({
+                        [fundNO]: profit,
+                    })
+                )
             })
         }
     }, [userDeposits])
