@@ -228,10 +228,12 @@ const UserDetails = (props) => {
     const usersDepositData = []
     console.log(profitData)
 
-    if (userDeposits.length > 0) {
+    if (userDeposits.length > 0 ) {
         userDeposits.map((value, index) => {
             const { fundNO, amount, planName, updatedAt } = value
 
+            console.log({index})
+            console.log(profitData[index])
             usersDepositData.push({
                 id: fundNO,
                 amount,
@@ -240,7 +242,7 @@ const UserDetails = (props) => {
                     <>
                         <input
                             type='number'
-                            value={profitData[index].fundNO}
+                            value={profitData.fundNO}
                             onChange={(e) => handleMember(e, fundNO)}
                             name={fundNO}
                             className='member__profit'
