@@ -190,7 +190,7 @@ const UserDetails = (props) => {
                 })
             })
         }
-    })
+    }, [userDeposits])
 
     const handleSubmit = (e) => {
         e.preventDefault()
