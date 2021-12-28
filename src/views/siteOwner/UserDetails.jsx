@@ -23,8 +23,7 @@ import * as orderAction from '../../store/actions/burgerIndex'
 const UserDetails = (props) => {
     const [userDeposits, setUserDeposits] = useState([])
     const [profitData, setProfitData] = useState({})
-    const [profitToDisplay, setProfitToDisplay] = useState('')
-    
+
     const [accountBalance, setAccountBalance] = useState(0)
     const [fullname, setFullname] = useState('')
     const [username, setUsername] = useState('')
@@ -55,14 +54,13 @@ const UserDetails = (props) => {
             if (props.tokenId) {
                 props.onInitGetMember(parsed.id, props.tokenId)
             }
-            gottenAllUser.current = true 
+            gottenAllUser.current = true
         } else {
             if (props.memberDeposits) {
                 setUserDeposits(props.memberDeposits)
             }
         }
     }, [props, parsed.id])
-
 
     const handleChange = (e) => {
         const name = e.target.name
@@ -121,7 +119,8 @@ const UserDetails = (props) => {
     const handleMember = (e, fundNO) => {
         console.log(e, fundNO, 'clicked')
         setProfitData({
-           [fundNO]: e.target.value})
+            [fundNO]: e.target.value,
+        })
     }
 
     const updateMemberProfit = (id) => {
@@ -179,6 +178,18 @@ const UserDetails = (props) => {
         }
     }, [props])
 
+    useEffect(() => {
+        if (userDeposits.length > 0) {
+            userDeposits.map((value) => {
+                const { profit } = value
+
+                console.log({ value })
+
+                setProfitToDisplay(profit)
+            })
+        }
+    })
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if (password !== confirmPassword) {
@@ -214,16 +225,6 @@ const UserDetails = (props) => {
 
     const usersDepositData = []
 
-    useEffect(() => {
-          if (userDeposits.length > 0) {
-        userDeposits.map((value) => {
-            const { profit } = value
-
-            console.log({ value })
-
-            setProfitToDisplay(profit)
-
-    })
     if (userDeposits.length > 0) {
         userDeposits.map((value) => {
             const { fundNO, amount, planName, updatedAt } = value
@@ -236,7 +237,7 @@ const UserDetails = (props) => {
                     <>
                         <input
                             type='number'
-                            value={profitToDisplay}
+                            value={profitData.fundNO}
                             onChange={(e) => handleMember(e, fundNO)}
                             name={fundNO}
                             className='member__profit'
@@ -307,7 +308,6 @@ const UserDetails = (props) => {
             </div>
         )
     }
-
 
     return (
         <div className='center' style={{ margin: '2rem 0' }}>
