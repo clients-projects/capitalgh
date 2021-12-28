@@ -22,7 +22,7 @@ import * as orderAction from '../../store/actions/burgerIndex'
 
 const UserDetails = (props) => {
     const [userDeposits, setUserDeposits] = useState([])
-    const [profitData, setProfitData] = useState({})
+    const [profitData, setProfitData] = useState([])
 
     const [accountBalance, setAccountBalance] = useState(0)
     const [fullname, setFullname] = useState('')
@@ -118,9 +118,11 @@ const UserDetails = (props) => {
 
     const handleMember = (e, fundNO) => {
         console.log(e, fundNO, 'clicked')
-        setProfitData({
-            [fundNO]: e.target.value,
-        })
+        setProfitData([
+            {
+                [fundNO]: e.target.value,
+            },
+        ])
     }
 
     const updateMemberProfit = (id) => {
@@ -181,12 +183,12 @@ const UserDetails = (props) => {
     useEffect(() => {
         if (userDeposits.length > 0) {
             userDeposits.map((value) => {
-                const {fundNO, profit } = value
+                const { fundNO, profit } = value
 
-               // console.log({ value })
+                console.log({ value })
 
                 setProfitData({
-                    [fundNO]: profit
+                    [fundNO]: profit,
                 })
             })
         }
@@ -226,7 +228,7 @@ const UserDetails = (props) => {
     }
 
     const usersDepositData = []
-    console.log({profitData})
+    console.log( profitData )
 
     if (userDeposits.length > 0) {
         userDeposits.map((value) => {
