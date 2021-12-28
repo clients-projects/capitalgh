@@ -237,8 +237,12 @@ const UserDetails = (props) => {
 
             console.log({index})
             console.log(typeof fundNO)
-            const newProfitData = profitData || {}
-            console.log('profitData index',Object.keys(newProfitData[index]))
+            if(profitData === null){
+                return null
+            }else{
+
+                console.log('profitData index',Object.keys(profitData[index]))
+            }
             usersDepositData.push({
                 id: fundNO,
                 amount,
