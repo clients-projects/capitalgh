@@ -118,11 +118,11 @@ const UserDetails = (props) => {
 
     const handleMember = (e, fundNO) => {
         console.log(e, fundNO, 'clicked')
-        setProfitData([].push(
-            {
+        setProfitData(
+            [].push({
                 [fundNO]: e.target.value,
-            },
-        ))
+            })
+        )
     }
 
     const updateMemberProfit = (id) => {
@@ -186,15 +186,8 @@ const UserDetails = (props) => {
                 const { fundNO, profit } = value
 
                 console.log({ value })
-                const storeProfit = []
 
-                storeProfit.push({
-                    [fundNO]: profit,
-                })
-
-                setProfitData(
-                   storeProfit
-                )
+                setProfitData((oldArr) => [...oldArr, { [fundNO]: profit }])
             })
         }
     }, [userDeposits])
@@ -233,7 +226,7 @@ const UserDetails = (props) => {
     }
 
     const usersDepositData = []
-    console.log( profitData )
+    console.log(profitData)
 
     if (userDeposits.length > 0) {
         userDeposits.map((value) => {
