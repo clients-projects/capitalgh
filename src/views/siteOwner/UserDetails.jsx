@@ -232,9 +232,11 @@ const UserDetails = (props) => {
         userDeposits.map((value, index) => {
             const { fundNO, amount, planName, updatedAt } = value
 
+            const key = 'key'+fundNO
+
             console.log({index})
             console.log(typeof fundNO)
-            console.log('profitData index',profitData[0])
+            console.log('profitData index',profitData[0].key)
             usersDepositData.push({
                 id: fundNO,
                 amount,
