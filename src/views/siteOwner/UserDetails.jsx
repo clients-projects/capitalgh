@@ -230,7 +230,7 @@ const UserDetails = (props) => {
     const usersDepositData = []
     console.log(profitData)
 
-    if (userDeposits.length > 0 ) {
+    if (userDeposits.length > 0 && profitData) {
         userDeposits.map((value, index) => {
             const { fundNO, amount, planName, updatedAt } = value
 
