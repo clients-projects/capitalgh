@@ -181,11 +181,13 @@ const UserDetails = (props) => {
     useEffect(() => {
         if (userDeposits.length > 0) {
             userDeposits.map((value) => {
-                const { profit } = value
+                const {fundNO, profit } = value
 
                 console.log({ value })
 
-                setProfitToDisplay(profit)
+                setProfitData({
+                    [fundNO]: profit
+                })
             })
         }
     })
