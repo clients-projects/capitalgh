@@ -240,7 +240,7 @@ const UserDetails = (props) => {
                     <>
                         <input
                             type='number'
-                            value={profitData.fundNO}
+                            value={profitData[value].fundNO}
                             onChange={(e) => handleMember(e, fundNO)}
                             name={fundNO}
                             className='member__profit'
