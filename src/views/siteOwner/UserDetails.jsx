@@ -187,7 +187,7 @@ const UserDetails = (props) => {
 
                 console.log({ value })
 
-                setProfitData((oldArr) => [...oldArr, { [fundNO]: profit }])
+                setProfitData((oldArr) => [...oldArr, { ['key'+fundNO]: profit }])
             })
         }
     }, [userDeposits])
@@ -233,8 +233,8 @@ const UserDetails = (props) => {
             const { fundNO, amount, planName, updatedAt } = value
 
             console.log({index})
-            console.log({fundNO})
-            console.log('profitData index',Object.values(profitData[0]))
+            console.log(typeof fundNO)
+            console.log('profitData index',profitData[0])
             usersDepositData.push({
                 id: fundNO,
                 amount,
