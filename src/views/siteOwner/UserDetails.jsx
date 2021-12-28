@@ -183,7 +183,7 @@ const UserDetails = (props) => {
             userDeposits.map((value) => {
                 const {fundNO, profit } = value
 
-                console.log({ value })
+               // console.log({ value })
 
                 setProfitData({
                     [fundNO]: profit
@@ -226,6 +226,7 @@ const UserDetails = (props) => {
     }
 
     const usersDepositData = []
+    console.log({profitData})
 
     if (userDeposits.length > 0) {
         userDeposits.map((value) => {
