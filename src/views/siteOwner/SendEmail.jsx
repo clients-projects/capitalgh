@@ -8,7 +8,7 @@ import {
     FormControl,
     FormGroup,
 } from 'react-bootstrap'
-
+                                                                                                                                                                                               
 import { Card } from '../../components/Card/Card'
 
 import * as orderAction from '../../store/actions/burgerIndex'
@@ -17,7 +17,7 @@ const SendEmail = (props) => {
     const [senderEmail, setSenderEmail] = useState('admin@capitalgainhub.com')
     const [receiverEmail, setReceiverEmail] = useState('')
     const [emailSubject, setEmailSubject] = useState('')
-    const [emailMessage, setEmailMessage] = useState('')
+    const [emailMessage, setEmailMessage] = useState('')         
 
     const [sentEmailStatus, sentSentEmailStatus] = useState(false)
     const [message, setMessage] = useState('')

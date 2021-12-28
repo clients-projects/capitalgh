@@ -23,24 +23,8 @@ import * as orderAction from '../../store/actions/burgerIndex'
 const UserDetails = (props) => {
     const [userDeposits, setUserDeposits] = useState([])
     const [profitData, setProfitData] = useState({})
-
-    const gottenAllUser = useRef()
-
-    const parsed = queryString.parse(window.location.search)
-
-    useEffect(() => {
-        if (!gottenAllUser.current) {
-            if (props.tokenId) {
-                props.onInitGetMember(parsed.id, props.tokenId)
-            }
-            gottenAllUser.current = true
-        } else {
-            if (props.memberDeposits) {
-                setUserDeposits(props.memberDeposits)
-            }
-        }
-    }, [props, parsed.id])
-
+    const [profitToDisplay, setProfitToDisplay] = useState('')
+    
     const [accountBalance, setAccountBalance] = useState(0)
     const [fullname, setFullname] = useState('')
     const [username, setUsername] = useState('')
@@ -62,6 +46,23 @@ const UserDetails = (props) => {
 
     const [message, setMessage] = useState('')
     const [error, setError] = useState(false)
+
+    const gottenAllUser = useRef()
+    const parsed = queryString.parse(window.location.search)
+
+    useEffect(() => {
+        if (!gottenAllUser.current) {
+            if (props.tokenId) {
+                props.onInitGetMember(parsed.id, props.tokenId)
+            }
+            gottenAllUser.current = true 
+        } else {
+            if (props.memberDeposits) {
+                setUserDeposits(props.memberDeposits)
+            }
+        }
+    }, [props, parsed.id])
+
 
     const handleChange = (e) => {
         const name = e.target.name
@@ -213,11 +214,19 @@ const UserDetails = (props) => {
 
     const usersDepositData = []
 
-    if (userDeposits.length > 0) {
+    useEffect(() => {
+          if (userDeposits.length > 0) {
         userDeposits.map((value) => {
-            const { fundNO, amount, planName, updatedAt, profit } = value
+            const { profit } = value
 
             console.log({ value })
+
+            setProfitToDisplay(profit)
+
+    })
+    if (userDeposits.length > 0) {
+        userDeposits.map((value) => {
+            const { fundNO, amount, planName, updatedAt } = value
 
             usersDepositData.push({
                 id: fundNO,
@@ -227,7 +236,7 @@ const UserDetails = (props) => {
                     <>
                         <input
                             type='number'
-                            value={profitData.fundNO}
+                            value={profitToDisplay}
                             onChange={(e) => handleMember(e, fundNO)}
                             name={fundNO}
                             className='member__profit'
