@@ -186,11 +186,14 @@ const UserDetails = (props) => {
                 const { fundNO, profit } = value
 
                 console.log({ value })
+                const storeProfit = []
+
+                storeProfit.push({
+                    [fundNO]: profit,
+                })
 
                 setProfitData(
-                    [].push({
-                        [fundNO]: profit,
-                    })
+                   storeProfit
                 )
             })
         }
