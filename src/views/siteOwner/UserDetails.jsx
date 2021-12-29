@@ -234,11 +234,9 @@ const UserDetails = (props) => {
             const { fundNO, amount, planName, updatedAt } = value
 
             let keepProfitIndex
-            console.log('outer index', index)
 
             if (profitData[index]) {
-                console.log('if index', index)
-                profitRef.current = profitData[index]
+                profitRef.current = profitData[fundNO]
                 keepProfitIndex = profitRef.current
             }
             console.log(keepProfitIndex)
