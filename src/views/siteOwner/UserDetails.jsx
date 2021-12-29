@@ -242,7 +242,7 @@ const UserDetails = (props) => {
                  profitRef.current = profitData[index]
                  console.log('if', profitRef)
              } else {
-                 console.log('else', profitRef)
+                 console.log('else', Object.keys(profitRef.current))
                  
              }
 
