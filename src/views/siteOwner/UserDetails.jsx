@@ -237,7 +237,7 @@ const UserDetails = (props) => {
 
             console.log({index})
             console.log(typeof fundNO)
-            console.log('profitData index',profitData[index][index])
+            console.log('profitData index',profitData[index])
             usersDepositData.push({
                 id: fundNO,
                 amount,
