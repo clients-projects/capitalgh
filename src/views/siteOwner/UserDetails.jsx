@@ -47,6 +47,7 @@ const UserDetails = (props) => {
     const [error, setError] = useState(false)
 
     const gottenAllUser = useRef()
+    const profitRef = useRef()
     const parsed = queryString.parse(window.location.search)
 
     useEffect(() => {
@@ -187,7 +188,7 @@ const UserDetails = (props) => {
 
                 console.log({ value })
 
-                setProfitData((oldArr) => [...oldArr, { fundNO: profit }])
+                setProfitData((oldArr) => [...oldArr, { [fundNO]: profit }])
 
               })
         }
@@ -233,10 +234,22 @@ const UserDetails = (props) => {
         userDeposits.map((value, index) => {
             const { fundNO, amount, planName, updatedAt } = value
 
+            let keepProfitIndex;
+             if (!profitRef.current) {
+                 if (profitData[index]) {
+                     keepProfitIndex = profitData[index]
+                 }
+                 profitRef.current = true
+                 console.log('if', profitRef)
+             } else {
+                 console.log('else', profitRef)
+                 
+             }
 
-            console.log({index})
-            console.log(typeof fundNO)
-            console.log('profitData index',profitData[index])
+
+            // console.log({index})
+            // console.log(typeof fundNO)
+            // console.log('profitData index',profitData[index])
             usersDepositData.push({
                 id: fundNO,
                 amount,
