@@ -239,7 +239,7 @@ const UserDetails = (props) => {
             if (profitData[index]) {
                 profitRef.current = profitData[index]
                 keepProfitIndex = profitRef.current
-                console.log(keepProfitIndex['10']])
+                console.log(keepProfitIndex[fundNO])
                 console.log(Object.keys(keepProfitIndex))
              } 
 
