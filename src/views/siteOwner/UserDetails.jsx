@@ -192,7 +192,7 @@ const UserDetails = (props) => {
                 console.log({profitData})
             })
         }
-    }, [userDeposits, profitData])
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault()
