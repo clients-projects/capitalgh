@@ -241,7 +241,7 @@ const UserDetails = (props) => {
                 profitRef.current = profitData[index]
                 keepProfitIndex = profitRef.current
             }
-            console.log({ keepProfitIndex })
+            console.log(keepProfitIndex)
 
             // console.log({index})
             // console.log(typeof fundNO)
