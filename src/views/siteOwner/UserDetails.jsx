@@ -225,14 +225,13 @@ const UserDetails = (props) => {
     }
 
     const usersDepositData = []
-    console.log(profitData)
+    console.log({profitData})
 
     if (userDeposits.length > 0) {
         userDeposits.map((value, index) => {
             const { fundNO, amount, planName, updatedAt } = value
 
             let keepProfitIndex = {}
-            console.log('outer index', index)
             
             if (profitData[index]) {
                 profitRef.current = profitData[index]
