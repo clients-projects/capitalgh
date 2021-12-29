@@ -128,12 +128,13 @@ const UserDetails = (props) => {
 
     const updateMemberProfit = (id) => {
         console.log({ id })
+        console.log(profitData[0])
 
         for (let i = 0; i < props.memberId.length; i++) {
             if (id === i) {
                 console.log('id is equal', id, i)
                 props.onInitUpdateProfit(
-                    profitData[i + 1],
+                    profitData[i][i + 1],
                     props.memberId[i]._id,
                     props.tokenId
                 )
