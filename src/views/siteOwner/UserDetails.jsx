@@ -235,14 +235,13 @@ const UserDetails = (props) => {
             const { fundNO, amount, planName, updatedAt } = value
 
             let keepProfitIndex;
+            console.log(index)
              if (!profitRef.current) {
                  if (profitData[index]) {
                      keepProfitIndex = profitData[index]
                      profitRef.current = profitData[index]
                  }
-                 console.log('if', profitRef)
              } else {
-                 console.log('else', Object.keys(profitRef.current))
                  keepProfitIndex = Object.keys(profitRef.current)
                  
              }
