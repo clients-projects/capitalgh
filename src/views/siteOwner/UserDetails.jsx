@@ -233,13 +233,22 @@ const UserDetails = (props) => {
         userDeposits.map((value, index) => {
             const { fundNO, amount, planName, updatedAt } = value
 
-            let keepProfitIndex
-
+            let keepProfitIndex = {}
+            console.log('outer index', index)
+            
             if (profitData[index]) {
-                profitRef.current = profitData[fundNO]
+                profitRef.current = profitData[index]
                 keepProfitIndex = profitRef.current
-            }
-            console.log(keepProfitIndex)
+                console.log(keepProfitIndex.['10'])
+                console.log(Object.keys(keepProfitIndex))
+             } 
+
+             console.log('keepProfit outer', keepProfitIndex)
+             console.log(Object.keys(keepProfitIndex))
+            //else {
+            //     keepProfitIndex = profitRef.current
+            //     console.log('else index', index)
+            // }
 
             // console.log({index})
             // console.log(typeof fundNO)
