@@ -230,19 +230,14 @@ const UserDetails = (props) => {
     const usersDepositData = []
     console.log(profitData)
 
-    if (userDeposits.length > 0 && profitData) {
+    if (userDeposits.length > 0) {
         userDeposits.map((value, index) => {
             const { fundNO, amount, planName, updatedAt } = value
 
 
             console.log({index})
             console.log(typeof fundNO)
-            if(profitData === null){
-                return null
-            }else{
-
-                console.log('profitData index',Object.keys(profitData[index]))
-            }
+            console.log('profitData index',profitData[index][1])
             usersDepositData.push({
                 id: fundNO,
                 amount,
