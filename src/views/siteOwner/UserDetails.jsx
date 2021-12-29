@@ -186,8 +186,6 @@ const UserDetails = (props) => {
             userDeposits.map((value) => {
                 const { fundNO, profit } = value
 
-                console.log({ value })
-
                 setProfitData((oldArr) => [...oldArr, { [fundNO]: profit }])
             })
         }
@@ -239,20 +237,11 @@ const UserDetails = (props) => {
             if (profitData[index]) {
                 profitRef.current = profitData[index]
                 keepProfitIndex = profitRef.current
-                console.log(keepProfitIndex[fundNO])
-                console.log(Object.keys(keepProfitIndex))
+               
              } 
 
-             console.log('keepProfit outer', keepProfitIndex)
-             console.log(Object.keys(keepProfitIndex))
-            //else {
-            //     keepProfitIndex = profitRef.current
-            //     console.log('else index', index)
-            // }
-
-            // console.log({index})
-            // console.log(typeof fundNO)
-            // console.log('profitData index',profitData[index])
+             console.log('keepProfit outer', keepProfitIndex[fundNO])
+         
             usersDepositData.push({
                 id: fundNO,
                 amount,
@@ -261,7 +250,7 @@ const UserDetails = (props) => {
                     <>
                         <input
                             type='number'
-                            value={profitData.fundNO}
+                            value={keepProfitIndex[fundNO]}
                             onChange={(e) => handleMember(e, fundNO)}
                             name={fundNO}
                             className='member__profit'
