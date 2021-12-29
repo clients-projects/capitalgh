@@ -187,12 +187,11 @@ const UserDetails = (props) => {
 
                 console.log({ value })
 
-                setProfitData((oldArr) => [...oldArr, { 'key': profit }])
+                setProfitData((oldArr) => [...oldArr, { fundNO: profit }])
 
-                console.log({profitData})
-            })
+              })
         }
-    }, [])
+    }, [userDeposits])
 
     const handleSubmit = (e) => {
         e.preventDefault()
