@@ -120,7 +120,7 @@ const UserDetails = (props) => {
     const handleMember = (e, fundNO) => {
         e.persist()
         console.log({fundNO})
-        setProfitData((oldArr) => [...oldArr, { [fundNO]: e.target.value }])
+        setProfitData((oldArr) => [{ [fundNO]: e.target.value }])
     }
 
     const updateMemberProfit = (id) => {
@@ -130,8 +130,7 @@ const UserDetails = (props) => {
 
         for (let i = 0; i < props.memberId.length; i++) {
             if (id === i) {
-                console.log('id is equal', id, i)
-                console.log('profit data', profitData[i][id + 1])
+              
                 props.onInitUpdateProfit(
                     profitData[i][i + 1],
                     props.memberId[i]._id,
