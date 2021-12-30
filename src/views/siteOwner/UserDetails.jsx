@@ -61,7 +61,9 @@ const UserDetails = (props) => {
                 setUserDeposits(props.memberDeposits)
             }
         }
-    }, [props, parsed.id])
+            console.log({ profitData })
+
+    }, [props, parsed.id, profitData])
 
     const handleChange = (e) => {
         const name = e.target.name
@@ -140,7 +142,6 @@ const UserDetails = (props) => {
         }
     }
 
-    console.log({ profitData })
 
     useEffect(() => {
         if (props.member) {
