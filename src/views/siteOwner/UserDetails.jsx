@@ -116,25 +116,25 @@ const UserDetails = (props) => {
             setConfirmNewPassword(value)
         }
     }
-    
+
     const handleMember = (e, fundNO) => {
         console.log(e, fundNO, 'clicked')
         setProfitData(
-            [].push({
+            
                 [fundNO]: e.target.value,
-            })
-            )
-        }
         
-        const updateMemberProfit = (id) => {
-            console.log({ id })
-            console.log({profitData})
-        console.log(profitData[0])
+        )
+    }
+
+    const updateMemberProfit = (id) => {
+        console.log({ id })
+        console.log({ profitData })
+        console.log(profitData[id])
 
         for (let i = 0; i < props.memberId.length; i++) {
             if (id === i) {
                 console.log('id is equal', id, i)
-                console.log('profit data', profitData[i][i])
+                console.log('profit data', profitData[i][id + 1])
                 props.onInitUpdateProfit(
                     profitData[i][i + 1],
                     props.memberId[i]._id,
@@ -143,6 +143,8 @@ const UserDetails = (props) => {
             }
         }
     }
+
+    console.log({profitData})
 
     useEffect(() => {
         if (props.member) {
@@ -234,15 +236,14 @@ const UserDetails = (props) => {
             const { fundNO, amount, planName, updatedAt } = value
 
             let keepProfitIndex = {}
-            
+
             if (profitData[index]) {
                 profitRef.current = profitData[index]
                 keepProfitIndex = profitRef.current
-               
-             } 
+            }
 
-             console.log('keepProfit outer', keepProfitIndex[fundNO])
-         
+            console.log('keepProfit outer', keepProfitIndex[fundNO])
+
             usersDepositData.push({
                 id: fundNO,
                 amount,
@@ -264,7 +265,7 @@ const UserDetails = (props) => {
                         <button
                             className='btn1'
                             onClick={() => updateMemberProfit(fundNO - 1)}
-                         >
+                        >
                             {props.loading ? 'Loading...' : 'Update Profit'}
                         </button>
                     </>
