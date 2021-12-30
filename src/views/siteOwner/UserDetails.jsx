@@ -124,9 +124,12 @@ const UserDetails = (props) => {
         console.log({fundNO})
         
 
-        profitData.map((v) => {
+        userDeposits.map((v) => {
             console.log({ v })
-            setProfitData((oldArr) => [...oldArr,{ oldArr: e.target.value }])
+           // setProfitData((oldArr) => [...oldArr,{ oldArr: e.target.value }])
+           if(v.fundNO === fundNO){
+               v.profit = e.target.value
+           }
         })
     }
 
@@ -196,6 +199,8 @@ const UserDetails = (props) => {
                 setProfitData((oldArr) => [...oldArr, { [fundNO]: profit }])
             })
         }
+
+        console.log({userDeposits})
     }, [userDeposits])
 
     const handleSubmit = (e) => {
