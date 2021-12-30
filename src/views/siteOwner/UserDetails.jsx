@@ -122,15 +122,11 @@ const UserDetails = (props) => {
     const handleMember = (e, fundNO) => {
         e.persist()
         console.log({fundNO})
+        const value =  Number(e.target.value)
+        // setProfitData((oldArr) => [...oldArr,{ oldArr: e.target.value }])
         
 
-        userDeposits.map((v) => {
-            console.log({ v })
-           // setProfitData((oldArr) => [...oldArr,{ oldArr: e.target.value }])
-           if(v.fundNO === fundNO){
-               v.profit = Number(e.target.value)
-           }
-        })
+       console.log({profitData})
     }
 
     const updateMemberProfit = (id) => {
