@@ -128,7 +128,7 @@ const UserDetails = (props) => {
             console.log({ v })
            // setProfitData((oldArr) => [...oldArr,{ oldArr: e.target.value }])
            if(v.fundNO === fundNO){
-               v.profit = e.target.value
+               v.profit = Number(e.target.value)
            }
         })
     }
