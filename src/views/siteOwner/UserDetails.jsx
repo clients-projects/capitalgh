@@ -119,13 +119,7 @@ const UserDetails = (props) => {
 
     const handleMember = (e, fundNO) => {
         console.log(e, fundNO, 'clicked')
-        setProfitData((oldArr) => {
-
-            
-            [fundNO]: e.target.value,
-        }
-        
-        )
+        setProfitData((oldArr) => [...oldArr, { [fundNO]: e.target.value }])
     }
 
     const updateMemberProfit = (id) => {
@@ -146,7 +140,7 @@ const UserDetails = (props) => {
         }
     }
 
-    console.log({profitData})
+    console.log({ profitData })
 
     useEffect(() => {
         if (props.member) {
