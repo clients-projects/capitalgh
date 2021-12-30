@@ -129,7 +129,7 @@ const UserDetails = (props) => {
        console.log({profitData})
        const newProfitValueArr = []
 
-       console.log('arr profit update', profitData[fundNO - 1][1])
+       console.log('arr profit update', profitData[fundNO - 1][fundNO])
     }
 
     const updateMemberProfit = (id) => {
