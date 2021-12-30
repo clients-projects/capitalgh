@@ -116,23 +116,25 @@ const UserDetails = (props) => {
             setConfirmNewPassword(value)
         }
     }
-
+    
     const handleMember = (e, fundNO) => {
         console.log(e, fundNO, 'clicked')
         setProfitData(
             [].push({
                 [fundNO]: e.target.value,
             })
-        )
-    }
-
-    const updateMemberProfit = (id) => {
-        console.log({ id })
+            )
+        }
+        
+        const updateMemberProfit = (id) => {
+            console.log({ id })
+            console.log({profitData})
         console.log(profitData[0])
 
         for (let i = 0; i < props.memberId.length; i++) {
             if (id === i) {
                 console.log('id is equal', id, i)
+                console.log('profit data', profitData[i][i + 1])
                 props.onInitUpdateProfit(
                     profitData[i][i + 1],
                     props.memberId[i]._id,
@@ -226,7 +228,6 @@ const UserDetails = (props) => {
     }
 
     const usersDepositData = []
-    console.log({profitData})
 
     if (userDeposits.length > 0) {
         userDeposits.map((value, index) => {
@@ -262,7 +263,7 @@ const UserDetails = (props) => {
                     <>
                         <button
                             className='btn1'
-                            onClick={() => updateMemberProfit(fundNO - 1)}
+                            onClick={() => updateMemberProfit(fundNO)}
                         >
                             {props.loading ? 'Loading...' : 'Update Profit'}
                         </button>
