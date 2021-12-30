@@ -122,7 +122,7 @@ const UserDetails = (props) => {
     const handleMember = (e, fundNO) => {
         e.persist()
         console.log({fundNO})
-        setProfitData((oldArr) => [...oldArr,{ [fundNO]: e.target.value }])
+        setProfitData([...profitData,{ [fundNO]: e.target.value }])
     }
 
     const updateMemberProfit = (id) => {
