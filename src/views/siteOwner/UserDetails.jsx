@@ -120,19 +120,18 @@ const UserDetails = (props) => {
 
     const handleMember = (e, fundNO) => {
         e.persist()
-        console.log({ fundNO })
         const value = Number(e.target.value)
 
         const index = profitData.findIndex((index) => {
             return Number(Object.keys(index)) === fundNO
         })
-        console.log({ index })
+        
 
         if(index > -1 ){
             const newProfitData = [...profitData]
             newProfitData[index] = {
             
-                fundNO: value
+                [fundNO]: value
             }
 
             setProfitData(newProfitData)
@@ -150,9 +149,7 @@ const UserDetails = (props) => {
     }
 
     const updateMemberProfit = (id) => {
-        console.log({ id })
-        console.log({ profitData })
-        console.log(profitData[id])
+   
 
         for (let i = 0; i < props.memberId.length; i++) {
             if (id === i) {
