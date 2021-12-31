@@ -612,9 +612,9 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(orderAction.initGetMember(token, id)),
         onInitUpdateMember: (updateMemberData, token) =>
             dispatch(orderAction.initUpdateMember(updateMemberData, token)),
-        onInitUpdateProfit: (updateProfitData, memberId, token) =>
+        onInitUpdateProfit: (updateProfitData, memberId, token, buttonId) =>
             dispatch(
-                orderAction.initUpdateProfit(updateProfitData, memberId, token)
+                orderAction.initUpdateProfit(updateProfitData, memberId, token, buttonId)
             ),
     }
 }

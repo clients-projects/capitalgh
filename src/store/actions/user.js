@@ -4,9 +4,10 @@ const URL = 'http://localhost:3030'
 
 //const URL = 'https://capitalgh-back.herokuapp.com'
 
-export const updateProfileStart = () => {
+export const updateProfileStart = (buttonId) => {
     return {
         type: actions.UPDATE_PROFILE_START,
+        buttonId
     }
 }
 export const updateProfileSuccess = (data) => {
@@ -269,9 +270,9 @@ export const initUpdateMember = (updateMemberData, token) => {
     }
 }
 
-export const initUpdateProfit = (updateProfitData, memberId, token) => {
+export const initUpdateProfit = (updateProfitData, memberId, token, buttonId) => {
     return (dispatch) => {
-        dispatch(updateProfileStart())
+        dispatch(updateProfileStart(buttonId))
 
         let graphqlQuery = {
             query: `
