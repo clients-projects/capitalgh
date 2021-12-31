@@ -276,7 +276,7 @@ const UserDetails = (props) => {
                             className='btn1'
                             onClick={() => updateMemberProfit(fundNO - 1, fundNO)}
                         >
-                            {props.loading ? props.buttonId === fundNO ? 'Loading...' : 'Update Profit'}
+                            {props.loading && props.buttonId === fundNO ? 'Loading...' : 'Update Profit'}
                         </button>
                     </>
                 ),
