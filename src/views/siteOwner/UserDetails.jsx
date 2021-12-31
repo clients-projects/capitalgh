@@ -123,18 +123,18 @@ const UserDetails = (props) => {
         e.persist()
         console.log({fundNO})
         const value =  Number(e.target.value)
-        // setProfitData((oldArr) => [...oldArr,{ oldArr: e.target.value }])
+        setProfitData((oldArr) => [...oldArr, oldArr[fundNO - 1] = value])
         
 
-       console.log({profitData})
-       let newProfitValueArr = profitData
+    //    console.log({profitData})
+    //    let newProfitValueArr = profitData
 
-       console.log('arr profit update', profitData[fundNO - 1][fundNO])
-       newProfitValueArr[fundNO - 1][fundNO] = value
+    //    console.log('arr profit update', profitData[fundNO - 1][fundNO])
+    //    newProfitValueArr[fundNO - 1][fundNO] = value
 
-       console.log({newProfitValueArr})
+    //    console.log({newProfitValueArr})
 
-       setProfitData(newProfitValueArr)
+    //    setProfitData([])
     }
 
     const updateMemberProfit = (id) => {
@@ -205,6 +205,7 @@ const UserDetails = (props) => {
         }
 
         console.log({userDeposits})
+    
     }, [userDeposits])
 
     const handleSubmit = (e) => {
