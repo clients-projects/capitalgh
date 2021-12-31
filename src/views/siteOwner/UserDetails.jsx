@@ -123,7 +123,13 @@ const UserDetails = (props) => {
         e.persist()
         console.log({fundNO})
         const value =  Number(e.target.value)
-        setProfitData((oldArr) => [...oldArr, oldArr[fundNO - 1] = value])
+
+        const index = profitData.findIndex((index) => {
+            console.log('inner index', index)
+            
+            return index === fundNO - 1})
+        console.log({index})
+        setProfitData((oldArr) => [...oldArr, value])
         
 
     //    console.log({profitData})
