@@ -596,6 +596,7 @@ const UserDetails = (props) => {
 
 const mapStateToProps = (state) => {
     return {
+        buttonId: state.user.buttonId,
         loading: state.user.loading,
         tokenId: state.auth.tokenId,
         userId: state.auth.userId,
