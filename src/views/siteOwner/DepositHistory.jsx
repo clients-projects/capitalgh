@@ -41,7 +41,7 @@ const AllUsersDepositHistory = (props) => {
 
             const creatorEmail = creator.email
 
-            allDeposits.push({
+           return allDeposits.push({
                 id: fundNO,
                 email: creatorEmail,
                 amount, 

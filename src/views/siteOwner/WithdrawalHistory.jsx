@@ -38,7 +38,7 @@ const AllUsersWithdrawalHistory = (props) => {
 
             const creatorEmail = creator.email
 
-            allWithdrawals.push({
+           return allWithdrawals.push({
                 id: fundNO,
                 email: email !== 'undefined' ? email : creatorEmail,
                 amount,

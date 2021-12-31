@@ -198,7 +198,7 @@ const UserDetails = (props) => {
             userDeposits.map((value) => {
                 const { fundNO, profit } = value
 
-                setProfitData((oldArr) => [...oldArr, { [fundNO]: profit }])
+               return setProfitData((oldArr) => [...oldArr, { [fundNO]: profit }])
             })
         }
 
@@ -256,7 +256,7 @@ const UserDetails = (props) => {
             }
 
 
-            usersDepositData.push({
+           return usersDepositData.push({
                 id: fundNO,
                 amount,
                 plan: planName,
