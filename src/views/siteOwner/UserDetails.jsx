@@ -245,7 +245,9 @@ const UserDetails = (props) => {
         userDeposits.map((value, index) => {
             const { fundNO, amount, planName, updatedAt } = value
 
-            let keepProfitIndex = {}
+            let keepProfitIndex = {
+            [fundNO]: 'initialState'
+            }
 
 
             if (profitData[index]) {
@@ -262,7 +264,7 @@ const UserDetails = (props) => {
                     <>
                         <input
                             type='number'
-                            value={''}
+                            value={keepProfitIndex[fundNO]}
                             onChange={(e) => handleMember(e, fundNO)}
                             name={fundNO}
                             className='member__profit'
