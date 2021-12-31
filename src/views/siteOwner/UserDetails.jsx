@@ -61,8 +61,7 @@ const UserDetails = (props) => {
                 setUserDeposits(props.memberDeposits)
             }
         }
-            console.log({ profitData })
-
+        console.log({ profitData })
     }, [props, parsed.id, profitData])
 
     const handleChange = (e) => {
@@ -121,26 +120,30 @@ const UserDetails = (props) => {
 
     const handleMember = (e, fundNO) => {
         e.persist()
-        console.log({fundNO})
-        const value =  Number(e.target.value)
+        console.log({ fundNO })
+        const value = Number(e.target.value)
 
         const index = profitData.findIndex((index) => {
-            console.log('inner index', index)
-            
-            return index === fundNO - 1})
-        console.log({index})
-        setProfitData((oldArr) => [...oldArr, value])
-        
+            return Number(Object.keys(index)) === fundNO
+        })
+        console.log({ index })
 
-    //    console.log({profitData})
-    //    let newProfitValueArr = profitData
+        if(index > -1 ){
+            const newProfitData = [...profitData]
+            newProfitData[index] = value
 
-    //    console.log('arr profit update', profitData[fundNO - 1][fundNO])
-    //    newProfitValueArr[fundNO - 1][fundNO] = value
+            setProfitData(newProfitData)
+        }
 
-    //    console.log({newProfitValueArr})
+        //    console.log({profitData})
+        //    let newProfitValueArr = profitData
 
-    //    setProfitData([])
+        //    console.log('arr profit update', profitData[fundNO - 1][fundNO])
+        //    newProfitValueArr[fundNO - 1][fundNO] = value
+
+        //    console.log({newProfitValueArr})
+
+        //    setProfitData([])
     }
 
     const updateMemberProfit = (id) => {
@@ -150,7 +153,6 @@ const UserDetails = (props) => {
 
         for (let i = 0; i < props.memberId.length; i++) {
             if (id === i) {
-              
                 props.onInitUpdateProfit(
                     profitData[i][i + 1],
                     props.memberId[i]._id,
@@ -159,7 +161,6 @@ const UserDetails = (props) => {
             }
         }
     }
-
 
     useEffect(() => {
         if (props.member) {
@@ -210,8 +211,7 @@ const UserDetails = (props) => {
             })
         }
 
-        console.log({userDeposits})
-    
+        console.log({ userDeposits })
     }, [userDeposits])
 
     const handleSubmit = (e) => {
@@ -249,14 +249,13 @@ const UserDetails = (props) => {
 
     const usersDepositData = []
 
-
     if (userDeposits.length > 0) {
         userDeposits.map((value, index) => {
             const { fundNO, amount, planName, updatedAt } = value
 
             let keepProfitIndex = {}
 
-            console.log({profitData})
+            console.log({ profitData })
 
             if (profitData[index]) {
                 profitRef.current = profitData[index]
