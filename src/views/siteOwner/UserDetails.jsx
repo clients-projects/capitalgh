@@ -540,7 +540,8 @@ const UserDetails = (props) => {
                                         className='button btn__profile'
                                         type='submit'
                                     >
-                                        {props.loading
+                                        {props.loading &&
+                                        props.buttonId === '#userDetails'
                                             ? 'Loading...'
                                             : 'Update Profile'}
                                     </button>
