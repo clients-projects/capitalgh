@@ -131,6 +131,7 @@ const UserDetails = (props) => {
         if(index > -1 ){
             const newProfitData = [...profitData]
             newProfitData[index] = {
+            
                 fundNO: value
             }
 
