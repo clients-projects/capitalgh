@@ -207,6 +207,7 @@ const UserDetails = (props) => {
     }, [userDeposits])
 
     const handleSubmit = (e) => {
+        const formId = '#userDetails'
         e.preventDefault()
         if (password !== confirmPassword) {
             setMessage('Passwords do not match')
@@ -236,7 +237,7 @@ const UserDetails = (props) => {
             confirmPassword,
         }
 
-        props.onInitUpdateMember(formData, props.tokenId)
+        props.onInitUpdateMember(formData, props.tokenId, formId)
     }
 
     const usersDepositData = []
