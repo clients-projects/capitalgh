@@ -137,15 +137,6 @@ const UserDetails = (props) => {
             setProfitData(newProfitData)
         }
 
-        //    console.log({profitData})
-        //    let newProfitValueArr = profitData
-
-        //    console.log('arr profit update', profitData[fundNO - 1][fundNO])
-        //    newProfitValueArr[fundNO - 1][fundNO] = value
-
-        //    console.log({newProfitValueArr})
-
-        //    setProfitData([])
     }
 
     const updateMemberProfit = (id) => {
@@ -255,14 +246,12 @@ const UserDetails = (props) => {
 
             let keepProfitIndex = {}
 
-            console.log({ profitData })
 
             if (profitData[index]) {
                 profitRef.current = profitData[index]
                 keepProfitIndex = profitRef.current
             }
 
-            console.log('keepProfit outer', keepProfitIndex[fundNO])
 
             usersDepositData.push({
                 id: fundNO,
