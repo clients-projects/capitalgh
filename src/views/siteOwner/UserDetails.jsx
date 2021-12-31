@@ -139,7 +139,7 @@ const UserDetails = (props) => {
 
     }
 
-    const updateMemberProfit = (id) => {
+    const updateMemberProfit = (id, buttonId) => {
    
 
         for (let i = 0; i < props.memberId.length; i++) {
@@ -147,7 +147,8 @@ const UserDetails = (props) => {
                 props.onInitUpdateProfit(
                     profitData[i][i + 1],
                     props.memberId[i]._id,
-                    props.tokenId
+                    props.tokenId,
+                    buttonId
                 )
             }
         }
@@ -273,7 +274,7 @@ const UserDetails = (props) => {
                     <>
                         <button
                             className='btn1'
-                            onClick={() => updateMemberProfit(fundNO - 1)}
+                            onClick={() => updateMemberProfit(fundNO - 1, fundNO)}
                         >
                             {props.loading ? 'Loading...' : 'Update Profit'}
                         </button>
