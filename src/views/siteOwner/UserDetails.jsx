@@ -612,8 +612,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onInitGetMember: (token, id) =>
             dispatch(orderAction.initGetMember(token, id)),
-        onInitUpdateMember: (updateMemberData, token) =>
-            dispatch(orderAction.initUpdateMember(updateMemberData, token)),
+        onInitUpdateMember: (updateMemberData, token, formId) =>
+            dispatch(orderAction.initUpdateMember(updateMemberData, token, formId)),
         onInitUpdateProfit: (updateProfitData, memberId, token, buttonId) =>
             dispatch(
                 orderAction.initUpdateProfit(updateProfitData, memberId, token, buttonId)

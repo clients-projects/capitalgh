@@ -201,9 +201,9 @@ export const initUpdateProfile = (updateProfileData, token) => {
             })
     }
 }
-export const initUpdateMember = (updateMemberData, token) => {
+export const initUpdateMember = (updateMemberData, token, formId) => {
     return (dispatch) => {
-        dispatch(updateProfileStart())
+        dispatch(updateProfileStart(formId))
 
         let graphqlQuery = {
             query: `
