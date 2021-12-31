@@ -61,8 +61,7 @@ const UserDetails = (props) => {
                 setUserDeposits(props.memberDeposits)
             }
         }
-        console.log({ profitData })
-    }, [props, parsed.id, profitData])
+    }, [props, parsed.id])
 
     const handleChange = (e) => {
         const name = e.target.name
@@ -203,7 +202,7 @@ const UserDetails = (props) => {
             })
         }
 
-        console.log({ userDeposits })
+
     }, [userDeposits])
 
     const handleSubmit = (e) => {
