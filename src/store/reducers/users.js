@@ -21,6 +21,7 @@ const getAdminSuccess = (state, action) => {
 const updateProfileStart = (state, action) => {
     return update(state, {
         loading: true,
+        buttonId: action.buttonId
     })
 }
 const updateProfileSuccess = (state, action) => {
