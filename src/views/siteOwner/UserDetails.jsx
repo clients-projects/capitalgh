@@ -263,7 +263,7 @@ const UserDetails = (props) => {
                     <>
                         <input
                             type='number'
-                            value={keepProfitIndex[fundNO]}
+                            value={''}
                             onChange={(e) => handleMember(e, fundNO)}
                             name={fundNO}
                             className='member__profit'
