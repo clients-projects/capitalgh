@@ -659,12 +659,12 @@ export const initSendEmail = (emailData, token) => {
                         receiverEmail: "${receiverEmail}",
                         senderEmail: "${senderEmail}",
                         emailSubject: "${emailSubject}",
-                        emailMessage: ${emailMessage},
+                        emailMessage: ""${emailMessage}"",
                     }){
                         status
                     }
-                },
-            `,
+                }
+            `
          }
 
         return fetch(URL + '/api/graphql', {
