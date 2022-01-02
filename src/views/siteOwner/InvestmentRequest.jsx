@@ -66,7 +66,7 @@ const PendingDeposits = (props) => {
 
                             const creatorEmail = creator.email
 
-            withdrawalRequests.push({
+           return withdrawalRequests.push({
                 id: fundNO,
                 email: creatorEmail,
                 amount,

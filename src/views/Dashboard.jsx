@@ -34,7 +34,7 @@ const Dashboard = (props) => {
             let keepProfits = 0
 
             props.userDeposits.map((p) => {
-                keepProfits += p.profit
+               return keepProfits += p.profit
             })
 
             const accountBalandProfits = props.userData.accountBalance + keepProfits
