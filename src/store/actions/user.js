@@ -679,7 +679,7 @@ export const initSendEmail = (emailData, token) => {
                 return res.json()
             })
             .then((resData) => {
-                console.log('the da')
+                console.log('data')
                 console.log({ resData })
                 if (resData.errors) {
                     dispatch(sendEmailFailed(resData.errors[0].message))
