@@ -35,7 +35,6 @@ const Members = (props) => {
     if (getWithdrawalHistory.length > 0) {
         getWithdrawalHistory.map((value) => {
             const { historyNO, amount, currency, updatedAt } = value
-            console.log({ value })
 
 
             return withdrawalHistory.push({
