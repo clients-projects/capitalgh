@@ -34,15 +34,14 @@ const InvestmentHistory = (props) => {
 
     if (getDepositHistory.length > 0) {
         getDepositHistory.map((value) => {
-            const { fundNO, creator, amount, planName, updatedAt } = value
+            const { historyNO, profit, amount, planName, updatedAt } = value
             console.log({value})
 
-            const creatorEmail = creator.email
 
             return depositHistory.push({
-                id: fundNO,
-                email: creatorEmail,
+                id: historyNO,
                 amount,
+                profit,
                 plan: planName,
                 date: updatedAt,
             })
