@@ -11,14 +11,7 @@ import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import * as orderAction from '../store/actions/burgerIndex'
 
 import Card from '../components/Card/Card'
-//import { thWithdrawalArray, tdWithdrawalArray } from '../../variables/Variables'
 
-const thInvestmentHistoryArray = [
-    'No',
-    'amount',
-    'Currency',
-    'Date',
-]
 
 const Members = (props) => {
     const [getWithdrawalHistory, setWithdrawalHistory] = useState([])
@@ -37,16 +30,16 @@ const Members = (props) => {
         }
     }, [props])
 
-    const depositHistory = []
+    const withdrawalHistory = []
 
-    if (getDepositHistory.length > 0) {
-        getDepositHistory.map((value) => {
+    if (getWithdrawalHistory.length > 0) {
+        getWithdrawalHistory.map((value) => {
             const { fundNO, creator, amount, planName, updatedAt } = value
             console.log({ value })
 
             const creatorEmail = creator.email
 
-            return depositHistory.push({
+            return withdrawalHistory.push({
                 id: fundNO,
                 email: creatorEmail,
                 amount,
@@ -58,9 +51,8 @@ const Members = (props) => {
 
     const columns = [
         { dataField: 'id', text: 'Id', sort: true },
-        { dataField: 'package', text: 'package', sort: true },
         { dataField: 'amount', text: 'amount', sort: true },
-        { dataField: 'profit', text: 'profit', sort: true },
+        { dataField: 'currency', text: 'currency', sort: true },
         { dataField: 'date', text: 'Date', sort: true },
     ]
 
@@ -119,7 +111,7 @@ const Members = (props) => {
                             content={
                                 <ToolkitProvider
                                     bootstrap4
-                                    data={depositHistory}
+                                    data={withdrawalHistory}
                                     keyField='id'
                                     columns={columns}
                                     search
