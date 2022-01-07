@@ -34,16 +34,14 @@ const Members = (props) => {
 
     if (getWithdrawalHistory.length > 0) {
         getWithdrawalHistory.map((value) => {
-            const { fundNO, creator, amount, planName, updatedAt } = value
+            const { historyNO, amount, currency, updatedAt } = value
             console.log({ value })
 
-            const creatorEmail = creator.email
 
             return withdrawalHistory.push({
-                id: fundNO,
-                email: creatorEmail,
+                id: historyNO,
                 amount,
-                plan: planName,
+                currency,
                 date: updatedAt,
             })
         })
