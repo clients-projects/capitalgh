@@ -12,7 +12,6 @@ import * as orderAction from '../store/actions/burgerIndex'
 
 import Card from '../components/Card/Card'
 
-
 const InvestmentHistory = (props) => {
     const [getDepositHistory, setDepositHistory] = useState([])
 
@@ -35,14 +34,12 @@ const InvestmentHistory = (props) => {
     if (getDepositHistory.length > 0) {
         getDepositHistory.map((value) => {
             const { historyNO, profit, amount, planName, updatedAt } = value
-            console.log({value})
-
 
             return depositHistory.push({
                 id: historyNO,
                 amount,
                 profit,
-                plan: planName,
+                package: planName,
                 date: updatedAt,
             })
         })
@@ -109,7 +106,7 @@ const InvestmentHistory = (props) => {
                             ctTableFullWidth
                             ctTableResponsive
                             content={
-                                  <ToolkitProvider
+                                <ToolkitProvider
                                     bootstrap4
                                     data={depositHistory}
                                     keyField='id'
@@ -134,8 +131,6 @@ const InvestmentHistory = (props) => {
                                         </div>
                                     )}
                                 </ToolkitProvider>
-
-                              
                             }
                         />
                     </Col>
